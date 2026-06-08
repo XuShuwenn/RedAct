@@ -147,7 +147,7 @@ RedAct has two layers:
 2. **Behavioral watermarking:** insert functionally neutral action patterns into selected traces for provenance analysis.
 
 <p align="center">
-  <img src="assets/fig2_pipeline.png" alt="RedAct pipeline" width="92%">
+  <img src="assets/fig2_pipeline.png" alt="RedAct pipeline" width="100%">
 </p>
 
 Implemented watermark families:
@@ -176,8 +176,8 @@ Raw public traces recover substantial procedural value. RedAct suppresses this a
 | Auditability | Final answers, tool names, verifier paths, and schema fields are mostly preserved. |
 
 <p align="center">
-  <img src="assets/utility_reduction_summary.png" alt="Utility reduction summary" width="98%">
-  <img src="assets/protection_summary.png" alt="Protection summary" width="90%">
+  <img src="assets/utility_reduction_summary.png" alt="Utility reduction summary" width="100%">
+  <img src="assets/protection_summary.png" alt="Protection summary" width="70%">
   <br>
 </p>
 
