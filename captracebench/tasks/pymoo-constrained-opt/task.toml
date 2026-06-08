@@ -1,0 +1,18 @@
+version = "1.0"
+
+[metadata]
+author_name = "shuwen"
+difficulty = "easy"
+difficulty_explanation = "Simple constrained optimization using pymoo to find minimum under constraints. Deterministic, auto-verifiable."
+category = "optimization"
+tags = ["pymoo", "constrained-optimization", "NSGA-II"]
+
+[agent]
+timeout_sec = 300
+
+[verifier]
+timeout_sec = 120
+
+[environment]
+cpus = 1
+memory_mb = 2048

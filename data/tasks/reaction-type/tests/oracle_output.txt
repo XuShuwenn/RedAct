@@ -1,0 +1,5 @@
+r001: Reaction type: reduction
+r002: Reaction type: substitution
+r003: Reaction type: oxidation
+r004: Reaction type: addition
+r005: Reaction type: elimination

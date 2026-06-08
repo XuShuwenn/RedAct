@@ -1,0 +1,20 @@
+version = "1.0"
+
+[metadata]
+author_name = "K-Dense Inc."
+difficulty = "medium"
+difficulty_explanation = "Agent must determine the number of structural isomers for a given alkane formula, requiring knowledge of molecular connectivity rules and combinatorial enumeration"
+category = "chemistry"
+tags = ["organic-chemistry", "isomers", "alkanes", "enumeration"]
+
+[verifier]
+timeout_sec = 120
+
+[agent]
+timeout_sec = 300
+
+[environment]
+cpus = 1
+memory_mb = 2048
+storage_mb = 4096
+build_timeout_sec = 300

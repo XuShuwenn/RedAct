@@ -1,0 +1,4 @@
+Sequence type: DNA
+GC content: 46.6%
+Frame 2 translation: LQLPCS*LMPYDASCQCLI
+Longest ORF length: 21 bp

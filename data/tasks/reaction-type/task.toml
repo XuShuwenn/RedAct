@@ -1,0 +1,20 @@
+version = "1.0"
+
+[metadata]
+author_name = "K-Dense Inc."
+difficulty = "medium"
+difficulty_explanation = "Agent must analyze bond changes in reaction SMILES and classify the reaction type, requiring understanding of organic mechanism patterns"
+category = "chemistry"
+tags = ["organic-chemistry", "reaction-type", "mechanism"]
+
+[verifier]
+timeout_sec = 120
+
+[agent]
+timeout_sec = 300
+
+[environment]
+cpus = 1
+memory_mb = 2048
+storage_mb = 4096
+build_timeout_sec = 300

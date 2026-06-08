@@ -1,0 +1,3 @@
+Total variants: 8
+Passed variants: 5
+Failed variants: 3

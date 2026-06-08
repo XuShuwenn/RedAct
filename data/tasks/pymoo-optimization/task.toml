@@ -1,0 +1,18 @@
+version = "1.0"
+
+[metadata]
+author_name = "shuwen"
+difficulty = "easy"
+difficulty_explanation = "Simple multi-objective optimization using pymoo NSGA-II to find Pareto front. Deterministic, auto-verifiable."
+category = "optimization"
+tags = ["pymoo", "NSGA-II", "multi-objective"]
+
+[agent]
+timeout_sec = 300
+
+[verifier]
+timeout_sec = 120
+
+[environment]
+cpus = 1
+memory_mb = 2048

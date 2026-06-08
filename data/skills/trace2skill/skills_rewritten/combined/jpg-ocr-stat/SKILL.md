@@ -1,0 +1,377 @@
+---
+name: jpg-ocr-stat
+description: "Extract date and total amount from receipt JPG images using OCR, and write results to Excel file."
+---
+
+# Receipt OCR and Statistics
+
+## When to Use
+
+- Extract text from receipt images using OCR
+- Parse dates and monetary amounts from scanned receipts
+- Write structured data to Excel files
+
+- Use actual OCR output as the evidence source; do not infer receipt contents from empty image/file reads.
+- Follow any task-specific tool-call, action, or completion protocol exactly if the task/environment prescribes one.
+- If the environment or task specifies an exact interaction schema, tool-call wrapper, action format, or completion token, treat it as mandatory and higher priority than this skill's generic workflow.
+- Before the first tool call, match the required schema exactly and use it consistently for every invocation; do not substitute alternate wrappers, ad-hoc formats, summaries, or termination phrases.
+- If an exact completion token/string is required, reserve it for the very last response and emit it verbatim with no extra prose unless explicitly allowed.
+### Mandatory executor-protocol checklist
+
+- Treat any required Thought/Action schema, JSON action wrapper, tool-call envelope, key names, execution interface, or completion string as a hard execution contract. Before the first tool call, mirror the required wrapper and field names exactly, then keep that exact format on every step.
+- Do not improvise alternate wrappers, native tool syntax, XML-style tags, markdown code blocks, pseudo-tools, ad hoc command descriptions, or prose summaries when the environment prescribes a specific action schema.
+- Protocol compliance is a hard gate equal to producing the workbook. Before each tool call and before the final response, verify that your planned output matches the required schema exactly; if not, rewrite it before sending.
+- If the environment requires a final completion token/string, emit exactly that token only at the required time and do not replace it with or surround it with natural-language success text unless explicitly allowed.
+- If the environment responds with messages such as `Please continue` after you thought you had finished, treat that as evidence of a protocol/termination mistake. Re-check the required action/completion format and continue using the mandated schema.
+
+- Before the first substantive step, perform a protocol preflight: identify the exact required action/tool wrapper, allowed tool/action names, field/key names, and final completion token/string from the environment instructions, then use that schema verbatim on every step. If the task requires labels such as `Thought:` and `Action:` with a specific JSON shape, preserve those labels, key names, and argument structure exactly.
+- Do not switch mid-task between protocol styles. If your planned call is not expressible in the required schema exactly, stop and rewrite it before sending; do not substitute native tool syntax, XML/tool tags, markdown code blocks, pseudo-tools, prose summaries, or alternate action formats.
+- Before the final response, perform the same character-for-character protocol check again and emit the exact required completion token/string or final wrapper only, with no natural-language success summary when a task-specific terminator is required.
+- If the environment responds with messages such as `Please continue` after you thought you had finished, treat that as evidence of a protocol/termination mistake. Re-check the required wrapper/completion format and continue using the mandated schema.
+
+## Input
+
+- `/app/workspace/dataset/img/`: Directory of receipt JPG images
+
+- Do not use plain text/file readers on `.jpg` receipts as evidence. If a JPG read returns empty, binary, or non-visual output, treat that as no evidence and switch to OCR or image preprocessing that produces observable text.
+- Never describe an empty `.jpg` read as successful inspection. Empty/binary output means you learned nothing about the receipt contents.
+- Do not claim to "see patterns," "understand the receipts," or have validated field values until OCR or other image-capable processing has produced observable text.
+- Use exact concrete image paths when inspecting receipts; do not use placeholder descriptions such as `selected image files` or `an image file under the dataset path` as if they inspected a real receipt.
+- If a `.jpg` read/preview/inspection returns empty, binary, blank, or otherwise unusable output, explicitly treat it as no evidence and switch methods. Do not claim specific date, total, layout, merchant details, expected values, or visual mismatches from that result.
+- Do not say you reviewed or understood receipts unless OCR text or another image-capable method produced observable receipt content in the current run.
+
+## Output
+
+Excel file `/app/workspace/stat_ocr.xlsx`:
+- Sheet name: "results"
+- Columns: filename, date (YYYY-MM-DD), total_amount (2 decimal places)
+- 1-based page indexing
+
+- Write only the required sheet and columns; do not add styling, bold headers, adjusted widths, extra sheets, or other presentation changes unless explicitly requested.
+
+- Keep the workbook plain: write only the required sheet and cell values. Do not apply bold headers, column widths, styling, formulas, filters, or other presentation changes unless explicitly requested.
+
+## Execution
+
+- Run scripts with `python3`, not `python`, unless you have explicitly confirmed `python` exists.
+
+- Default to `python3` for scripts and one-liners; use `python` only after explicitly confirming it exists.
+- For Excel output, prefer `openpyxl` directly. Do not use `pandas` unless you have first confirmed it imports successfully in this environment.
+- Decide and sanity-check the workbook-writing path early so the task cannot fail at the final export step.
+- Do not treat a launched command as success. Require observable completion evidence such as an exit status, a final summary/count, or a direct readback of the produced artifact.
+
+- Before editing any script, read the current file contents or the relevant function/block from disk. If any read is truncated or partial, continue reading with offsets or another complete-read method; do not rewrite from incomplete visibility.
+- If a file read explicitly says `truncated`, shows only a line slice/range, or omits earlier/later code, stop and fetch the missing portions before any broad replacement. If full visibility is not practical yet, limit yourself to a narrowly targeted patch on code you have actually read, then read back the result and validate it.
+- Do not rewrite the extraction script from memory or assumption. First read the current script from disk, identify the exact failing function/block or traceback location, and patch that concrete code; never use placeholder edit targets such as `...`, `existing logic`, or narrative replacement text.
+- Make code edits concrete and inspectable. Patch exact existing code; do not write placeholder prose, pseudo-code, or vague replacement targets like `existing logic` or `updated extraction logic`.
+- When creating or overwriting a Python script, write actual executable Python source only. After any write or patch, read the modified file back and confirm the intended code is present as executable Python, not a narrative description or partial fragment.
+- Treat file writes as failed if the saved content reads back like narration instead of code. Red flags include prose such as `created a script that...`, `updated extraction logic...`, placeholder comments without implementation, or any other non-executable summary text.
+- After any script creation, overwrite, or major patch, read back the full relevant file content from disk; if the read is truncated, continue reading until you have complete visibility. Do not proceed from a partially visible script.
+- Minimum post-edit gate before execution: confirm the saved file contains real imports/definitions/executable statements, then run `python3 -m py_compile <script>.py`.
+- After any non-trivial script edit or replacement, immediately run `python3 -m py_compile <script>.py` before the next execution attempt.
+- Treat `py_compile` as a hard gate after broad rewrites or block-level edits: if it fails, inspect the traceback and fix syntax/indentation/import structure before any further runtime debugging.
+- After any edit that adds, removes, renames, or reorders logic, read back the final script and verify every called helper and required import still exists with the expected name. Treat `NameError`, missing helper wiring, or missing imports introduced by the edit as blockers before the next full run.
+- If a script run fails, exits non-zero, or validation crashes, inspect the full traceback/log first. If output is truncated, rerun with a narrower command, capture stdout/stderr to a file, or otherwise obtain the missing error details before changing code.
+- Make execution and validation auditable: run concrete commands with visible arguments and prefer checks whose outputs can be directly inspected over claims like "ran the pipeline" or "validated workbook".
+- If a dependency import fails during export or verification, immediately switch to a confirmed available path and execute it in the same run. Treat `openpyxl` as the default fallback for Excel generation: confirm it imports, use it directly, rerun the export, and verify `/app/workspace/stat_ocr.xlsx` was produced.
+- Before the first full-dataset run, smoke-test fragile logic that can fail fast: compile regexes and test 1-2 representative date/amount extraction examples.
+- Minimum pre-batch gate for new or edited extraction code: (1) read back the script, (2) run `python3 -m py_compile <script>.py`, and (3) run a tiny Python check that compiles the date/amount regexes and exercises 1-2 representative sample strings before launching the full dataset job.
+- If the smoke test fails with a regex, compiler, import, or parser error, fix that issue first; do not proceed to the batch run.
+- Every tool action or diagnostic step must be concrete and executable. Do not submit placeholders such as `run the pipeline`, `inspect workbook`, or `checked OCR output` as if they were commands.
+- Never use descriptive phrases as commands. Replace placeholders like `run the pipeline`, `inspect workbook`, `review image`, or `checked OCR output` with an actual executable shell or Python command using real paths and arguments.
+- Do not use heredocs or script blocks that only narrate intended work in place of executable code; any script block you send must itself perform extraction, validation, or debugging.
+- Before sending any tool/action step, do a quick preflight check: is this exact text runnable as-is inside the required schema? If not, rewrite it into a concrete command first.
+- Treat the main extraction run as incomplete unless you have explicit end-to-end evidence: clean process exit/status and/or a verified processed-file count that matches the number of input JPGs.
+
+- Keep execution auditable from the transcript: show the actual script/source being written or patched and the exact shell/Python command with visible arguments. Do not use placeholders such as `run the pipeline`, `validated workbook`, or `checked sample rows` as if they were executable evidence.
+- Before choosing an export path, smoke-check dependencies you plan to use with a concrete command (for example `python3 -c "import openpyxl"`). If a non-default library such as `pandas` is not explicitly confirmed importable, do not build the workflow around it.
+- If runtime output stops mid-file, mid-line, or otherwise truncates before a clear completion summary, treat the run as incomplete. Re-run with a narrower command, log to a file, or use another non-truncating check before proceeding.
+- For any batch extraction run, require explicit completion evidence before moving on: a clean exit/status plus a processed-file count or workbook row count that can be matched against the number of input JPGs.
+- Do not copy long terminal/stdout extraction output directly into Python source or workbook-builder scripts unless you have first confirmed it is complete and syntactically valid. If output is long, save structured results to a file, read that file back, and prefer writing `/app/workspace/stat_ocr.xlsx` directly from the extraction script or from that validated complete file on disk.
+- If an export attempt fails because a library is missing (for example `pandas`), do not stop at a plan. In the same run: confirm an available fallback import (typically `openpyxl`), rewrite the export path, execute it, and verify `/app/workspace/stat_ocr.xlsx` exists.
+- If you create a one-off OCR/debug script for diagnosis, treat it as temporary. Once it reveals the pattern, return to the main extraction script, make the concrete fix there, and proceed toward a full-dataset rerun instead of accumulating ad hoc debug scripts.
+- If you start another full-dataset rerun late in the task, manage it to a decision: wait for completion and inspect results, or stop and switch to a bounded diagnostic. Do not end while a rerun is still in progress.
+
+## Validation Workflow
+
+- After generating `stat_ocr.xlsx`, inspect the full `results` sheet for all rows; do not rely on truncated console previews.
+- Verify the workbook contents programmatically: expected row count, sheet name, headers, and that every input JPG produced exactly one output row.
+- Treat row-count reconciliation as mandatory: count JPG inputs in `/app/workspace/dataset/img/`, count data rows in `results`, and confirm they match exactly before concluding.
+- Validate full dataset coverage, not just structure or a sample: confirm the number of unique output filenames matches the input set exactly and that ordering is deterministic.
+- Do not claim the task is complete from workbook structure, a preview, or a few sample rows/files. Either validate every output row programmatically or explicitly state verification was limited.
+- Confirm the header row is exactly: `filename`, `date`, `total_amount`.
+- Confirm `date` values are ISO `YYYY-MM-DD` or blank/null when extraction failed.
+- Confirm `total_amount` values are numeric and formatted to 2 decimal places.
+- If command output is truncated or stops mid-run, treat the run as unverified and rerun or inspect the workbook directly before concluding.
+- If a candidate date or amount is weakly supported by OCR context, leave it null rather than guessing.
+
+- Treat the extraction as incomplete unless the full dataset run clearly finishes and `/app/workspace/stat_ocr.xlsx` is successfully written; do not infer success from partial per-file logs, workbook existence alone, or truncated stdout.
+- Require positive completion evidence before trusting outputs: a clean process exit, an explicit final success/save message, or verified workbook side effects produced after the full dataset run.
+- Ground verification in observable outputs only: OCR text, script output, parser logs, or workbook contents visible in the session. Do not create manual "expected vs got" tables from guessed receipt values or unsupported visual assumptions.
+- Do not validate from `grep`, `head`, tuple dumps, or other truncated summaries alone. Read the workbook programmatically and iterate all rows in `results` to completion.
+- Verify the complete dataset, not just structure: row count equals the number of input JPGs, every filename appears exactly once, ordering is deterministic, and every row's field values are checked or summarized without truncation.
+- Treat empty, binary, or otherwise unusable tool output as no evidence. Every non-null field written to Excel must be traceable to observed OCR text or program output from the current run.
+- If a workbook-inspection script crashes, stops early, or output truncates mid-row or omits trailing files, treat validation as failed; fix the inspection path and rerun until every row is confirmed.
+- Treat validation as a decision gate: if you observe malformed dates, suspicious totals (especially `0.00`), missing rows, duplicate filenames, visible `None`/null outputs, unstable values across reruns, weak total matches, or obvious outliers, do not finalize; inspect OCR evidence or parsing logic, fix the issue, rerun, and re-check the workbook.
+- When you change OCR preprocessing, regexes, scoring, fallback behavior, normalization rules, or exclusion keywords, test on captured OCR lines when relevant, then rerun the full dataset, compare against the previous full run, and reject or narrow the change if it introduces regressions.
+- If any earlier run exposed specific bad files or malformed outputs, include those filenames in a targeted readback check after the next full rerun before concluding the fix worked.
+
+- A truncated sheet printout, partial worksheet preview, header check, workbook existence check, or first-few-row sample is not verification. If output stops mid-row, omits trailing files, or otherwise truncates, switch to a non-truncating script that iterates every row programmatically and reports a compact completion summary.
+- Treat verification exceptions as blockers, not incidental output: if inspection returns a traceback, non-zero exit, formatting error, malformed/truncated row display, or inconsistent row counts, do not conclude success until you fix the verification path, regenerate the workbook if needed, and obtain a clean pass.
+- Structural workbook checks are necessary but not sufficient. Also review semantic anomalies such as `date = null`, blank/`None` dates, missing totals, blank amounts, malformed dates, suspicious `0.00`, truncated values, obvious outliers, duplicates, or unstable values against OCR evidence before concluding.
+- Treat any visible blank/`None`/null in a required field as an unresolved extraction failure, not a successful completion state. If OCR text may still be recoverable, inspect those files' OCR output, refine preprocessing/parsing, rerun the full dataset, and re-verify before finishing.
+- Use anomalies from logs or prior runs as a targeted validation queue: explicitly re-check filenames that previously showed missing fields, suspicious totals, incomplete processing output, or other known problems.
+- Do not declare a file "fixed" or a value "correct" unless it is traceable to observed OCR text, explicit parser/debug output, or workbook readback from the current run.
+
+- Prefer a compact non-truncating validation script over row dumps: load the workbook, iterate every row in `results` to completion, then report only row count, filename coverage/order, duplicate or missing filenames, and a short suspicious-row summary. Do not rely on tuple-printing, `head`, `grep`, or first-few-row previews that may clip mid-file.
+- Use executable verification code only. Do not issue descriptive placeholders such as `verified the workbook` or `displayed all rows`; run real code that loads `/app/workspace/stat_ocr.xlsx`, iterates rows, checks headers/counts/filename coverage, and reports concrete findings.
+- Treat workbook existence, sheet name, and headers as only the first gate. Structural checks must be followed by semantic checks on suspicious rows and any cases exposed by logs or prior reruns.
+- Use anomalies seen during execution or prior reruns as a required validation queue. If logs or readback show `date = null`, blank amounts, suspicious `0.00`, malformed values, truncated strings, or output truncation for any filenames, explicitly inspect those rows in the saved workbook and trace each non-null value back to OCR evidence before concluding.
+- Do not accept visible `None`/blank/null required fields as a completed result just because row counts match. Those filenames are an active remediation queue: inspect OCR evidence, improve parsing/OCR if support exists, rerun the full dataset, and only leave `null` when current-run OCR evidence is still genuinely unreadable or ambiguous.
+- If workbook output, logs, or row inspection truncate mid-row or before the final file, validation has failed. Switch immediately to a compact non-truncating validator that prints only assertions, counts, filename-set differences, and suspicious filenames.
+- If a validation script exits non-zero, throws an exception, or truncates mid-output, treat validation as failed; fix the checker or use a safer script and rerun until every row is covered cleanly.
+- Treat visible anomalies as blockers, not minor warnings: invalid dates, blank/`None` required fields, suspicious unsupported `0.00`, duplicate filenames, missing rows, truncated-looking values, or materially unstable rows across reruns must trigger investigation, rerun, or evidence-backed `null`.
+
+## Date Extraction
+
+- Parse date from receipt text
+- Convert to ISO format (YYYY-MM-DD)
+- If extraction fails, set to null
+
+- Prefer explicit full-date evidence actually present in OCR text.
+- Accept a date only when supported by a clear full-date pattern or date-labeled context in OCR text; reject isolated numeric fragments that could come from invoice numbers, receipt numbers, reference IDs, quantities, litre readings, or other non-date content.
+- Do not broaden date logic to parse digits embedded inside longer identifiers just to reduce nulls unless surrounding OCR text clearly marks the field as a date or another structured fallback is explicitly supported by OCR evidence.
+- Prefer date-labeled text or a clear standalone date pattern near transaction details.
+- Reject isolated numeric matches that may come from invoice numbers, reference IDs, item lines, quantities, pump data, or OCR noise.
+- Do not force an ambiguous numeric date interpretation without checking OCR text context.
+- Validate parsed dates before writing: require a real ISO date with month `01-12` and a valid day for that month.
+- Normalize lightly corrupted OCR date strings before final validation when the date evidence is otherwise clear (for example extra spaces, mixed separators, or a date embedded inside a longer supported field), but still require a valid final ISO date and supporting OCR context.
+- When explicit printed dates are weak or corrupted, allow fallback parsing from OCR-supported structured identifiers only if the embedding pattern is clear in the OCR text and decodes to a valid calendar date; otherwise leave the date null.
+- Use tolerant parsing only to recover an OCR-supported date, not to invent one from weak numeric fragments.
+- After checking explicit printed dates, allow a structured fallback from alternate encoded fields only when the OCR text clearly supports the pattern (for example, an invoice/reference number that embeds `YYYYMMDD`).
+- Use structured date fallbacks only if they decode to a valid calendar date and are more reliable than the visible date text; otherwise write `null`.
+- Apply the same date validation again during final workbook readback; if any written date is invalid, rewrite that value to `null` or fix extraction and regenerate the workbook before finishing.
+- Do not write malformed dates like `2018-62-19`; if the parsed date is invalid or ambiguous, write `null`.
+- Smoke-test date regex/pattern logic on 1-2 sample strings before running the full batch.
+- Before the full batch, verify regexes compile and match simple known examples; if you changed parsing code, run a tiny script or REPL check first so malformed patterns fail early.
+- When writing regex character classes for separators, place `-` at the start/end or escape it (for example `[./-]`); avoid invalid ranges such as `[/-.]`.
+- If the OCR evidence is ambiguous or weak, set the date to null rather than guessing.
+- If several receipts return null dates, inspect the raw OCR text for those files and broaden preprocessing/parsing rather than accepting the first pass.
+
+## Total Amount Extraction
+
+Keywords (priority order):
+1. GRAND TOTAL
+2. TOTAL RM, TOTAL: RM
+3. TOTAL AMOUNT
+4. TOTAL, AMOUNT, TOTAL DUE, etc.
+
+Use candidate scoring, not just "last number on a matched line". Prefer lines with strong final-total phrases and penalize headers/summary labels such as `Description Amount`, `Sales`, `Qty`, `QTY ITEM TOTAL`, or non-final tax summaries.
+Build the total decision in two phases: (1) collect candidate amounts from same-line or clearly adjacent total-related text, then (2) rank candidates by positive and negative context. Do not use a raw "keyword hit + last number" rule as the final selector.
+
+When choosing between nearby totals, prefer the payable/final-total line over tax-inclusive sales summaries or table/header lines. Examples to penalize unless they clearly indicate the final payable amount: `Total Sales Incl GST`, `Description Amount`, `Amount`, `Sales`, item-table headers, and intermediate summary lines.
+
+Enforce keyword priority strictly: if a higher-priority keyword is present, do not fall back to lower-priority groups for that receipt.
+If implementing grouped scans in code, track whether any higher-priority group matched at all; once matched, either return an amount from that group or return `null` for unresolved total rather than continuing to lower-priority groups.
+
+Accept an amount only when it is on the same line as, or immediately adjacent to, a total-related keyword. Treat next-line fallback after a keyword as high-risk; use it only when same-line extraction fails and the keyword line clearly indicates a payable final total, not a broad header/table label or metadata.
+Before accepting a total candidate, check nearby OCR text for conflicting numeric contexts (for example litres, quantities, unit prices, item lines, reference numbers, or header/table labels). If the candidate is not clearly the payable final total, set it to `null` instead of forcing a match.
+
+Treat exclusion terms as negative signals, not absolute blockers: do not discard a line just because it contains `GST`/`SST` if it also contains a high-priority total phrase like `TOTAL RM` or `GRAND TOTAL`.
+
+Exclude or heavily penalize lines with: SUBTOTAL, DISCOUNT, CHANGE, CASH TENDERED, ROUNDING, tax-only summaries.
+
+Treat generic words like `AMOUNT` or `TOTAL` alone as weak signals; prefer strong phrases such as `GRAND TOTAL`, `TOTAL RM`, `TOTAL AMOUNT`, or `TOTAL DUE`.
+
+Prefer specific final-total phrases and stronger keyword matches over a larger numeric value elsewhere. Reject candidates near unrelated contexts such as litre/quantity/unit-price/item lines, even if the OCR text is noisy.
+
+Do not invent decimals from ambiguous integers unless the receipt text gives strong explicit currency or decimal evidence. Prefer decimal amounts associated with total keywords; avoid plain integers unless the receipt clearly shows no cents.
+
+Treat `0.00` as suspicious unless the OCR text explicitly shows a zero total; otherwise inspect the source line or fallback match and set to `null` if unresolved.
+
+Do NOT let a later weak match override an earlier stronger total candidate just because it appears lower on the receipt.
+Use semantic labels as the primary signal for totals: prioritize payable/final-total phrases, then use exclusions/penalties to reject lookalikes such as subtotal, tax summary, change, cash tendered, rounding, item-table headers, and quantity/price lines.
+Do not choose a candidate mainly because it is the largest number or the last number on the receipt; require stronger labeled final-total context.
+Evaluate all OCR variants before choosing `total_amount`; do not stop at the first non-null match.
+
+Use a ranked selection pattern:
+1. collect total candidates from every OCR/preprocessing variant
+2. normalize lightly corrupted amount strings only when strong nearby total context supports it (for example `85. 54` -> `85.54`, `538 00` -> `538.00`, `99,80` -> `99.80`, and standard comma-thousands cleanup)
+3. score by keyword strength, same-line proximity, final-total context, and plausibility
+4. prefer repeated non-zero candidates across variants over one-off weak matches
+5. write `null` if candidates conflict and no clear winner remains
+
+Do not lock in `0.00`, `null`, or another weak value from an early variant while later variants contain a stronger supported total.
+- Across OCR/preprocessing variants, explicitly compare all supported amount candidates before writing the cell: keep the one with the strongest payable-total label and best surrounding context, especially when the stronger candidate appears in more than one variant.
+- Do not let filtering or exclusion logic suppress an explicit final-total line unless a stronger conflicting payable-total candidate exists.
+- Use normalization only to recover a candidate already supported by a nearby total keyword; do not use it to invent a number from weak or unrelated text.
+
+If multiple total candidates conflict and context does not clearly disambiguate them, set `total_amount` to null.
+- If totals for the same filename keep changing materially across reruns or OCR variants and no candidate has clearly stronger labeled support, treat the amount as unresolved: strengthen evidence requirements, prefer same-line final-total labels, and write `null` rather than preserving a shifting heuristic value.
+- If repeated tuning still produces unstable totals from noisy OCR, stop broad keyword/fallback retuning and escalate to stronger OCR evidence or targeted preprocessing before accepting a non-null amount.
+
+Handle comma separators (1,234.56).
+
+- Before changing amount regexes or exclusion keywords, test them on a few captured OCR lines that include both true final totals and known non-total/header lines; keep the change only if it improves target cases without removing valid strong-keyword totals.
+- Apply exclusions narrowly: a line containing `GST`/`SST` can still be the correct final total when paired with strong total phrases such as `TOTAL SALES`, `TOTAL RM`, `GRAND TOTAL`, or `TOTAL AMOUNT`.
+- Do not normalize ambiguous integers into decimal currency amounts unless the OCR line itself clearly presents that exact value as the final payable amount with strong total context; otherwise prefer a decimal candidate or `null`.
+- Before treating a line with `AMOUNT` or `TOTAL` as a trigger, check whether it is a table header or metadata label (for example `Description Amount`, `Amount TX`, column headings, SKU/code headers). If so, do not extract from that line or its next line.
+- Use next-line fallback only when the keyword line contains a strong payable-total phrase (`GRAND TOTAL`, `TOTAL RM`, `TOTAL AMOUNT`, `TOTAL DUE`) and is not a header/table label.
+- Do not let broad generic keywords such as `AMOUNT` alone activate extraction from adjacent product-code or item-description lines.
+- Within the same keyword priority, do not prefer a later line solely because it is lower on the receipt; keep the candidate with stronger total context and leave the value null if competing matches are not clearly resolved.
+
+- When multiple OCR passes disagree, rank amount candidates across all passes before writing any value: prefer candidates repeated across variants and attached to strong payable-total labels (`GRAND TOTAL`, `TOTAL RM`, `TOTAL AMOUNT`, `TOTAL DUE`, `TOTAL SALES`) over one-off amounts from weaker contexts.
+- If one OCR variant yields `null` or a weak candidate but another variant shows a strongly labeled final-total line, prefer the strongly supported labeled candidate; do not let exclusion or first-match logic suppress an explicit final-total amount without a better conflicting candidate.
+
+
+## Extraction Reliability
+
+- If a file read, direct `.jpg` binary read, image preview, inspection call, or OCR attempt returns empty or otherwise unusable output, treat that as no evidence. Switch to another valid method; do not claim specific receipt contents from the empty result.
+- When raw OCR misses fields, use a focused recovery loop for failed files: save or print OCR text, try preprocessing variants (grayscale, threshold, resize, sharpen/denoise, crop, alternate `--psm`), then rerun parsing.
+- If alternate OCR variants disagree, build a candidate set per field and rank it instead of using first-valid-match selection.
+- For dates, prefer candidates supported by clearer full-date text, repeated across OCR variants, or attached to date-like labels; for totals, prefer candidates nearest strong final-total phrases and repeated across variants.
+- When debugging a specific receipt, capture or quote the OCR text/lines and extracted candidates that support the chosen date and total; if no supporting OCR text is available, leave the field null rather than inferring the value.
+- Use an evidence-first debug loop for bad files: rerun OCR for the specific filename, print the exact OCR lines that mention date/total-like text, list the parser's candidate values, then change rules only if those observed lines justify the change.
+- Prefer parser changes that generalize from observed OCR artifacts rather than file-specific fixes.
+- After changing heuristics to fix a specific file, re-check that file's supporting OCR lines or parser debug output before accepting the new value, then review changed rows for regressions on other filenames.
+- Treat many first-pass nulls or weak fields as a signal to iterate, not to finish. Inspect OCR text for representative failed files, adjust preprocessing/`--psm`/parsing, rerun the full dataset, and keep the change only if overall results improve.
+- Accept `null` only after a deliberate recovery attempt or after confirming the OCR evidence remains unreadable or ambiguous.
+- Start with a small OCR spot-check on a few varied receipts before trusting a batch-wide regex/keyword strategy.
+- Treat anomalous outputs as mandatory review triggers, especially `total_amount = 0.00`, missing dates, malformed dates, truncated amounts, or obvious outliers.
+- After any targeted refinement, rerun the full dataset and keep the change only if flagged cases improve without introducing broader regressions.
+
+- Do not use plain-text reads of `.jpg` files to infer receipt structure or contents. An empty, binary, blank, or otherwise non-visual result is a failed inspection, not evidence.
+- If a `.jpg` inspection/read or image preview returns unusable output, explicitly treat it as no evidence. Do not say you can "see", "inspect", or diagnose receipt content from that result; switch to OCR or image preprocessing that produces observable text first.
+- When diagnosing a bad file, quote or save the actual OCR lines and extracted candidates you are using. If you cannot surface supporting OCR text for a claimed issue, do not make a parser change or content claim based on that assumption.
+
+- Do not say a specific file is `fixed`, `correct`, or `now shows` a value unless the current session includes direct evidence for that same filename from a rerun, targeted debug output, or workbook readback after the latest change.
+- When a rule change is meant to fix known files, verify those filenames explicitly after rerunning; do not generalize from evidence for different files.
+
+## Extraction Reliability
+
+- Treat OCR text as the source of truth; only report a value if some OCR line supports it.
+- Preprocess difficult receipts before OCR when results are weak: grayscale, contrast boost, thresholding, resize, sharpening/denoising, cropping, or different Tesseract `--psm` modes.
+- If multiple OCR variants produce different dates or totals, arbitrate instead of using first-match selection:
+  - prefer candidates repeated across variants
+  - prefer totals closest to strong keywords like `GRAND TOTAL`, `TOTAL RM`, or `TOTAL AMOUNT`
+  - prefer clearer full dates over noisier partial or ambiguous parses
+- If conflict remains unresolved, continue improving OCR or preprocessing rather than silently choosing one unsupported value.
+## Tips
+
+- Use pytesseract for OCR
+- PIL for image preprocessing
+- openpyxl for Excel writing
+- Handle multi-line keyword/amount fallbacks
+
+- Prefer guaranteed/preinstalled libraries first. Use standard library + `openpyxl` for Excel output; do not assume `pandas` is available.
+- If you are considering any non-guaranteed library, verify it is importable before relying on it; otherwise redesign around guaranteed/preinstalled tools.
+- Do not attempt package installation unless the environment explicitly allows it.
+- Prefer a single Python script that scans all JPGs, runs OCR, parses fields, and writes `/app/workspace/stat_ocr.xlsx` directly; do not manually rebuild the workbook from copied terminal output.
+- If extracted records are printed to stdout and the output is long or truncated, save structured output to disk first, then build Excel from that complete file.
+- Never manually reconstruct the final workbook from partially visible terminal/stdout output. Either write Excel in the same extraction script or persist the complete structured dataset to a file and build from that file.
+- If a tool call returns empty or unusable output, switch methods and capture observable OCR text before claiming a date or total.
+- Do not manually "correct" dates or totals unless the value is supported by explicit OCR text seen in the session.
+- Prefer stable ranked rules over file-specific patches for individual receipts.
+- When debugging specific images, use that only to improve the general parser, then rerun the full dataset and re-verify the final workbook.
+- After writing the workbook, reopen it and validate the final contents programmatically instead of assuming the write succeeded.
+- Spot-check anomalous outputs before finishing: `date = null`, malformed dates, zero totals, unusually large totals, or unusually many missing values.
+
+- Keep the proven workflow: OCR the receipt text first, then run rule-based parsing for date and total extraction; avoid relying on OCR output alone without field-specific ranking and validation.
+- Avoid ad hoc per-file guesswork driven by a few suspicious receipts. Improve general OCR/preprocessing/parsing rules from observed evidence, rerun the full dataset, and keep the change only if the final verified workbook improves.
+
+
+## Execution and Recovery
+
+- Make parser changes incrementally when possible; avoid broad rewrites unless necessary. After each non-trivial edit, rerun a focused check, then rerun the full pipeline before trusting the result.
+- Treat empty image/file reads as no evidence, not partial understanding; do not claim you visually inspected a receipt unless the session produced usable image or OCR output.
+- When debugging a specific file, capture the OCR lines that support the suspected date/total and use those observations to refine general rules.
+- Use targeted debugging on a few receipts only to diagnose patterns; do not accept the fix until a full-batch rerun shows no unacceptable regressions.
+- Preserve a previous full-run result snapshot before major heuristic changes so you can diff outputs and detect regressions across filenames.
+- After any heuristic, parser, regex, OCR, preprocessing, fallback, normalization, or exclusion change, save a full before/after result set by filename, inspect changed rows for regressions, rerun the full dataset, regenerate `/app/workspace/stat_ocr.xlsx`, and re-verify the final workbook before finishing.
+- If a rule change fixes one receipt but alters other previously acceptable rows without clear evidence of improvement, revert or refine the change before finalizing.
+- If a write/export command or dependency path fails, immediately switch to a confirmed available path (typically direct `openpyxl` writing), produce `/app/workspace/stat_ocr.xlsx`, and verify that it exists.
+- After the last code change, perform one fresh end-to-end run and one fresh workbook verification pass; do not rely on checks performed before the final edit.
+- Do not end on an intended next edit, a pending rerun, or partial diagnosis; end only after a completed run, successful verification, production of the required artifact, and any exact required completion token or protocol.
+
+- Keep the inspect -> edit -> rerun -> verify loop observable and disciplined: after each material parser change, rerun and capture evidence before making the next diagnosis.
+- Use real file paths and exact source text from the current file when reading or editing. Do not use placeholder paths or descriptive strings such as `review receipt image`, `previous extraction script`, or `existing block`.
+- Prefer targeted, inspectable patches over broad rewrites. If you cannot point to the current code being replaced, inspect the file first instead of guessing.
+- Tie edits to observed evidence: actual source lines, traceback text, OCR lines, or concrete failing output cases. Do not stack multiple speculative fixes before checking which change affected the result.
+- After any script edit that adds, renames, or reorders logic, read back the final script and confirm every referenced helper function/import still exists. Minimum post-edit gate before trusting the change: read back the file, run `python3 -m py_compile <script>.py`, then execute a quick smoke test or full run and investigate any new `NameError` or missing-import failure immediately.
+- Keep a regression checklist of filenames or bad patterns discovered in earlier runs. After each parser/OCR fix, compare the new full-dataset results against the previous full run by filename, inspect every changed row, and explicitly re-check the known problem files in the new workbook.
+- Treat regressions and instability as blockers. If a change fixes one file but worsens previously acceptable rows, revert or narrow the rule. If outputs for the same filenames keep changing materially across reruns, treat the parser as unstable, tighten acceptance criteria, and prefer `null` over unsupported values.
+- Use targeted single-file OCR/debug scripts only to diagnose a pattern, then return to the main extraction script, rerun the full dataset, regenerate the workbook from that run, and verify the deliverable artifact. Do not generate the final workbook from mixed intermediate runs.
+- Do not build `stat_ocr.xlsx` from an intermediate JSON/CSV/result file unless that intermediate data has been fully validated after the latest extraction-script change.
+- If totals remain noisy across repeated reruns, escalate to stronger evidence requirements: capture supporting OCR lines per candidate, require stronger same-line/final-total support, and leave unresolved receipts as `null` instead of continuing brittle fallback tuning.
+
+- Use an evidence-first recovery loop for parser/OCR bugs: capture the exact OCR lines or traceback for a failing file, identify one concrete rule/preprocessing change tied to that evidence, patch the real code from current file contents, rerun a targeted check, then rerun the full dataset and compare changed rows before making another change.
+- Do not stack multiple speculative fixes from partial output. If you cannot cite the observed OCR text, traceback, or changed workbook row that justifies a code change, inspect again before editing.
+- A substantial rewrite is a new unvalidated version. After any major parser/OCR fallback rewrite, rerun the full pipeline, regenerate `/app/workspace/stat_ocr.xlsx`, and perform a fresh workbook verification pass on that latest revision before concluding.
+- Before broad heuristic changes, save or print a by-filename snapshot of the current full-run outputs. After each rule change, compare changed rows against the previous run and treat any loss of previously supported values as a regression that must be reverted, narrowed, or justified by stronger OCR evidence.
+- Use the before/after diff as a hard acceptance gate for heuristic changes: inspect every changed filename, especially previously improved or previously bad rows, and reject or narrow the change if it introduces unsupported regressions elsewhere.
+- Keep a short regression list of filenames already known to be problematic. After each material fix and again before finishing, explicitly re-check those filenames in OCR/debug output and in the saved workbook.
+- After each major parser/OCR change, make an explicit decision: either the results are now acceptable, or specific remaining rows need one targeted follow-up. Prefer a stable final workbook with some evidence-backed `null` values over open-ended heuristic churn.
+- Do not move to final export while key outputs are still changing across reruns for the same filenames. Resolve or null out unsupported values, then generate the final workbook only from the last stabilized full run.
+
+
+## Final Verification
+
+- Do not declare completion from truncated logs, partial workbook previews, structural checks alone, or partial spot checks; run a full-sheet readback or programmatic check that covers every output row.
+- Before the final response, explicitly re-check two protocol gates: (1) every tool/action message followed the environment-mandated schema exactly, and (2) the final response is the exact required completion token/string with no extra prose when such a token is required.
+- If either the execution protocol or the completion token format is wrong, treat the task as unfinished even if the workbook itself looks correct.
+- Use a full-sheet validation script for the final check: assert row count, filename set/order, headers, sheet name, and inspect every row's `date`/`total_amount` values rather than relying on console previews.
+- Do not stop at workbook existence, sheet/header checks, or a small sample preview. Review all rows and specifically re-check suspicious outputs (`null` dates, malformed dates, `0.00`, blanks, truncated values, or obvious outliers) before finishing.
+- Wait for the final rerun to finish completely and verify that `/app/workspace/stat_ocr.xlsx` was actually written by that last full run before doing narrower spot checks or declaring success.
+- If command output is truncated, inspect the workbook directly or run narrower complete checks instead of assuming unseen files are correct.
+- If any suspicious row remains unexplained after inspection, the task is not done; revise OCR/preprocessing or parsing rules, rerun the full dataset, and verify the corrected workbook again.
+- If you discover an issue during final verification and edit the script again, restart the final verification checklist from the beginning.
+- Before concluding, confirm the final workbook on disk is the artifact produced by the last full run, not an earlier partial/debug version.
+- Only conclude after both conditions hold: the run completed end-to-end and the saved workbook passes row-count, sheet-name, header, filename-coverage, and one-row-per-input checks.
+- Treat the final response format as part of verification: if the task or environment specifies an exact completion string or termination token, compare your planned final response against it and output that exact text only, with no added prose unless explicitly allowed.
+- Do not announce success in natural language before the final accepted completion step.
+
+- Finalization checklist: the last code edit is concrete and inspectable; the last full run finished with observable completion evidence; `/app/workspace/stat_ocr.xlsx` was produced by that last run; the full `results` sheet was verified without truncation; and any previously flagged filenames or suspicious patterns were re-checked in the regenerated workbook.
+- Prefer a short non-truncating verification script that loads the workbook, iterates all rows, asserts row count and filename coverage/order, and reports only a compact pass/fail summary plus suspicious filenames instead of a long row dump.
+- Do not rely on sample rows, partial previews, workbook existence, or structure-only checks. A workbook with correct sheet name, headers, and row count is still not done if required fields remain unexplained or unstable.
+- Treat contradictions as verification failures, not minor warnings. Examples include truncated processing output, row counts that disagree with the input file count, workbook filenames absent from the source directory, validation results inconsistent with earlier listings, or outputs that changed across reruns without clearly stronger OCR support.
+- If earlier execution or validation exposed specific failing or hard files, explicitly re-check those same filenames after the last full rerun and confirm their final workbook values from the saved artifact before concluding.
+- Do not end immediately after launching a corrective rerun. Wait for observable completion, confirm the workbook on disk came from the final rerun after the last code change, and restart final verification from the beginning if you edit the script again.
+- Do not declare success or emit the final completion token while any known row still has unresolved missing values, suspicious totals, malformed dates, truncated output, verification tracebacks, or shifting unsupported values across reruns. If required, continue debugging or write `null`, then regenerate and re-verify.
+- After the checklist passes, if an exact completion token/protocol is required, emit that exact text only as the final response.
+
+- If the main run log cuts off mid-file, is truncated, or lacks a clear completion signal, treat the extraction as unfinished even if `/app/workspace/stat_ocr.xlsx` exists. Rerun with narrower logging or inspect the final artifact until you have both clean completion evidence and row-level confirmation for flagged files.
+- Before the final response, require this release gate: (1) the last planned full rerun actually executed and finished, (2) the last code edit was read back from disk, (3) `/app/workspace/stat_ocr.xlsx` was produced by that last run, and (4) the saved workbook was validated against the full input-file count and filename set.
+- After writing `/app/workspace/stat_ocr.xlsx`, always reopen the saved workbook and verify the `results` rows from the artifact on disk rather than trusting the writer step alone.
+- Structural validation is only the first gate. If the readback exposes even one unresolved anomaly such as `None`, blank required output, malformed ISO date, truncated date text, suspicious unsupported amount, or a known bad row still present, completion is blocked until you fix the extraction or intentionally leave `null` based on OCR evidence, regenerate the workbook, and repeat full verification.
+- Treat contradictions across evidence sources as hard failures. If directory listing, processed-file count, run logs, workbook row count, workbook filenames, or validated intermediate-record counts disagree, do not finalize until the mismatch is resolved and the final workbook matches the actual input set.
+- If earlier logs or reruns identified hard/problem files, explicitly read back those exact filenames from the final saved workbook and confirm their current values after the last full rerun.
+- Known-failure gate: if earlier runs identified specific receipts with bad outputs, malformed totals, `None` dates, or conflicting rerun values, explicitly re-check those same filenames after the last full rerun and confirm their final saved workbook values before completion.
+- Treat cross-run instability as a release blocker: if the same filename still receives materially different date/total values across recent full runs without clearly stronger OCR evidence, do not finalize yet; tighten acceptance rules or write `null`, rerun once more, then verify the saved workbook comes from that stabilized run.
+- Do not emit the completion token or declare success while any known filename still has unresolved suspicious values, contradictory values across reruns, regression relative to an earlier stronger run, or verification based only on truncated output.
+- Once the last full run and workbook verification pass succeed, stop debugging and emit the exact required completion token/string immediately, with no extra prose if the environment requires token-only output.
+
+## Final Verification
+
+- After the last script or heuristic change, rerun the full extraction; do not stop after editing.
+- Open `/app/workspace/stat_ocr.xlsx` and verify sheet name `results`.
+- Verify the workbook contains exactly the required columns in order: `filename`, `date`, `total_amount`.
+- Confirm every input filename appears exactly once, with one data row per JPG in `/app/workspace/dataset/img/`.
+- Confirm rows are ordered consistently by filename.
+- Check date values are `YYYY-MM-DD` or null when extraction fails.
+- Check `total_amount` values are numeric with 2 decimal places and are not taken from excluded or heavily penalized lines such as SUBTOTAL, DISCOUNT, CHANGE, CASH TENDERED, ROUNDING, or tax-only summaries.
+- Validate suspicious rows such as null dates, malformed dates, `0.00`, missing totals, truncated values, or obvious outliers.
+- If command output is truncated, inspect the workbook directly or run narrower workbook-read checks instead of assuming unseen files are correct.
+- If reruns or rule changes produce conflicting values for the same file, treat that as unresolved; investigate regressions, regenerate the workbook, and re-check all outputs.
+- Do not finish immediately after launching the final run; wait for completion and inspect the final artifact.
+- If the task or system instructions require an exact completion token or protocol, output it verbatim at the end.
+## Execution and Recovery
+
+- Run OCR on the actual image files; do not claim you "saw" receipt values unless they appear in OCR or program output.
+- Base corrections on observed OCR output, not guessed receipt values.
+- Do not hard-code per-file corrections unless the task explicitly provides a gold label source.
+- After writing or overwriting any Python script, read it back once to confirm the file is complete and not truncated.
+- After any targeted edit or replacement, run a syntax check before executing: `python3 -m py_compile <script>.py`.
+- Run the full pipeline across all receipt images; do not stop after debugging only a few sample files.
+- If an export/write attempt fails, use an available fallback immediately and actually produce `/app/workspace/stat_ocr.xlsx`.
+- After changing OCR preprocessing, regexes, amount/date heuristics, or exclusion keywords, rerun extraction on the full dataset and compare results; keep the change only if it improves target cases without unacceptable regressions.
+- Only consider the task complete after a successful end-to-end run with no syntax/runtime errors and a readable Excel artifact.

@@ -1,0 +1,4 @@
+ATC: 3
+CGA: 2
+GAT: 2
+TCG: 3

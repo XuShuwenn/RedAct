@@ -1,0 +1,21 @@
+## RedAct core API configuration
+export OPENAI_API_KEY=
+export OPENAI_BASE_URL=
+export CODEX_WIRE_API=responses
+
+## Optional provider keys for benchmark agents
+export ANTHROPIC_API_KEY=
+export ANTHROPIC_BASE_URL=
+export GOOGLE_API_KEY=
+export GOOGLE_BASE_URL=
+export GEMINI_API_KEY=
+export GEMINI_API_BASE_URL=
+
+## Optional local/OpenAI-compatible provider
+export BENCHFLOW_PROVIDER_BASE_URL=
+export BENCHFLOW_PROVIDER_API_KEY=
+export BENCHFLOW_PROVIDER_NAME=
+export BENCHFLOW_PROVIDER_MODEL=
+
+## Optional model/data access
+export HUGGINGFACE_API_TOKEN=

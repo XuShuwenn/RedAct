@@ -1,0 +1,26 @@
+Name: Spectrum_A
+Formula: C6H12O6
+Num Peaks: 5
+100.0 10
+150.0 25
+200.0 50
+250.0 30
+300.0 15
+
+Name: Spectrum_B
+Formula: C3H6O
+Num Peaks: 3
+120.0 20
+180.0 40
+220.0 35
+
+Name: Spectrum_C
+Formula: C8H16O2
+Num Peaks: 7
+80.0 15
+110.0 30
+140.0 45
+170.0 60
+200.0 55
+230.0 25
+260.0 10

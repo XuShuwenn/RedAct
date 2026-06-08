@@ -1,0 +1,18 @@
+version = "1.0"
+
+[metadata]
+author_name = "shuwen"
+difficulty = "easy"
+difficulty_explanation = "Simple file parsing task — count spectra and peaks from an MSP file using the matchms library. Well-defined, auto-verifiable, no ambiguity."
+category = "chemistry"
+tags = ["mass-spectrometry", "matchms", "spectral-analysis"]
+
+[agent]
+timeout_sec = 300
+
+[verifier]
+timeout_sec = 120
+
+[environment]
+cpus = 1
+memory_mb = 2048

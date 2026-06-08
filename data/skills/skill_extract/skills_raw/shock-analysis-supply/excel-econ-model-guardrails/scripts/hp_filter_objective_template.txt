@@ -1,0 +1,31 @@
+HP Filter (Excel) – Formula Patterns (Adapt ranges to your sheet)
+
+Assumptions
+- LnZ is in column F
+- LnZ_HP (decision variables) is in column G
+- Second differences are in column H starting from the 3rd data row of the block
+- Lambda is in an input cell (e.g., $P$3)
+- Data rows span from r0 to rN (inclusive)
+
+1) Initialize LnZ_HP
+In G[r]: =F[r]
+Copy down across all data rows to seed Solver.
+
+2) Second difference (rows r0+2 to rN)
+In H[r]: =IF(COUNTA(G[r-2]:G[r])=3, G[r] - 2*G[r-1] + G[r-2], "")
+Copy down.
+
+3) Objective cell (sum of squared residuals + lambda * sum of squared second diffs)
+=SUMSQ(F[r0]:F[rN] - G[r0]:G[rN]) + $P$3 * SUMSQ(H[r0+2]:H[rN])
+
+4) Solver setup
+- Set Objective: [objective cell] to Min
+- By Changing: G[r0]:G[rN]
+- Engine: GRG Nonlinear (or similar)
+- Optional bounds: None typically required (add only if numerically unstable)
+
+Notes
+- Ensure all referenced ranges align exactly with your data block.
+- The second difference starts only when three consecutive G cells exist.
+- Keep lambda in a dedicated input cell referenced absolutely in the objective.
+- After Solve, review residuals (F − G) and the smoothness of G.

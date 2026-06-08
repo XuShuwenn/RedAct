@@ -1,0 +1,18 @@
+version = "1.0"
+
+[metadata]
+author_name = "shuwen"
+difficulty = "easy"
+difficulty_explanation = "Simple quantum state calculation using qutip - compute expectation values for Pauli matrices. Deterministic, auto-verifiable."
+category = "physics"
+tags = ["qutip", "quantum", "bloch-sphere"]
+
+[agent]
+timeout_sec = 300
+
+[verifier]
+timeout_sec = 120
+
+[environment]
+cpus = 1
+memory_mb = 2048

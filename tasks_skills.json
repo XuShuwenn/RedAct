@@ -1,0 +1,5398 @@
+{
+  "title": "CapTraceBench Task-Skill Index",
+  "description": "Unified task-level metadata and skill index for CapTraceBench, combining domain assignment, taxonomy, difficulty levels, task lists, and task-local skills directories into a single JSON file.",
+  "version": "1.0",
+  "skill_detection_rule": "A skill is counted when it is a direct child directory under data/tasks/{task_name}/environment/skills and contains a SKILL.md file. Other top-level files or directories are recorded as auxiliary_entries.",
+  "sources": {
+    "domains": null,
+    "levels": null,
+    "taxonomy": null,
+    "tasks_original": null,
+    "tasks_root": "data/tasks"
+  },
+  "domain_to_tasks": {
+    "Bioinformatics & Life Sciences": [
+      "dna-frame2-translation",
+      "scikit-bio-sequence",
+      "scikit-bio-alignment",
+      "scikit-survival-cox",
+      "population-genetics-hwe",
+      "matchms-count-spectra",
+      "matchms-similarity",
+      "protein-expression-analysis",
+      "variant-annotation",
+      "vcf-pass-count",
+      "medchem-ro5-pass",
+      "medchem-lilly-demerit"
+    ],
+    "Chemistry & Molecular Sciences": [
+      "molecular-analysis",
+      "molecular-dynamics-rmsd",
+      "computational-biophysics-dihedral",
+      "find-topk-similiar-chemicals",
+      "reaction-type",
+      "isomer-counting",
+      "inorganic-physics-thermo",
+      "organic-chemistry-smarts",
+      "jax-computing-basics"
+    ],
+    "Earth, Climate & Geophysics": [
+      "earthquake-phase-association",
+      "earthquake-plate-calculation",
+      "seismic-phase-picking",
+      "gravitational-wave-detection",
+      "fluidsim-pipe-flow",
+      "fluidsim-nusselt-number",
+      "shock-analysis-demand",
+      "shock-analysis-supply",
+      "flood-risk-analysis",
+      "exoplanet-detection-period",
+      "mars-clouds-clustering",
+      "lake-warming-attribution",
+      "glm-lake-mendota"
+    ],
+    "Engineering, Energy & Control": [
+      "energy-ac-optimal-power-flow",
+      "grid-dispatch-operator",
+      "reserves-at-risk-calc",
+      "adaptive-cruise-control",
+      "hvac-control",
+      "r2r-mpc-control",
+      "pymoo-optimization",
+      "pymoo-constrained-opt",
+      "manufacturing-fjsp-optimization",
+      "quantum-bloch-vector",
+      "quantum-numerical-simulation",
+      "qutip-quantum-state"
+    ],
+    "Finance, Economics & Business": [
+      "financial-modeling-qa",
+      "sec-financial-report",
+      "sales-pivot-analysis",
+      "weighted-gdp-calc",
+      "invoice-fraud-detection",
+      "econ-detrending-correlation",
+      "energy-market-pricing",
+      "powerlifting-coef-calc",
+      "pddl-tpp-planning"
+    ],
+    "Document, Media & Web Intelligence": [
+      "court-form-filling",
+      "jpg-ocr-stat",
+      "latex-formula-extraction",
+      "parallel-tfidf-search",
+      "taxonomy-tree-merge",
+      "lab-unit-harmonization",
+      "3d-scan-calc",
+      "threejs-structure-parser",
+      "threejs-to-obj",
+      "dynamic-object-aware-egomotion",
+      "multilingual-video-dubbing"
+    ],
+    "Software Engineering & Security": [
+      "fix-druid-loophole-cve",
+      "fix-erlang-ssh-cve",
+      "dapt-intrusion-detection",
+      "azure-bgp-oscillation-route-leak",
+      "suricata-custom-exfil",
+      "syzkaller-ppdev-syzlang",
+      "software-dependency-audit",
+      "simpo-code-reproduction",
+      "lean4-proof"
+    ]
+  },
+  "domains_data": {
+    "Bioinformatics & Life Sciences": [
+      "dna-frame2-translation",
+      "scikit-bio-sequence",
+      "scikit-bio-alignment",
+      "scikit-survival-cox",
+      "population-genetics-hwe",
+      "matchms-count-spectra",
+      "matchms-similarity",
+      "protein-expression-analysis",
+      "variant-annotation",
+      "vcf-pass-count",
+      "medchem-ro5-pass",
+      "medchem-lilly-demerit"
+    ],
+    "Chemistry & Molecular Sciences": [
+      "molecular-analysis",
+      "molecular-dynamics-rmsd",
+      "computational-biophysics-dihedral",
+      "find-topk-similiar-chemicals",
+      "reaction-type",
+      "isomer-counting",
+      "inorganic-physics-thermo",
+      "organic-chemistry-smarts",
+      "jax-computing-basics"
+    ],
+    "Earth, Climate & Geophysics": [
+      "earthquake-phase-association",
+      "earthquake-plate-calculation",
+      "seismic-phase-picking",
+      "gravitational-wave-detection",
+      "fluidsim-pipe-flow",
+      "fluidsim-nusselt-number",
+      "shock-analysis-demand",
+      "shock-analysis-supply",
+      "flood-risk-analysis",
+      "exoplanet-detection-period",
+      "mars-clouds-clustering",
+      "lake-warming-attribution",
+      "glm-lake-mendota"
+    ],
+    "Engineering, Energy & Control": [
+      "energy-ac-optimal-power-flow",
+      "grid-dispatch-operator",
+      "reserves-at-risk-calc",
+      "adaptive-cruise-control",
+      "hvac-control",
+      "r2r-mpc-control",
+      "pymoo-optimization",
+      "pymoo-constrained-opt",
+      "manufacturing-fjsp-optimization",
+      "quantum-bloch-vector",
+      "quantum-numerical-simulation",
+      "qutip-quantum-state"
+    ],
+    "Finance, Economics & Business": [
+      "financial-modeling-qa",
+      "sec-financial-report",
+      "sales-pivot-analysis",
+      "weighted-gdp-calc",
+      "invoice-fraud-detection",
+      "econ-detrending-correlation",
+      "energy-market-pricing",
+      "powerlifting-coef-calc",
+      "pddl-tpp-planning"
+    ],
+    "Document, Media & Web Intelligence": [
+      "court-form-filling",
+      "jpg-ocr-stat",
+      "latex-formula-extraction",
+      "parallel-tfidf-search",
+      "taxonomy-tree-merge",
+      "lab-unit-harmonization",
+      "3d-scan-calc",
+      "threejs-structure-parser",
+      "threejs-to-obj",
+      "dynamic-object-aware-egomotion",
+      "multilingual-video-dubbing"
+    ],
+    "Software Engineering & Security": [
+      "fix-druid-loophole-cve",
+      "fix-erlang-ssh-cve",
+      "dapt-intrusion-detection",
+      "azure-bgp-oscillation-route-leak",
+      "suricata-custom-exfil",
+      "syzkaller-ppdev-syzlang",
+      "software-dependency-audit",
+      "simpo-code-reproduction",
+      "lean4-proof"
+    ]
+  },
+  "task_levels": {
+    "dna-frame2-translation": 1,
+    "scikit-bio-sequence": 1,
+    "scikit-bio-alignment": 2,
+    "scikit-survival-cox": 2,
+    "population-genetics-hwe": 1,
+    "matchms-count-spectra": 1,
+    "matchms-similarity": 2,
+    "protein-expression-analysis": 2,
+    "variant-annotation": 1,
+    "vcf-pass-count": 1,
+    "medchem-ro5-pass": 1,
+    "medchem-lilly-demerit": 2,
+    "molecular-analysis": 2,
+    "molecular-dynamics-rmsd": 2,
+    "computational-biophysics-dihedral": 2,
+    "find-topk-similiar-chemicals": 3,
+    "reaction-type": 3,
+    "isomer-counting": 3,
+    "inorganic-physics-thermo": 1,
+    "organic-chemistry-smarts": 2,
+    "jax-computing-basics": 1,
+    "earthquake-phase-association": 3,
+    "earthquake-plate-calculation": 2,
+    "seismic-phase-picking": 3,
+    "gravitational-wave-detection": 3,
+    "fluidsim-pipe-flow": 1,
+    "fluidsim-nusselt-number": 1,
+    "shock-analysis-demand": 2,
+    "shock-analysis-supply": 2,
+    "flood-risk-analysis": 1,
+    "exoplanet-detection-period": 2,
+    "mars-clouds-clustering": 3,
+    "lake-warming-attribution": 2,
+    "glm-lake-mendota": 3,
+    "energy-ac-optimal-power-flow": 2,
+    "grid-dispatch-operator": 2,
+    "reserves-at-risk-calc": 2,
+    "adaptive-cruise-control": 3,
+    "hvac-control": 3,
+    "r2r-mpc-control": 3,
+    "pymoo-optimization": 1,
+    "pymoo-constrained-opt": 2,
+    "manufacturing-fjsp-optimization": 3,
+    "quantum-bloch-vector": 1,
+    "quantum-numerical-simulation": 3,
+    "qutip-quantum-state": 1,
+    "financial-modeling-qa": 2,
+    "sec-financial-report": 2,
+    "sales-pivot-analysis": 2,
+    "weighted-gdp-calc": 2,
+    "invoice-fraud-detection": 2,
+    "econ-detrending-correlation": 2,
+    "energy-market-pricing": 2,
+    "powerlifting-coef-calc": 1,
+    "pddl-tpp-planning": 2,
+    "court-form-filling": 1,
+    "jpg-ocr-stat": 1,
+    "latex-formula-extraction": 2,
+    "parallel-tfidf-search": 2,
+    "taxonomy-tree-merge": 3,
+    "lab-unit-harmonization": 2,
+    "3d-scan-calc": 2,
+    "threejs-structure-parser": 2,
+    "threejs-to-obj": 1,
+    "dynamic-object-aware-egomotion": 3,
+    "multilingual-video-dubbing": 3,
+    "fix-druid-loophole-cve": 2,
+    "fix-erlang-ssh-cve": 2,
+    "dapt-intrusion-detection": 2,
+    "azure-bgp-oscillation-route-leak": 2,
+    "suricata-custom-exfil": 1,
+    "syzkaller-ppdev-syzlang": 2,
+    "software-dependency-audit": 2,
+    "simpo-code-reproduction": 2,
+    "lean4-proof": 3
+  },
+  "level_mapping": {
+    "1": {
+      "name": "Level 1 - Entry",
+      "score_range": "5-7",
+      "description": "Entry-level professional tasks requiring domain knowledge but with straightforward algorithms or formulas"
+    },
+    "2": {
+      "name": "Level 2 - Intermediate",
+      "score_range": "8-10",
+      "description": "Intermediate professional tasks requiring multi-step reasoning, domain-specific algorithms, or component integration"
+    },
+    "3": {
+      "name": "Level 3 - Advanced",
+      "score_range": "11-15",
+      "description": "Advanced expert-level tasks requiring deep domain expertise, complex algorithmic pipelines, or specialized systems knowledge"
+    }
+  },
+  "levels_data": {
+    "title": "CapTraceBench Task Difficulty Classification",
+    "description": "Hierarchical classification of 75 professional domain tasks into 3 difficulty levels based on algorithm complexity, skill depth, domain expertise, integration complexity, and implementation difficulty.",
+    "version": "1.0",
+    "scoring_criteria": {
+      "algorithm_complexity": {
+        "1": "Standard formula / single-step calculation",
+        "2": "Multi-step algorithm requiring adaptation",
+        "3": "Complex custom algorithm / research-level method"
+      },
+      "skill_package_depth": {
+        "1": "Simple SKILL.md with basic guidance",
+        "2": "Detailed multi-file skill documentation",
+        "3": "Comprehensive reference implementation with examples"
+      },
+      "domain_expertise_required": {
+        "1": "General programming",
+        "2": "Standard professional domain",
+        "3": "Niche / research-level expertise"
+      },
+      "integration_complexity": {
+        "1": "Single tool usage",
+        "2": "2-3 components working together",
+        "3": "4+ components / multi-system integration"
+      },
+      "implementation_difficulty": {
+        "1": "Copy-paste from skill documentation",
+        "2": "Requires adaptation of provided code",
+        "3": "Requires deep understanding to implement"
+      }
+    },
+    "level_mapping": {
+      "1": {
+        "name": "Level 1 - Entry",
+        "score_range": "5-7",
+        "description": "Entry-level professional tasks requiring domain knowledge but with straightforward algorithms or formulas"
+      },
+      "2": {
+        "name": "Level 2 - Intermediate",
+        "score_range": "8-10",
+        "description": "Intermediate professional tasks requiring multi-step reasoning, domain-specific algorithms, or component integration"
+      },
+      "3": {
+        "name": "Level 3 - Advanced",
+        "score_range": "11-15",
+        "description": "Advanced expert-level tasks requiring deep domain expertise, complex algorithmic pipelines, or specialized systems knowledge"
+      }
+    },
+    "levels": {
+      "dna-frame2-translation": 1,
+      "scikit-bio-sequence": 1,
+      "scikit-bio-alignment": 2,
+      "scikit-survival-cox": 2,
+      "population-genetics-hwe": 1,
+      "matchms-count-spectra": 1,
+      "matchms-similarity": 2,
+      "protein-expression-analysis": 2,
+      "variant-annotation": 1,
+      "vcf-pass-count": 1,
+      "medchem-ro5-pass": 1,
+      "medchem-lilly-demerit": 2,
+      "molecular-analysis": 2,
+      "molecular-dynamics-rmsd": 2,
+      "computational-biophysics-dihedral": 2,
+      "find-topk-similiar-chemicals": 3,
+      "reaction-type": 3,
+      "isomer-counting": 3,
+      "inorganic-physics-thermo": 1,
+      "organic-chemistry-smarts": 2,
+      "jax-computing-basics": 1,
+      "earthquake-phase-association": 3,
+      "earthquake-plate-calculation": 2,
+      "seismic-phase-picking": 3,
+      "gravitational-wave-detection": 3,
+      "fluidsim-pipe-flow": 1,
+      "fluidsim-nusselt-number": 1,
+      "shock-analysis-demand": 2,
+      "shock-analysis-supply": 2,
+      "flood-risk-analysis": 1,
+      "exoplanet-detection-period": 2,
+      "mars-clouds-clustering": 3,
+      "lake-warming-attribution": 2,
+      "glm-lake-mendota": 3,
+      "energy-ac-optimal-power-flow": 2,
+      "grid-dispatch-operator": 2,
+      "reserves-at-risk-calc": 2,
+      "adaptive-cruise-control": 3,
+      "hvac-control": 3,
+      "r2r-mpc-control": 3,
+      "pymoo-optimization": 1,
+      "pymoo-constrained-opt": 2,
+      "manufacturing-fjsp-optimization": 3,
+      "quantum-bloch-vector": 1,
+      "quantum-numerical-simulation": 3,
+      "qutip-quantum-state": 1,
+      "financial-modeling-qa": 2,
+      "sec-financial-report": 2,
+      "sales-pivot-analysis": 2,
+      "weighted-gdp-calc": 2,
+      "invoice-fraud-detection": 2,
+      "econ-detrending-correlation": 2,
+      "energy-market-pricing": 2,
+      "powerlifting-coef-calc": 1,
+      "pddl-tpp-planning": 2,
+      "court-form-filling": 1,
+      "jpg-ocr-stat": 1,
+      "latex-formula-extraction": 2,
+      "parallel-tfidf-search": 2,
+      "taxonomy-tree-merge": 3,
+      "lab-unit-harmonization": 2,
+      "3d-scan-calc": 2,
+      "threejs-structure-parser": 2,
+      "threejs-to-obj": 1,
+      "dynamic-object-aware-egomotion": 3,
+      "multilingual-video-dubbing": 3,
+      "fix-druid-loophole-cve": 2,
+      "fix-erlang-ssh-cve": 2,
+      "dapt-intrusion-detection": 2,
+      "azure-bgp-oscillation-route-leak": 2,
+      "suricata-custom-exfil": 1,
+      "syzkaller-ppdev-syzlang": 2,
+      "software-dependency-audit": 2,
+      "simpo-code-reproduction": 2,
+      "lean4-proof": 3
+    },
+    "domains": {
+      "Bioinformatics & Life Sciences": {
+        "tasks": [
+          "dna-frame2-translation",
+          "scikit-bio-sequence",
+          "scikit-bio-alignment",
+          "scikit-survival-cox",
+          "population-genetics-hwe",
+          "matchms-count-spectra",
+          "matchms-similarity",
+          "protein-expression-analysis",
+          "variant-annotation",
+          "vcf-pass-count",
+          "medchem-ro5-pass",
+          "medchem-lilly-demerit",
+          "molecular-analysis",
+          "molecular-dynamics-rmsd"
+        ],
+        "level1": [
+          "dna-frame2-translation",
+          "scikit-bio-sequence",
+          "population-genetics-hwe",
+          "matchms-count-spectra",
+          "vcf-pass-count",
+          "medchem-ro5-pass"
+        ],
+        "level2": [
+          "scikit-bio-alignment",
+          "scikit-survival-cox",
+          "matchms-similarity",
+          "protein-expression-analysis",
+          "medchem-lilly-demerit",
+          "molecular-analysis",
+          "molecular-dynamics-rmsd"
+        ],
+        "level3": []
+      },
+      "Chemistry & Molecular Sciences": {
+        "tasks": [
+          "computational-biophysics-dihedral",
+          "find-topk-similiar-chemicals",
+          "reaction-type",
+          "isomer-counting",
+          "inorganic-physics-thermo",
+          "organic-chemistry-smarts",
+          "jax-computing-basics"
+        ],
+        "level1": [
+          "inorganic-physics-thermo",
+          "jax-computing-basics"
+        ],
+        "level2": [
+          "computational-biophysics-dihedral",
+          "organic-chemistry-smarts"
+        ],
+        "level3": [
+          "find-topk-similiar-chemicals",
+          "reaction-type",
+          "isomer-counting"
+        ]
+      },
+      "Earth, Climate & Geophysics": {
+        "tasks": [
+          "earthquake-phase-association",
+          "earthquake-plate-calculation",
+          "seismic-phase-picking",
+          "gravitational-wave-detection",
+          "fluidsim-pipe-flow",
+          "fluidsim-nusselt-number",
+          "shock-analysis-demand",
+          "shock-analysis-supply",
+          "flood-risk-analysis",
+          "exoplanet-detection-period",
+          "mars-clouds-clustering",
+          "lake-warming-attribution",
+          "glm-lake-mendota"
+        ],
+        "level1": [
+          "fluidsim-pipe-flow",
+          "fluidsim-nusselt-number",
+          "flood-risk-analysis"
+        ],
+        "level2": [
+          "earthquake-plate-calculation",
+          "shock-analysis-demand",
+          "shock-analysis-supply",
+          "exoplanet-detection-period",
+          "lake-warming-attribution"
+        ],
+        "level3": [
+          "earthquake-phase-association",
+          "seismic-phase-picking",
+          "gravitational-wave-detection",
+          "mars-clouds-clustering",
+          "glm-lake-mendota"
+        ]
+      },
+      "Engineering, Energy & Control": {
+        "tasks": [
+          "energy-ac-optimal-power-flow",
+          "grid-dispatch-operator",
+          "reserves-at-risk-calc",
+          "adaptive-cruise-control",
+          "hvac-control",
+          "r2r-mpc-control",
+          "pymoo-optimization",
+          "pymoo-constrained-opt",
+          "manufacturing-fjsp-optimization",
+          "quantum-bloch-vector",
+          "quantum-numerical-simulation",
+          "qutip-quantum-state"
+        ],
+        "level1": [
+          "pymoo-optimization",
+          "quantum-bloch-vector",
+          "qutip-quantum-state"
+        ],
+        "level2": [
+          "energy-ac-optimal-power-flow",
+          "grid-dispatch-operator",
+          "reserves-at-risk-calc",
+          "pymoo-constrained-opt"
+        ],
+        "level3": [
+          "adaptive-cruise-control",
+          "hvac-control",
+          "r2r-mpc-control",
+          "manufacturing-fjsp-optimization",
+          "quantum-numerical-simulation"
+        ]
+      },
+      "Finance, Economics & Business": {
+        "tasks": [
+          "financial-modeling-qa",
+          "sec-financial-report",
+          "sales-pivot-analysis",
+          "weighted-gdp-calc",
+          "invoice-fraud-detection",
+          "econ-detrending-correlation",
+          "energy-market-pricing",
+          "powerlifting-coef-calc",
+          "pddl-tpp-planning"
+        ],
+        "level1": [
+          "powerlifting-coef-calc"
+        ],
+        "level2": [
+          "financial-modeling-qa",
+          "sec-financial-report",
+          "sales-pivot-analysis",
+          "weighted-gdp-calc",
+          "invoice-fraud-detection",
+          "econ-detrending-correlation",
+          "energy-market-pricing",
+          "pddl-tpp-planning"
+        ],
+        "level3": []
+      },
+      "Document, Media & Web Intelligence": {
+        "tasks": [
+          "court-form-filling",
+          "jpg-ocr-stat",
+          "latex-formula-extraction",
+          "parallel-tfidf-search",
+          "taxonomy-tree-merge",
+          "lab-unit-harmonization",
+          "3d-scan-calc",
+          "threejs-structure-parser",
+          "threejs-to-obj",
+          "dynamic-object-aware-egomotion",
+          "multilingual-video-dubbing"
+        ],
+        "level1": [
+          "court-form-filling",
+          "jpg-ocr-stat",
+          "threejs-to-obj"
+        ],
+        "level2": [
+          "latex-formula-extraction",
+          "parallel-tfidf-search",
+          "taxonomy-tree-merge",
+          "lab-unit-harmonization",
+          "3d-scan-calc",
+          "threejs-structure-parser"
+        ],
+        "level3": [
+          "dynamic-object-aware-egomotion",
+          "multilingual-video-dubbing"
+        ]
+      },
+      "Software Engineering & Security": {
+        "tasks": [
+          "fix-druid-loophole-cve",
+          "fix-erlang-ssh-cve",
+          "dapt-intrusion-detection",
+          "azure-bgp-oscillation-route-leak",
+          "suricata-custom-exfil",
+          "syzkaller-ppdev-syzlang",
+          "software-dependency-audit",
+          "simpo-code-reproduction",
+          "lean4-proof"
+        ],
+        "level1": [
+          "suricata-custom-exfil"
+        ],
+        "level2": [
+          "fix-druid-loophole-cve",
+          "fix-erlang-ssh-cve",
+          "dapt-intrusion-detection",
+          "azure-bgp-oscillation-route-leak",
+          "syzkaller-ppdev-syzlang",
+          "software-dependency-audit",
+          "simpo-code-reproduction"
+        ],
+        "level3": [
+          "lean4-proof"
+        ]
+      }
+    },
+    "statistics": {
+      "total_tasks": 75,
+      "level1_count": 20,
+      "level2_count": 38,
+      "level3_count": 17,
+      "level_percentages": {
+        "level1": 26.7,
+        "level2": 50.7,
+        "level3": 22.7
+      },
+      "by_domain": {
+        "Bioinformatics & Life Sciences": {
+          "total": 14,
+          "L1": 6,
+          "L2": 8,
+          "L3": 0
+        },
+        "Chemistry & Molecular Sciences": {
+          "total": 7,
+          "L1": 2,
+          "L2": 2,
+          "L3": 3
+        },
+        "Earth, Climate & Geophysics": {
+          "total": 13,
+          "L1": 3,
+          "L2": 5,
+          "L3": 5
+        },
+        "Engineering, Energy & Control": {
+          "total": 12,
+          "L1": 3,
+          "L2": 4,
+          "L3": 5
+        },
+        "Finance, Economics & Business": {
+          "total": 9,
+          "L1": 1,
+          "L2": 8,
+          "L3": 0
+        },
+        "Document, Media & Web Intelligence": {
+          "total": 11,
+          "L1": 3,
+          "L2": 6,
+          "L3": 2
+        },
+        "Software Engineering & Security": {
+          "total": 9,
+          "L1": 1,
+          "L2": 7,
+          "L3": 1
+        }
+      }
+    }
+  },
+  "taxonomy_tree": {
+    "Bioinformatics & Life Sciences": {
+      "Bio Sequence Analysis": [
+        "dna-frame2-translation",
+        "scikit-bio-sequence",
+        "scikit-bio-alignment"
+      ],
+      "VCF & Genomic Variant Processing": [
+        "variant-annotation",
+        "vcf-pass-count",
+        "scikit-survival-cox"
+      ],
+      "Statistical Genetics & Proteomics": [
+        "population-genetics-hwe",
+        "protein-expression-analysis",
+        "matchms-similarity"
+      ],
+      "Mass Spectrometry & Metabolomics": [
+        "matchms-count-spectra",
+        "medchem-ro5-pass",
+        "medchem-lilly-demerit"
+      ]
+    },
+    "Chemistry & Molecular Sciences": {
+      "Molecular Structure Analysis": [
+        "molecular-analysis",
+        "molecular-dynamics-rmsd",
+        "computational-biophysics-dihedral"
+      ],
+      "Chemical Informatics": [
+        "find-topk-similiar-chemicals",
+        "reaction-type",
+        "isomer-counting"
+      ],
+      "Scientific Computing (JAX/Thermodynamics)": [
+        "jax-computing-basics",
+        "inorganic-physics-thermo",
+        "organic-chemistry-smarts"
+      ]
+    },
+    "Earth, Climate & Geophysics": {
+      "Seismology & Geophysics": [
+        "earthquake-phase-association",
+        "earthquake-plate-calculation",
+        "seismic-phase-picking",
+        "gravitational-wave-detection"
+      ],
+      "Fluid Dynamics & Heat Transfer": [
+        "fluidsim-pipe-flow",
+        "fluidsim-nusselt-number"
+      ],
+      "Climate & Environmental Modeling": [
+        "flood-risk-analysis",
+        "exoplanet-detection-period",
+        "mars-clouds-clustering",
+        "lake-warming-attribution",
+        "glm-lake-mendota"
+      ],
+      "Macro-Economic Shock Analysis": [
+        "shock-analysis-demand",
+        "shock-analysis-supply"
+      ]
+    },
+    "Engineering, Energy & Control": {
+      "Power Systems Optimization": [
+        "energy-ac-optimal-power-flow",
+        "grid-dispatch-operator",
+        "reserves-at-risk-calc"
+      ],
+      "Control Systems (PID/MPC)": [
+        "adaptive-cruise-control",
+        "hvac-control",
+        "r2r-mpc-control"
+      ],
+      "Engineering Optimization": [
+        "pymoo-optimization",
+        "pymoo-constrained-opt",
+        "manufacturing-fjsp-optimization"
+      ],
+      "Quantum Computing": [
+        "quantum-bloch-vector",
+        "qutip-quantum-state",
+        "quantum-numerical-simulation"
+      ]
+    },
+    "Finance, Economics & Business": {
+      "Spreadsheet Financial Modeling": [
+        "financial-modeling-qa",
+        "sec-financial-report",
+        "sales-pivot-analysis",
+        "weighted-gdp-calc",
+        "powerlifting-coef-calc"
+      ],
+      "Economic Trend & Fraud Analysis": [
+        "econ-detrending-correlation",
+        "pddl-tpp-planning",
+        "invoice-fraud-detection",
+        "energy-market-pricing"
+      ]
+    },
+    "Document, Media & Web Intelligence": {
+      "Document & Text Extraction": [
+        "court-form-filling",
+        "jpg-ocr-stat",
+        "latex-formula-extraction"
+      ],
+      "Search, Taxonomy & Clinical Data": [
+        "parallel-tfidf-search",
+        "taxonomy-tree-merge",
+        "lab-unit-harmonization"
+      ],
+      "3D, Video & Motion Analysis": [
+        "3d-scan-calc",
+        "threejs-structure-parser",
+        "threejs-to-obj",
+        "dynamic-object-aware-egomotion",
+        "multilingual-video-dubbing"
+      ]
+    },
+    "Software Engineering & Security": {
+      "CVE & Vulnerability Fixing": [
+        "fix-druid-loophole-cve",
+        "fix-erlang-ssh-cve"
+      ],
+      "Network Security & Intrusion Detection": [
+        "dapt-intrusion-detection",
+        "azure-bgp-oscillation-route-leak",
+        "suricata-custom-exfil"
+      ],
+      "Code Audit & Formal Verification": [
+        "software-dependency-audit",
+        "simpo-code-reproduction",
+        "syzkaller-ppdev-syzlang",
+        "lean4-proof"
+      ]
+    }
+  },
+  "task_count_per_family": {
+    "Bio Sequence Analysis": 3,
+    "VCF & Genomic Variant Processing": 3,
+    "Statistical Genetics & Proteomics": 3,
+    "Mass Spectrometry & Metabolomics": 3,
+    "Molecular Structure Analysis": 3,
+    "Chemical Informatics": 3,
+    "Scientific Computing (JAX/Thermodynamics)": 3,
+    "Seismology & Geophysics": 4,
+    "Fluid Dynamics & Heat Transfer": 2,
+    "Climate & Environmental Modeling": 5,
+    "Macro-Economic Shock Analysis": 2,
+    "Power Systems Optimization": 3,
+    "Control Systems (PID/MPC)": 3,
+    "Engineering Optimization": 3,
+    "Quantum Computing": 3,
+    "Spreadsheet Financial Modeling": 5,
+    "Economic Trend & Fraud Analysis": 4,
+    "Document & Text Extraction": 3,
+    "Search, Taxonomy & Clinical Data": 3,
+    "3D, Video & Motion Analysis": 5,
+    "CVE & Vulnerability Fixing": 2,
+    "Network Security & Intrusion Detection": 3,
+    "Code Audit & Formal Verification": 4
+  },
+  "family_count": 23,
+  "taxonomy_data": {
+    "title": "CapTraceBench Task Taxonomy",
+    "description": "Hierarchical taxonomy of 75 professional domain tasks organized by domain and task family (7 domains, 23 families)",
+    "version": "1.1",
+    "taxonomy_tree": {
+      "Bioinformatics & Life Sciences": {
+        "Bio Sequence Analysis": [
+          "dna-frame2-translation",
+          "scikit-bio-sequence",
+          "scikit-bio-alignment"
+        ],
+        "VCF & Genomic Variant Processing": [
+          "variant-annotation",
+          "vcf-pass-count",
+          "scikit-survival-cox"
+        ],
+        "Statistical Genetics & Proteomics": [
+          "population-genetics-hwe",
+          "protein-expression-analysis",
+          "matchms-similarity"
+        ],
+        "Mass Spectrometry & Metabolomics": [
+          "matchms-count-spectra",
+          "medchem-ro5-pass",
+          "medchem-lilly-demerit"
+        ]
+      },
+      "Chemistry & Molecular Sciences": {
+        "Molecular Structure Analysis": [
+          "molecular-analysis",
+          "molecular-dynamics-rmsd",
+          "computational-biophysics-dihedral"
+        ],
+        "Chemical Informatics": [
+          "find-topk-similiar-chemicals",
+          "reaction-type",
+          "isomer-counting"
+        ],
+        "Scientific Computing (JAX/Thermodynamics)": [
+          "jax-computing-basics",
+          "inorganic-physics-thermo",
+          "organic-chemistry-smarts"
+        ]
+      },
+      "Earth, Climate & Geophysics": {
+        "Seismology & Geophysics": [
+          "earthquake-phase-association",
+          "earthquake-plate-calculation",
+          "seismic-phase-picking",
+          "gravitational-wave-detection"
+        ],
+        "Fluid Dynamics & Heat Transfer": [
+          "fluidsim-pipe-flow",
+          "fluidsim-nusselt-number"
+        ],
+        "Climate & Environmental Modeling": [
+          "flood-risk-analysis",
+          "exoplanet-detection-period",
+          "mars-clouds-clustering",
+          "lake-warming-attribution",
+          "glm-lake-mendota"
+        ],
+        "Macro-Economic Shock Analysis": [
+          "shock-analysis-demand",
+          "shock-analysis-supply"
+        ]
+      },
+      "Engineering, Energy & Control": {
+        "Power Systems Optimization": [
+          "energy-ac-optimal-power-flow",
+          "grid-dispatch-operator",
+          "reserves-at-risk-calc"
+        ],
+        "Control Systems (PID/MPC)": [
+          "adaptive-cruise-control",
+          "hvac-control",
+          "r2r-mpc-control"
+        ],
+        "Engineering Optimization": [
+          "pymoo-optimization",
+          "pymoo-constrained-opt",
+          "manufacturing-fjsp-optimization"
+        ],
+        "Quantum Computing": [
+          "quantum-bloch-vector",
+          "qutip-quantum-state",
+          "quantum-numerical-simulation"
+        ]
+      },
+      "Finance, Economics & Business": {
+        "Spreadsheet Financial Modeling": [
+          "financial-modeling-qa",
+          "sec-financial-report",
+          "sales-pivot-analysis",
+          "weighted-gdp-calc",
+          "powerlifting-coef-calc"
+        ],
+        "Economic Trend & Fraud Analysis": [
+          "econ-detrending-correlation",
+          "pddl-tpp-planning",
+          "invoice-fraud-detection",
+          "energy-market-pricing"
+        ]
+      },
+      "Document, Media & Web Intelligence": {
+        "Document & Text Extraction": [
+          "court-form-filling",
+          "jpg-ocr-stat",
+          "latex-formula-extraction"
+        ],
+        "Search, Taxonomy & Clinical Data": [
+          "parallel-tfidf-search",
+          "taxonomy-tree-merge",
+          "lab-unit-harmonization"
+        ],
+        "3D, Video & Motion Analysis": [
+          "3d-scan-calc",
+          "threejs-structure-parser",
+          "threejs-to-obj",
+          "dynamic-object-aware-egomotion",
+          "multilingual-video-dubbing"
+        ]
+      },
+      "Software Engineering & Security": {
+        "CVE & Vulnerability Fixing": [
+          "fix-druid-loophole-cve",
+          "fix-erlang-ssh-cve"
+        ],
+        "Network Security & Intrusion Detection": [
+          "dapt-intrusion-detection",
+          "azure-bgp-oscillation-route-leak",
+          "suricata-custom-exfil"
+        ],
+        "Code Audit & Formal Verification": [
+          "software-dependency-audit",
+          "simpo-code-reproduction",
+          "syzkaller-ppdev-syzlang",
+          "lean4-proof"
+        ]
+      }
+    },
+    "family_count": 23,
+    "task_count_per_family": {
+      "Bio Sequence Analysis": 3,
+      "VCF & Genomic Variant Processing": 3,
+      "Statistical Genetics & Proteomics": 3,
+      "Mass Spectrometry & Metabolomics": 3,
+      "Molecular Structure Analysis": 3,
+      "Chemical Informatics": 3,
+      "Scientific Computing (JAX/Thermodynamics)": 3,
+      "Seismology & Geophysics": 4,
+      "Fluid Dynamics & Heat Transfer": 2,
+      "Climate & Environmental Modeling": 5,
+      "Macro-Economic Shock Analysis": 2,
+      "Power Systems Optimization": 3,
+      "Control Systems (PID/MPC)": 3,
+      "Engineering Optimization": 3,
+      "Quantum Computing": 3,
+      "Spreadsheet Financial Modeling": 5,
+      "Economic Trend & Fraud Analysis": 4,
+      "Document & Text Extraction": 3,
+      "Search, Taxonomy & Clinical Data": 3,
+      "3D, Video & Motion Analysis": 5,
+      "CVE & Vulnerability Fixing": 2,
+      "Network Security & Intrusion Detection": 3,
+      "Code Audit & Formal Verification": 4
+    },
+    "statistics": {
+      "total_tasks": 75,
+      "total_domains": 7,
+      "total_families": 23,
+      "avg_tasks_per_family": 3.3
+    }
+  },
+  "tasks_original": [
+    "3d-scan-calc",
+    "adaptive-cruise-control",
+    "azure-bgp-oscillation-route-leak",
+    "court-form-filling",
+    "dapt-intrusion-detection",
+    "dynamic-object-aware-egomotion",
+    "earthquake-phase-association",
+    "earthquake-plate-calculation",
+    "econ-detrending-correlation",
+    "energy-ac-optimal-power-flow",
+    "energy-market-pricing",
+    "exoplanet-detection-period",
+    "financial-modeling-qa",
+    "find-topk-similiar-chemicals",
+    "fix-druid-loophole-cve",
+    "fix-erlang-ssh-cve",
+    "flood-risk-analysis",
+    "glm-lake-mendota",
+    "gravitational-wave-detection",
+    "grid-dispatch-operator",
+    "hvac-control",
+    "invoice-fraud-detection",
+    "jax-computing-basics",
+    "jpg-ocr-stat",
+    "lab-unit-harmonization",
+    "lake-warming-attribution",
+    "latex-formula-extraction",
+    "lean4-proof",
+    "manufacturing-fjsp-optimization",
+    "mars-clouds-clustering",
+    "multilingual-video-dubbing",
+    "parallel-tfidf-search",
+    "pddl-tpp-planning",
+    "powerlifting-coef-calc",
+    "protein-expression-analysis",
+    "quantum-numerical-simulation",
+    "r2r-mpc-control",
+    "reserves-at-risk-calc",
+    "sales-pivot-analysis",
+    "sec-financial-report",
+    "seismic-phase-picking",
+    "shock-analysis-demand",
+    "shock-analysis-supply",
+    "simpo-code-reproduction",
+    "software-dependency-audit",
+    "suricata-custom-exfil",
+    "syzkaller-ppdev-syzlang",
+    "taxonomy-tree-merge",
+    "threejs-structure-parser",
+    "threejs-to-obj",
+    "weighted-gdp-calc"
+  ],
+  "task_to_domain": {
+    "dna-frame2-translation": "Bioinformatics & Life Sciences",
+    "scikit-bio-sequence": "Bioinformatics & Life Sciences",
+    "scikit-bio-alignment": "Bioinformatics & Life Sciences",
+    "scikit-survival-cox": "Bioinformatics & Life Sciences",
+    "population-genetics-hwe": "Bioinformatics & Life Sciences",
+    "matchms-count-spectra": "Bioinformatics & Life Sciences",
+    "matchms-similarity": "Bioinformatics & Life Sciences",
+    "protein-expression-analysis": "Bioinformatics & Life Sciences",
+    "variant-annotation": "Bioinformatics & Life Sciences",
+    "vcf-pass-count": "Bioinformatics & Life Sciences",
+    "medchem-ro5-pass": "Bioinformatics & Life Sciences",
+    "medchem-lilly-demerit": "Bioinformatics & Life Sciences",
+    "molecular-analysis": "Chemistry & Molecular Sciences",
+    "molecular-dynamics-rmsd": "Chemistry & Molecular Sciences",
+    "computational-biophysics-dihedral": "Chemistry & Molecular Sciences",
+    "find-topk-similiar-chemicals": "Chemistry & Molecular Sciences",
+    "reaction-type": "Chemistry & Molecular Sciences",
+    "isomer-counting": "Chemistry & Molecular Sciences",
+    "inorganic-physics-thermo": "Chemistry & Molecular Sciences",
+    "organic-chemistry-smarts": "Chemistry & Molecular Sciences",
+    "jax-computing-basics": "Chemistry & Molecular Sciences",
+    "earthquake-phase-association": "Earth, Climate & Geophysics",
+    "earthquake-plate-calculation": "Earth, Climate & Geophysics",
+    "seismic-phase-picking": "Earth, Climate & Geophysics",
+    "gravitational-wave-detection": "Earth, Climate & Geophysics",
+    "fluidsim-pipe-flow": "Earth, Climate & Geophysics",
+    "fluidsim-nusselt-number": "Earth, Climate & Geophysics",
+    "shock-analysis-demand": "Earth, Climate & Geophysics",
+    "shock-analysis-supply": "Earth, Climate & Geophysics",
+    "flood-risk-analysis": "Earth, Climate & Geophysics",
+    "exoplanet-detection-period": "Earth, Climate & Geophysics",
+    "mars-clouds-clustering": "Earth, Climate & Geophysics",
+    "lake-warming-attribution": "Earth, Climate & Geophysics",
+    "glm-lake-mendota": "Earth, Climate & Geophysics",
+    "energy-ac-optimal-power-flow": "Engineering, Energy & Control",
+    "grid-dispatch-operator": "Engineering, Energy & Control",
+    "reserves-at-risk-calc": "Engineering, Energy & Control",
+    "adaptive-cruise-control": "Engineering, Energy & Control",
+    "hvac-control": "Engineering, Energy & Control",
+    "r2r-mpc-control": "Engineering, Energy & Control",
+    "pymoo-optimization": "Engineering, Energy & Control",
+    "pymoo-constrained-opt": "Engineering, Energy & Control",
+    "manufacturing-fjsp-optimization": "Engineering, Energy & Control",
+    "quantum-bloch-vector": "Engineering, Energy & Control",
+    "quantum-numerical-simulation": "Engineering, Energy & Control",
+    "qutip-quantum-state": "Engineering, Energy & Control",
+    "financial-modeling-qa": "Finance, Economics & Business",
+    "sec-financial-report": "Finance, Economics & Business",
+    "sales-pivot-analysis": "Finance, Economics & Business",
+    "weighted-gdp-calc": "Finance, Economics & Business",
+    "invoice-fraud-detection": "Finance, Economics & Business",
+    "econ-detrending-correlation": "Finance, Economics & Business",
+    "energy-market-pricing": "Finance, Economics & Business",
+    "powerlifting-coef-calc": "Finance, Economics & Business",
+    "pddl-tpp-planning": "Finance, Economics & Business",
+    "court-form-filling": "Document, Media & Web Intelligence",
+    "jpg-ocr-stat": "Document, Media & Web Intelligence",
+    "latex-formula-extraction": "Document, Media & Web Intelligence",
+    "parallel-tfidf-search": "Document, Media & Web Intelligence",
+    "taxonomy-tree-merge": "Document, Media & Web Intelligence",
+    "lab-unit-harmonization": "Document, Media & Web Intelligence",
+    "3d-scan-calc": "Document, Media & Web Intelligence",
+    "threejs-structure-parser": "Document, Media & Web Intelligence",
+    "threejs-to-obj": "Document, Media & Web Intelligence",
+    "dynamic-object-aware-egomotion": "Document, Media & Web Intelligence",
+    "multilingual-video-dubbing": "Document, Media & Web Intelligence",
+    "fix-druid-loophole-cve": "Software Engineering & Security",
+    "fix-erlang-ssh-cve": "Software Engineering & Security",
+    "dapt-intrusion-detection": "Software Engineering & Security",
+    "azure-bgp-oscillation-route-leak": "Software Engineering & Security",
+    "suricata-custom-exfil": "Software Engineering & Security",
+    "syzkaller-ppdev-syzlang": "Software Engineering & Security",
+    "software-dependency-audit": "Software Engineering & Security",
+    "simpo-code-reproduction": "Software Engineering & Security",
+    "lean4-proof": "Software Engineering & Security"
+  },
+  "task_to_family": {
+    "dna-frame2-translation": "Bio Sequence Analysis",
+    "scikit-bio-sequence": "Bio Sequence Analysis",
+    "scikit-bio-alignment": "Bio Sequence Analysis",
+    "variant-annotation": "VCF & Genomic Variant Processing",
+    "vcf-pass-count": "VCF & Genomic Variant Processing",
+    "scikit-survival-cox": "VCF & Genomic Variant Processing",
+    "population-genetics-hwe": "Statistical Genetics & Proteomics",
+    "protein-expression-analysis": "Statistical Genetics & Proteomics",
+    "matchms-similarity": "Statistical Genetics & Proteomics",
+    "matchms-count-spectra": "Mass Spectrometry & Metabolomics",
+    "medchem-ro5-pass": "Mass Spectrometry & Metabolomics",
+    "medchem-lilly-demerit": "Mass Spectrometry & Metabolomics",
+    "molecular-analysis": "Molecular Structure Analysis",
+    "molecular-dynamics-rmsd": "Molecular Structure Analysis",
+    "computational-biophysics-dihedral": "Molecular Structure Analysis",
+    "find-topk-similiar-chemicals": "Chemical Informatics",
+    "reaction-type": "Chemical Informatics",
+    "isomer-counting": "Chemical Informatics",
+    "jax-computing-basics": "Scientific Computing (JAX/Thermodynamics)",
+    "inorganic-physics-thermo": "Scientific Computing (JAX/Thermodynamics)",
+    "organic-chemistry-smarts": "Scientific Computing (JAX/Thermodynamics)",
+    "earthquake-phase-association": "Seismology & Geophysics",
+    "earthquake-plate-calculation": "Seismology & Geophysics",
+    "seismic-phase-picking": "Seismology & Geophysics",
+    "gravitational-wave-detection": "Seismology & Geophysics",
+    "fluidsim-pipe-flow": "Fluid Dynamics & Heat Transfer",
+    "fluidsim-nusselt-number": "Fluid Dynamics & Heat Transfer",
+    "flood-risk-analysis": "Climate & Environmental Modeling",
+    "exoplanet-detection-period": "Climate & Environmental Modeling",
+    "mars-clouds-clustering": "Climate & Environmental Modeling",
+    "lake-warming-attribution": "Climate & Environmental Modeling",
+    "glm-lake-mendota": "Climate & Environmental Modeling",
+    "shock-analysis-demand": "Macro-Economic Shock Analysis",
+    "shock-analysis-supply": "Macro-Economic Shock Analysis",
+    "energy-ac-optimal-power-flow": "Power Systems Optimization",
+    "grid-dispatch-operator": "Power Systems Optimization",
+    "reserves-at-risk-calc": "Power Systems Optimization",
+    "adaptive-cruise-control": "Control Systems (PID/MPC)",
+    "hvac-control": "Control Systems (PID/MPC)",
+    "r2r-mpc-control": "Control Systems (PID/MPC)",
+    "pymoo-optimization": "Engineering Optimization",
+    "pymoo-constrained-opt": "Engineering Optimization",
+    "manufacturing-fjsp-optimization": "Engineering Optimization",
+    "quantum-bloch-vector": "Quantum Computing",
+    "qutip-quantum-state": "Quantum Computing",
+    "quantum-numerical-simulation": "Quantum Computing",
+    "financial-modeling-qa": "Spreadsheet Financial Modeling",
+    "sec-financial-report": "Spreadsheet Financial Modeling",
+    "sales-pivot-analysis": "Spreadsheet Financial Modeling",
+    "weighted-gdp-calc": "Spreadsheet Financial Modeling",
+    "powerlifting-coef-calc": "Spreadsheet Financial Modeling",
+    "econ-detrending-correlation": "Economic Trend & Fraud Analysis",
+    "pddl-tpp-planning": "Economic Trend & Fraud Analysis",
+    "invoice-fraud-detection": "Economic Trend & Fraud Analysis",
+    "energy-market-pricing": "Economic Trend & Fraud Analysis",
+    "court-form-filling": "Document & Text Extraction",
+    "jpg-ocr-stat": "Document & Text Extraction",
+    "latex-formula-extraction": "Document & Text Extraction",
+    "parallel-tfidf-search": "Search, Taxonomy & Clinical Data",
+    "taxonomy-tree-merge": "Search, Taxonomy & Clinical Data",
+    "lab-unit-harmonization": "Search, Taxonomy & Clinical Data",
+    "3d-scan-calc": "3D, Video & Motion Analysis",
+    "threejs-structure-parser": "3D, Video & Motion Analysis",
+    "threejs-to-obj": "3D, Video & Motion Analysis",
+    "dynamic-object-aware-egomotion": "3D, Video & Motion Analysis",
+    "multilingual-video-dubbing": "3D, Video & Motion Analysis",
+    "fix-druid-loophole-cve": "CVE & Vulnerability Fixing",
+    "fix-erlang-ssh-cve": "CVE & Vulnerability Fixing",
+    "dapt-intrusion-detection": "Network Security & Intrusion Detection",
+    "azure-bgp-oscillation-route-leak": "Network Security & Intrusion Detection",
+    "suricata-custom-exfil": "Network Security & Intrusion Detection",
+    "software-dependency-audit": "Code Audit & Formal Verification",
+    "simpo-code-reproduction": "Code Audit & Formal Verification",
+    "syzkaller-ppdev-syzlang": "Code Audit & Formal Verification",
+    "lean4-proof": "Code Audit & Formal Verification"
+  },
+  "statistics": {
+    "total_tasks": 75,
+    "total_domains": 7,
+    "total_families": 23,
+    "task_skill_assignments": 154,
+    "unique_skill_names": 121,
+    "tasks_with_auxiliary_entries": 7,
+    "tasks_by_level": {
+      "L1": 20,
+      "L2": 38,
+      "L3": 17
+    },
+    "tasks_by_domain": {
+      "Bioinformatics & Life Sciences": 12,
+      "Chemistry & Molecular Sciences": 9,
+      "Document, Media & Web Intelligence": 11,
+      "Earth, Climate & Geophysics": 13,
+      "Engineering, Energy & Control": 12,
+      "Finance, Economics & Business": 9,
+      "Software Engineering & Security": 9
+    },
+    "tasks_by_family": {
+      "3D, Video & Motion Analysis": 5,
+      "Bio Sequence Analysis": 3,
+      "CVE & Vulnerability Fixing": 2,
+      "Chemical Informatics": 3,
+      "Climate & Environmental Modeling": 5,
+      "Code Audit & Formal Verification": 4,
+      "Control Systems (PID/MPC)": 3,
+      "Document & Text Extraction": 3,
+      "Economic Trend & Fraud Analysis": 4,
+      "Engineering Optimization": 3,
+      "Fluid Dynamics & Heat Transfer": 2,
+      "Macro-Economic Shock Analysis": 2,
+      "Mass Spectrometry & Metabolomics": 3,
+      "Molecular Structure Analysis": 3,
+      "Network Security & Intrusion Detection": 3,
+      "Power Systems Optimization": 3,
+      "Quantum Computing": 3,
+      "Scientific Computing (JAX/Thermodynamics)": 3,
+      "Search, Taxonomy & Clinical Data": 3,
+      "Seismology & Geophysics": 4,
+      "Spreadsheet Financial Modeling": 5,
+      "Statistical Genetics & Proteomics": 3,
+      "VCF & Genomic Variant Processing": 3
+    },
+    "top_reused_skills": [
+      {
+        "skill_name": "xlsx",
+        "task_count": 10
+      },
+      {
+        "skill_name": "pdf",
+        "task_count": 8
+      },
+      {
+        "skill_name": "organic-chemistry",
+        "task_count": 4
+      },
+      {
+        "skill_name": "power-flow-data",
+        "task_count": 3
+      },
+      {
+        "skill_name": "dc-power-flow",
+        "task_count": 2
+      },
+      {
+        "skill_name": "economic-dispatch",
+        "task_count": 2
+      },
+      {
+        "skill_name": "matchms",
+        "task_count": 2
+      },
+      {
+        "skill_name": "medchem",
+        "task_count": 2
+      },
+      {
+        "skill_name": "obj-exporter",
+        "task_count": 2
+      },
+      {
+        "skill_name": "obspy-data-api",
+        "task_count": 2
+      },
+      {
+        "skill_name": "qutip",
+        "task_count": 2
+      },
+      {
+        "skill_name": "scikit-bio",
+        "task_count": 2
+      },
+      {
+        "skill_name": "seisbench-model-api",
+        "task_count": 2
+      },
+      {
+        "skill_name": "seismic-picker-selection",
+        "task_count": 2
+      },
+      {
+        "skill_name": "threejs",
+        "task_count": 2
+      },
+      {
+        "skill_name": "variant-analysis",
+        "task_count": 2
+      },
+      {
+        "skill_name": "13f-analyzer",
+        "task_count": 1
+      },
+      {
+        "skill_name": "ac-branch-pi-model",
+        "task_count": 1
+      },
+      {
+        "skill_name": "azure-bgp",
+        "task_count": 1
+      },
+      {
+        "skill_name": "box-least-squares",
+        "task_count": 1
+      }
+    ]
+  },
+  "consistency_checks": {
+    "tasks_missing_level": [],
+    "issues": []
+  },
+  "tasks": {
+    "3d-scan-calc": {
+      "task_name": "3d-scan-calc",
+      "domain": "Document, Media & Web Intelligence",
+      "family": "3D, Video & Motion Analysis",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/3d-scan-calc/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "mesh-analysis",
+          "path": "data/tasks/3d-scan-calc/environment/skills/mesh-analysis",
+          "skill_md": "data/tasks/3d-scan-calc/environment/skills/mesh-analysis/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "adaptive-cruise-control": {
+      "task_name": "adaptive-cruise-control",
+      "domain": "Engineering, Energy & Control",
+      "family": "Control Systems (PID/MPC)",
+      "difficulty_level": 3,
+      "difficulty_name": "Level 3 - Advanced",
+      "difficulty_score_range": "11-15",
+      "skills_dir": "data/tasks/adaptive-cruise-control/environment/skills",
+      "skill_count": 5,
+      "skills": [
+        {
+          "name": "csv-processing",
+          "path": "data/tasks/adaptive-cruise-control/environment/skills/csv-processing",
+          "skill_md": "data/tasks/adaptive-cruise-control/environment/skills/csv-processing/SKILL.md"
+        },
+        {
+          "name": "pid-controller",
+          "path": "data/tasks/adaptive-cruise-control/environment/skills/pid-controller",
+          "skill_md": "data/tasks/adaptive-cruise-control/environment/skills/pid-controller/SKILL.md"
+        },
+        {
+          "name": "simulation-metrics",
+          "path": "data/tasks/adaptive-cruise-control/environment/skills/simulation-metrics",
+          "skill_md": "data/tasks/adaptive-cruise-control/environment/skills/simulation-metrics/SKILL.md"
+        },
+        {
+          "name": "vehicle-dynamics",
+          "path": "data/tasks/adaptive-cruise-control/environment/skills/vehicle-dynamics",
+          "skill_md": "data/tasks/adaptive-cruise-control/environment/skills/vehicle-dynamics/SKILL.md"
+        },
+        {
+          "name": "yaml-config",
+          "path": "data/tasks/adaptive-cruise-control/environment/skills/yaml-config",
+          "skill_md": "data/tasks/adaptive-cruise-control/environment/skills/yaml-config/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "azure-bgp-oscillation-route-leak": {
+      "task_name": "azure-bgp-oscillation-route-leak",
+      "domain": "Software Engineering & Security",
+      "family": "Network Security & Intrusion Detection",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/azure-bgp-oscillation-route-leak/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "azure-bgp",
+          "path": "data/tasks/azure-bgp-oscillation-route-leak/environment/skills/azure-bgp",
+          "skill_md": "data/tasks/azure-bgp-oscillation-route-leak/environment/skills/azure-bgp/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "computational-biophysics-dihedral": {
+      "task_name": "computational-biophysics-dihedral",
+      "domain": "Chemistry & Molecular Sciences",
+      "family": "Molecular Structure Analysis",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/computational-biophysics-dihedral/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "computational-biophysics",
+          "path": "data/tasks/computational-biophysics-dihedral/environment/skills/computational-biophysics",
+          "skill_md": "data/tasks/computational-biophysics-dihedral/environment/skills/computational-biophysics/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "court-form-filling": {
+      "task_name": "court-form-filling",
+      "domain": "Document, Media & Web Intelligence",
+      "family": "Document & Text Extraction",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/court-form-filling/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "pdf",
+          "path": "data/tasks/court-form-filling/environment/skills/pdf",
+          "skill_md": "data/tasks/court-form-filling/environment/skills/pdf/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "dapt-intrusion-detection": {
+      "task_name": "dapt-intrusion-detection",
+      "domain": "Software Engineering & Security",
+      "family": "Network Security & Intrusion Detection",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/dapt-intrusion-detection/environment/skills",
+      "skill_count": 2,
+      "skills": [
+        {
+          "name": "pcap-analysis",
+          "path": "data/tasks/dapt-intrusion-detection/environment/skills/pcap-analysis",
+          "skill_md": "data/tasks/dapt-intrusion-detection/environment/skills/pcap-analysis/SKILL.md"
+        },
+        {
+          "name": "threat-detection",
+          "path": "data/tasks/dapt-intrusion-detection/environment/skills/threat-detection",
+          "skill_md": "data/tasks/dapt-intrusion-detection/environment/skills/threat-detection/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "dna-frame2-translation": {
+      "task_name": "dna-frame2-translation",
+      "domain": "Bioinformatics & Life Sciences",
+      "family": "Bio Sequence Analysis",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/dna-frame2-translation/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "sequence-analysis",
+          "path": "data/tasks/dna-frame2-translation/environment/skills/sequence-analysis",
+          "skill_md": "data/tasks/dna-frame2-translation/environment/skills/sequence-analysis/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "dynamic-object-aware-egomotion": {
+      "task_name": "dynamic-object-aware-egomotion",
+      "domain": "Document, Media & Web Intelligence",
+      "family": "3D, Video & Motion Analysis",
+      "difficulty_level": 3,
+      "difficulty_name": "Level 3 - Advanced",
+      "difficulty_score_range": "11-15",
+      "skills_dir": "data/tasks/dynamic-object-aware-egomotion/environment/skills",
+      "skill_count": 4,
+      "skills": [
+        {
+          "name": "dyn-object-masks",
+          "path": "data/tasks/dynamic-object-aware-egomotion/environment/skills/dyn-object-masks",
+          "skill_md": "data/tasks/dynamic-object-aware-egomotion/environment/skills/dyn-object-masks/SKILL.md"
+        },
+        {
+          "name": "egomotion-estimation",
+          "path": "data/tasks/dynamic-object-aware-egomotion/environment/skills/egomotion-estimation",
+          "skill_md": "data/tasks/dynamic-object-aware-egomotion/environment/skills/egomotion-estimation/SKILL.md"
+        },
+        {
+          "name": "output-validation",
+          "path": "data/tasks/dynamic-object-aware-egomotion/environment/skills/output-validation",
+          "skill_md": "data/tasks/dynamic-object-aware-egomotion/environment/skills/output-validation/SKILL.md"
+        },
+        {
+          "name": "sampling-and-indexing",
+          "path": "data/tasks/dynamic-object-aware-egomotion/environment/skills/sampling-and-indexing",
+          "skill_md": "data/tasks/dynamic-object-aware-egomotion/environment/skills/sampling-and-indexing/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "earthquake-phase-association": {
+      "task_name": "earthquake-phase-association",
+      "domain": "Earth, Climate & Geophysics",
+      "family": "Seismology & Geophysics",
+      "difficulty_level": 3,
+      "difficulty_name": "Level 3 - Advanced",
+      "difficulty_score_range": "11-15",
+      "skills_dir": "data/tasks/earthquake-phase-association/environment/skills",
+      "skill_count": 4,
+      "skills": [
+        {
+          "name": "gamma-phase-associator",
+          "path": "data/tasks/earthquake-phase-association/environment/skills/gamma-phase-associator",
+          "skill_md": "data/tasks/earthquake-phase-association/environment/skills/gamma-phase-associator/SKILL.md"
+        },
+        {
+          "name": "obspy-data-api",
+          "path": "data/tasks/earthquake-phase-association/environment/skills/obspy-data-api",
+          "skill_md": "data/tasks/earthquake-phase-association/environment/skills/obspy-data-api/SKILL.md"
+        },
+        {
+          "name": "seisbench-model-api",
+          "path": "data/tasks/earthquake-phase-association/environment/skills/seisbench-model-api",
+          "skill_md": "data/tasks/earthquake-phase-association/environment/skills/seisbench-model-api/SKILL.md"
+        },
+        {
+          "name": "seismic-picker-selection",
+          "path": "data/tasks/earthquake-phase-association/environment/skills/seismic-picker-selection",
+          "skill_md": "data/tasks/earthquake-phase-association/environment/skills/seismic-picker-selection/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": [
+        {
+          "name": "licenses",
+          "path": "data/tasks/earthquake-phase-association/environment/skills/licenses",
+          "type": "directory"
+        }
+      ]
+    },
+    "earthquake-plate-calculation": {
+      "task_name": "earthquake-plate-calculation",
+      "domain": "Earth, Climate & Geophysics",
+      "family": "Seismology & Geophysics",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/earthquake-plate-calculation/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "geospatial-analysis",
+          "path": "data/tasks/earthquake-plate-calculation/environment/skills/geospatial-analysis",
+          "skill_md": "data/tasks/earthquake-plate-calculation/environment/skills/geospatial-analysis/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "econ-detrending-correlation": {
+      "task_name": "econ-detrending-correlation",
+      "domain": "Finance, Economics & Business",
+      "family": "Economic Trend & Fraud Analysis",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/econ-detrending-correlation/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "timeseries-detrending",
+          "path": "data/tasks/econ-detrending-correlation/environment/skills/timeseries-detrending",
+          "skill_md": "data/tasks/econ-detrending-correlation/environment/skills/timeseries-detrending/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "energy-ac-optimal-power-flow": {
+      "task_name": "energy-ac-optimal-power-flow",
+      "domain": "Engineering, Energy & Control",
+      "family": "Power Systems Optimization",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/energy-ac-optimal-power-flow/environment/skills",
+      "skill_count": 3,
+      "skills": [
+        {
+          "name": "ac-branch-pi-model",
+          "path": "data/tasks/energy-ac-optimal-power-flow/environment/skills/ac-branch-pi-model",
+          "skill_md": "data/tasks/energy-ac-optimal-power-flow/environment/skills/ac-branch-pi-model/SKILL.md"
+        },
+        {
+          "name": "casadi-ipopt-nlp",
+          "path": "data/tasks/energy-ac-optimal-power-flow/environment/skills/casadi-ipopt-nlp",
+          "skill_md": "data/tasks/energy-ac-optimal-power-flow/environment/skills/casadi-ipopt-nlp/SKILL.md"
+        },
+        {
+          "name": "power-flow-data",
+          "path": "data/tasks/energy-ac-optimal-power-flow/environment/skills/power-flow-data",
+          "skill_md": "data/tasks/energy-ac-optimal-power-flow/environment/skills/power-flow-data/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "energy-market-pricing": {
+      "task_name": "energy-market-pricing",
+      "domain": "Finance, Economics & Business",
+      "family": "Economic Trend & Fraud Analysis",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/energy-market-pricing/environment/skills",
+      "skill_count": 4,
+      "skills": [
+        {
+          "name": "dc-power-flow",
+          "path": "data/tasks/energy-market-pricing/environment/skills/dc-power-flow",
+          "skill_md": "data/tasks/energy-market-pricing/environment/skills/dc-power-flow/SKILL.md"
+        },
+        {
+          "name": "economic-dispatch",
+          "path": "data/tasks/energy-market-pricing/environment/skills/economic-dispatch",
+          "skill_md": "data/tasks/energy-market-pricing/environment/skills/economic-dispatch/SKILL.md"
+        },
+        {
+          "name": "locational-marginal-prices",
+          "path": "data/tasks/energy-market-pricing/environment/skills/locational-marginal-prices",
+          "skill_md": "data/tasks/energy-market-pricing/environment/skills/locational-marginal-prices/SKILL.md"
+        },
+        {
+          "name": "power-flow-data",
+          "path": "data/tasks/energy-market-pricing/environment/skills/power-flow-data",
+          "skill_md": "data/tasks/energy-market-pricing/environment/skills/power-flow-data/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "exoplanet-detection-period": {
+      "task_name": "exoplanet-detection-period",
+      "domain": "Earth, Climate & Geophysics",
+      "family": "Climate & Environmental Modeling",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/exoplanet-detection-period/environment/skills",
+      "skill_count": 5,
+      "skills": [
+        {
+          "name": "box-least-squares",
+          "path": "data/tasks/exoplanet-detection-period/environment/skills/box-least-squares",
+          "skill_md": "data/tasks/exoplanet-detection-period/environment/skills/box-least-squares/SKILL.md"
+        },
+        {
+          "name": "exoplanet-workflows",
+          "path": "data/tasks/exoplanet-detection-period/environment/skills/exoplanet-workflows",
+          "skill_md": "data/tasks/exoplanet-detection-period/environment/skills/exoplanet-workflows/SKILL.md"
+        },
+        {
+          "name": "light-curve-preprocessing",
+          "path": "data/tasks/exoplanet-detection-period/environment/skills/light-curve-preprocessing",
+          "skill_md": "data/tasks/exoplanet-detection-period/environment/skills/light-curve-preprocessing/SKILL.md"
+        },
+        {
+          "name": "lomb-scargle-periodogram",
+          "path": "data/tasks/exoplanet-detection-period/environment/skills/lomb-scargle-periodogram",
+          "skill_md": "data/tasks/exoplanet-detection-period/environment/skills/lomb-scargle-periodogram/SKILL.md"
+        },
+        {
+          "name": "transit-least-squares",
+          "path": "data/tasks/exoplanet-detection-period/environment/skills/transit-least-squares",
+          "skill_md": "data/tasks/exoplanet-detection-period/environment/skills/transit-least-squares/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "financial-modeling-qa": {
+      "task_name": "financial-modeling-qa",
+      "domain": "Finance, Economics & Business",
+      "family": "Spreadsheet Financial Modeling",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/financial-modeling-qa/environment/skills",
+      "skill_count": 2,
+      "skills": [
+        {
+          "name": "pdf",
+          "path": "data/tasks/financial-modeling-qa/environment/skills/pdf",
+          "skill_md": "data/tasks/financial-modeling-qa/environment/skills/pdf/SKILL.md"
+        },
+        {
+          "name": "xlsx",
+          "path": "data/tasks/financial-modeling-qa/environment/skills/xlsx",
+          "skill_md": "data/tasks/financial-modeling-qa/environment/skills/xlsx/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "find-topk-similiar-chemicals": {
+      "task_name": "find-topk-similiar-chemicals",
+      "domain": "Chemistry & Molecular Sciences",
+      "family": "Chemical Informatics",
+      "difficulty_level": 3,
+      "difficulty_name": "Level 3 - Advanced",
+      "difficulty_score_range": "11-15",
+      "skills_dir": "data/tasks/find-topk-similiar-chemicals/environment/skills",
+      "skill_count": 3,
+      "skills": [
+        {
+          "name": "pdf",
+          "path": "data/tasks/find-topk-similiar-chemicals/environment/skills/pdf",
+          "skill_md": "data/tasks/find-topk-similiar-chemicals/environment/skills/pdf/SKILL.md"
+        },
+        {
+          "name": "pubchem-database",
+          "path": "data/tasks/find-topk-similiar-chemicals/environment/skills/pubchem-database",
+          "skill_md": "data/tasks/find-topk-similiar-chemicals/environment/skills/pubchem-database/SKILL.md"
+        },
+        {
+          "name": "rdkit",
+          "path": "data/tasks/find-topk-similiar-chemicals/environment/skills/rdkit",
+          "skill_md": "data/tasks/find-topk-similiar-chemicals/environment/skills/rdkit/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "fix-druid-loophole-cve": {
+      "task_name": "fix-druid-loophole-cve",
+      "domain": "Software Engineering & Security",
+      "family": "CVE & Vulnerability Fixing",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/fix-druid-loophole-cve/environment/skills",
+      "skill_count": 2,
+      "skills": [
+        {
+          "name": "jackson-security",
+          "path": "data/tasks/fix-druid-loophole-cve/environment/skills/jackson-security",
+          "skill_md": "data/tasks/fix-druid-loophole-cve/environment/skills/jackson-security/SKILL.md"
+        },
+        {
+          "name": "senior-java",
+          "path": "data/tasks/fix-druid-loophole-cve/environment/skills/senior-java",
+          "skill_md": "data/tasks/fix-druid-loophole-cve/environment/skills/senior-java/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "fix-erlang-ssh-cve": {
+      "task_name": "fix-erlang-ssh-cve",
+      "domain": "Software Engineering & Security",
+      "family": "CVE & Vulnerability Fixing",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/fix-erlang-ssh-cve/environment/skills",
+      "skill_count": 6,
+      "skills": [
+        {
+          "name": "erlang-concurrency",
+          "path": "data/tasks/fix-erlang-ssh-cve/environment/skills/erlang-concurrency",
+          "skill_md": "data/tasks/fix-erlang-ssh-cve/environment/skills/erlang-concurrency/SKILL.md"
+        },
+        {
+          "name": "erlang-distribution",
+          "path": "data/tasks/fix-erlang-ssh-cve/environment/skills/erlang-distribution",
+          "skill_md": "data/tasks/fix-erlang-ssh-cve/environment/skills/erlang-distribution/SKILL.md"
+        },
+        {
+          "name": "erlang-otp-behaviors",
+          "path": "data/tasks/fix-erlang-ssh-cve/environment/skills/erlang-otp-behaviors",
+          "skill_md": "data/tasks/fix-erlang-ssh-cve/environment/skills/erlang-otp-behaviors/SKILL.md"
+        },
+        {
+          "name": "find-bugs",
+          "path": "data/tasks/fix-erlang-ssh-cve/environment/skills/find-bugs",
+          "skill_md": "data/tasks/fix-erlang-ssh-cve/environment/skills/find-bugs/SKILL.md"
+        },
+        {
+          "name": "senior-security",
+          "path": "data/tasks/fix-erlang-ssh-cve/environment/skills/senior-security",
+          "skill_md": "data/tasks/fix-erlang-ssh-cve/environment/skills/senior-security/SKILL.md"
+        },
+        {
+          "name": "ssh-penetration-testing",
+          "path": "data/tasks/fix-erlang-ssh-cve/environment/skills/ssh-penetration-testing",
+          "skill_md": "data/tasks/fix-erlang-ssh-cve/environment/skills/ssh-penetration-testing/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "flood-risk-analysis": {
+      "task_name": "flood-risk-analysis",
+      "domain": "Earth, Climate & Geophysics",
+      "family": "Climate & Environmental Modeling",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/flood-risk-analysis/environment/skills",
+      "skill_count": 3,
+      "skills": [
+        {
+          "name": "flood-detection",
+          "path": "data/tasks/flood-risk-analysis/environment/skills/flood-detection",
+          "skill_md": "data/tasks/flood-risk-analysis/environment/skills/flood-detection/SKILL.md"
+        },
+        {
+          "name": "nws-flood-thresholds",
+          "path": "data/tasks/flood-risk-analysis/environment/skills/nws-flood-thresholds",
+          "skill_md": "data/tasks/flood-risk-analysis/environment/skills/nws-flood-thresholds/SKILL.md"
+        },
+        {
+          "name": "usgs-data-download",
+          "path": "data/tasks/flood-risk-analysis/environment/skills/usgs-data-download",
+          "skill_md": "data/tasks/flood-risk-analysis/environment/skills/usgs-data-download/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "fluidsim-nusselt-number": {
+      "task_name": "fluidsim-nusselt-number",
+      "domain": "Earth, Climate & Geophysics",
+      "family": "Fluid Dynamics & Heat Transfer",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/fluidsim-nusselt-number/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "fluidsim",
+          "path": "data/tasks/fluidsim-nusselt-number/environment/skills/fluidsim",
+          "skill_md": "data/tasks/fluidsim-nusselt-number/environment/skills/fluidsim/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "fluidsim-pipe-flow": {
+      "task_name": "fluidsim-pipe-flow",
+      "domain": "Earth, Climate & Geophysics",
+      "family": "Fluid Dynamics & Heat Transfer",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/fluidsim-pipe-flow/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "fluidsim-pipe-flow",
+          "path": "data/tasks/fluidsim-pipe-flow/environment/skills/fluidsim-pipe-flow",
+          "skill_md": "data/tasks/fluidsim-pipe-flow/environment/skills/fluidsim-pipe-flow/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "glm-lake-mendota": {
+      "task_name": "glm-lake-mendota",
+      "domain": "Earth, Climate & Geophysics",
+      "family": "Climate & Environmental Modeling",
+      "difficulty_level": 3,
+      "difficulty_name": "Level 3 - Advanced",
+      "difficulty_score_range": "11-15",
+      "skills_dir": "data/tasks/glm-lake-mendota/environment/skills",
+      "skill_count": 3,
+      "skills": [
+        {
+          "name": "glm-basics",
+          "path": "data/tasks/glm-lake-mendota/environment/skills/glm-basics",
+          "skill_md": "data/tasks/glm-lake-mendota/environment/skills/glm-basics/SKILL.md"
+        },
+        {
+          "name": "glm-calibration",
+          "path": "data/tasks/glm-lake-mendota/environment/skills/glm-calibration",
+          "skill_md": "data/tasks/glm-lake-mendota/environment/skills/glm-calibration/SKILL.md"
+        },
+        {
+          "name": "glm-output",
+          "path": "data/tasks/glm-lake-mendota/environment/skills/glm-output",
+          "skill_md": "data/tasks/glm-lake-mendota/environment/skills/glm-output/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "gravitational-wave-detection": {
+      "task_name": "gravitational-wave-detection",
+      "domain": "Earth, Climate & Geophysics",
+      "family": "Seismology & Geophysics",
+      "difficulty_level": 3,
+      "difficulty_name": "Level 3 - Advanced",
+      "difficulty_score_range": "11-15",
+      "skills_dir": "data/tasks/gravitational-wave-detection/environment/skills",
+      "skill_count": 2,
+      "skills": [
+        {
+          "name": "conditioning",
+          "path": "data/tasks/gravitational-wave-detection/environment/skills/conditioning",
+          "skill_md": "data/tasks/gravitational-wave-detection/environment/skills/conditioning/SKILL.md"
+        },
+        {
+          "name": "matched-filtering",
+          "path": "data/tasks/gravitational-wave-detection/environment/skills/matched-filtering",
+          "skill_md": "data/tasks/gravitational-wave-detection/environment/skills/matched-filtering/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "grid-dispatch-operator": {
+      "task_name": "grid-dispatch-operator",
+      "domain": "Engineering, Energy & Control",
+      "family": "Power Systems Optimization",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/grid-dispatch-operator/environment/skills",
+      "skill_count": 3,
+      "skills": [
+        {
+          "name": "dc-power-flow",
+          "path": "data/tasks/grid-dispatch-operator/environment/skills/dc-power-flow",
+          "skill_md": "data/tasks/grid-dispatch-operator/environment/skills/dc-power-flow/SKILL.md"
+        },
+        {
+          "name": "economic-dispatch",
+          "path": "data/tasks/grid-dispatch-operator/environment/skills/economic-dispatch",
+          "skill_md": "data/tasks/grid-dispatch-operator/environment/skills/economic-dispatch/SKILL.md"
+        },
+        {
+          "name": "power-flow-data",
+          "path": "data/tasks/grid-dispatch-operator/environment/skills/power-flow-data",
+          "skill_md": "data/tasks/grid-dispatch-operator/environment/skills/power-flow-data/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "hvac-control": {
+      "task_name": "hvac-control",
+      "domain": "Engineering, Energy & Control",
+      "family": "Control Systems (PID/MPC)",
+      "difficulty_level": 3,
+      "difficulty_name": "Level 3 - Advanced",
+      "difficulty_score_range": "11-15",
+      "skills_dir": "data/tasks/hvac-control/environment/skills",
+      "skill_count": 5,
+      "skills": [
+        {
+          "name": "excitation-signal-design",
+          "path": "data/tasks/hvac-control/environment/skills/excitation-signal-design",
+          "skill_md": "data/tasks/hvac-control/environment/skills/excitation-signal-design/SKILL.md"
+        },
+        {
+          "name": "first-order-model-fitting",
+          "path": "data/tasks/hvac-control/environment/skills/first-order-model-fitting",
+          "skill_md": "data/tasks/hvac-control/environment/skills/first-order-model-fitting/SKILL.md"
+        },
+        {
+          "name": "imc-tuning-rules",
+          "path": "data/tasks/hvac-control/environment/skills/imc-tuning-rules",
+          "skill_md": "data/tasks/hvac-control/environment/skills/imc-tuning-rules/SKILL.md"
+        },
+        {
+          "name": "safety-interlocks",
+          "path": "data/tasks/hvac-control/environment/skills/safety-interlocks",
+          "skill_md": "data/tasks/hvac-control/environment/skills/safety-interlocks/SKILL.md"
+        },
+        {
+          "name": "scipy-curve-fit",
+          "path": "data/tasks/hvac-control/environment/skills/scipy-curve-fit",
+          "skill_md": "data/tasks/hvac-control/environment/skills/scipy-curve-fit/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "inorganic-physics-thermo": {
+      "task_name": "inorganic-physics-thermo",
+      "domain": "Chemistry & Molecular Sciences",
+      "family": "Scientific Computing (JAX/Thermodynamics)",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/inorganic-physics-thermo/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "inorganic-physics-thermo",
+          "path": "data/tasks/inorganic-physics-thermo/environment/skills/inorganic-physics-thermo",
+          "skill_md": "data/tasks/inorganic-physics-thermo/environment/skills/inorganic-physics-thermo/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": [
+        {
+          "name": "scripts",
+          "path": "data/tasks/inorganic-physics-thermo/environment/skills/scripts",
+          "type": "directory"
+        }
+      ]
+    },
+    "invoice-fraud-detection": {
+      "task_name": "invoice-fraud-detection",
+      "domain": "Finance, Economics & Business",
+      "family": "Economic Trend & Fraud Analysis",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/invoice-fraud-detection/environment/skills",
+      "skill_count": 3,
+      "skills": [
+        {
+          "name": "fuzzy-match",
+          "path": "data/tasks/invoice-fraud-detection/environment/skills/fuzzy-match",
+          "skill_md": "data/tasks/invoice-fraud-detection/environment/skills/fuzzy-match/SKILL.md"
+        },
+        {
+          "name": "pdf",
+          "path": "data/tasks/invoice-fraud-detection/environment/skills/pdf",
+          "skill_md": "data/tasks/invoice-fraud-detection/environment/skills/pdf/SKILL.md"
+        },
+        {
+          "name": "xlsx",
+          "path": "data/tasks/invoice-fraud-detection/environment/skills/xlsx",
+          "skill_md": "data/tasks/invoice-fraud-detection/environment/skills/xlsx/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "isomer-counting": {
+      "task_name": "isomer-counting",
+      "domain": "Chemistry & Molecular Sciences",
+      "family": "Chemical Informatics",
+      "difficulty_level": 3,
+      "difficulty_name": "Level 3 - Advanced",
+      "difficulty_score_range": "11-15",
+      "skills_dir": "data/tasks/isomer-counting/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "organic-chemistry",
+          "path": "data/tasks/isomer-counting/environment/skills/organic-chemistry",
+          "skill_md": "data/tasks/isomer-counting/environment/skills/organic-chemistry/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "jax-computing-basics": {
+      "task_name": "jax-computing-basics",
+      "domain": "Chemistry & Molecular Sciences",
+      "family": "Scientific Computing (JAX/Thermodynamics)",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/jax-computing-basics/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "jax-skills",
+          "path": "data/tasks/jax-computing-basics/environment/skills/jax-skills",
+          "skill_md": "data/tasks/jax-computing-basics/environment/skills/jax-skills/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "jpg-ocr-stat": {
+      "task_name": "jpg-ocr-stat",
+      "domain": "Document, Media & Web Intelligence",
+      "family": "Document & Text Extraction",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/jpg-ocr-stat/environment/skills",
+      "skill_count": 5,
+      "skills": [
+        {
+          "name": "image-ocr",
+          "path": "data/tasks/jpg-ocr-stat/environment/skills/image-ocr",
+          "skill_md": "data/tasks/jpg-ocr-stat/environment/skills/image-ocr/SKILL.md"
+        },
+        {
+          "name": "openai-vision",
+          "path": "data/tasks/jpg-ocr-stat/environment/skills/openai-vision",
+          "skill_md": "data/tasks/jpg-ocr-stat/environment/skills/openai-vision/SKILL.md"
+        },
+        {
+          "name": "pdf",
+          "path": "data/tasks/jpg-ocr-stat/environment/skills/pdf",
+          "skill_md": "data/tasks/jpg-ocr-stat/environment/skills/pdf/SKILL.md"
+        },
+        {
+          "name": "video-frame-extraction",
+          "path": "data/tasks/jpg-ocr-stat/environment/skills/video-frame-extraction",
+          "skill_md": "data/tasks/jpg-ocr-stat/environment/skills/video-frame-extraction/SKILL.md"
+        },
+        {
+          "name": "xlsx",
+          "path": "data/tasks/jpg-ocr-stat/environment/skills/xlsx",
+          "skill_md": "data/tasks/jpg-ocr-stat/environment/skills/xlsx/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "lab-unit-harmonization": {
+      "task_name": "lab-unit-harmonization",
+      "domain": "Document, Media & Web Intelligence",
+      "family": "Search, Taxonomy & Clinical Data",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/lab-unit-harmonization/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "lab-unit-harmonization",
+          "path": "data/tasks/lab-unit-harmonization/environment/skills/lab-unit-harmonization",
+          "skill_md": "data/tasks/lab-unit-harmonization/environment/skills/lab-unit-harmonization/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "lake-warming-attribution": {
+      "task_name": "lake-warming-attribution",
+      "domain": "Earth, Climate & Geophysics",
+      "family": "Climate & Environmental Modeling",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/lake-warming-attribution/environment/skills",
+      "skill_count": 4,
+      "skills": [
+        {
+          "name": "contribution-analysis",
+          "path": "data/tasks/lake-warming-attribution/environment/skills/contribution-analysis",
+          "skill_md": "data/tasks/lake-warming-attribution/environment/skills/contribution-analysis/SKILL.md"
+        },
+        {
+          "name": "meteorology-driver-classification",
+          "path": "data/tasks/lake-warming-attribution/environment/skills/meteorology-driver-classification",
+          "skill_md": "data/tasks/lake-warming-attribution/environment/skills/meteorology-driver-classification/SKILL.md"
+        },
+        {
+          "name": "pca-decomposition",
+          "path": "data/tasks/lake-warming-attribution/environment/skills/pca-decomposition",
+          "skill_md": "data/tasks/lake-warming-attribution/environment/skills/pca-decomposition/SKILL.md"
+        },
+        {
+          "name": "trend-analysis",
+          "path": "data/tasks/lake-warming-attribution/environment/skills/trend-analysis",
+          "skill_md": "data/tasks/lake-warming-attribution/environment/skills/trend-analysis/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "latex-formula-extraction": {
+      "task_name": "latex-formula-extraction",
+      "domain": "Document, Media & Web Intelligence",
+      "family": "Document & Text Extraction",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/latex-formula-extraction/environment/skills",
+      "skill_count": 2,
+      "skills": [
+        {
+          "name": "marker",
+          "path": "data/tasks/latex-formula-extraction/environment/skills/marker",
+          "skill_md": "data/tasks/latex-formula-extraction/environment/skills/marker/SKILL.md"
+        },
+        {
+          "name": "pdf",
+          "path": "data/tasks/latex-formula-extraction/environment/skills/pdf",
+          "skill_md": "data/tasks/latex-formula-extraction/environment/skills/pdf/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "lean4-proof": {
+      "task_name": "lean4-proof",
+      "domain": "Software Engineering & Security",
+      "family": "Code Audit & Formal Verification",
+      "difficulty_level": 3,
+      "difficulty_name": "Level 3 - Advanced",
+      "difficulty_score_range": "11-15",
+      "skills_dir": "data/tasks/lean4-proof/environment/skills",
+      "skill_count": 2,
+      "skills": [
+        {
+          "name": "lean4-memories",
+          "path": "data/tasks/lean4-proof/environment/skills/lean4-memories",
+          "skill_md": "data/tasks/lean4-proof/environment/skills/lean4-memories/SKILL.md"
+        },
+        {
+          "name": "lean4-theorem-proving",
+          "path": "data/tasks/lean4-proof/environment/skills/lean4-theorem-proving",
+          "skill_md": "data/tasks/lean4-proof/environment/skills/lean4-theorem-proving/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": [
+        {
+          "name": "INSTALLATION.md",
+          "path": "data/tasks/lean4-proof/environment/skills/INSTALLATION.md",
+          "type": "file"
+        },
+        {
+          "name": "LICENSE",
+          "path": "data/tasks/lean4-proof/environment/skills/LICENSE",
+          "type": "file"
+        },
+        {
+          "name": "README.md",
+          "path": "data/tasks/lean4-proof/environment/skills/README.md",
+          "type": "file"
+        },
+        {
+          "name": "TESTING.md",
+          "path": "data/tasks/lean4-proof/environment/skills/TESTING.md",
+          "type": "file"
+        }
+      ]
+    },
+    "manufacturing-fjsp-optimization": {
+      "task_name": "manufacturing-fjsp-optimization",
+      "domain": "Engineering, Energy & Control",
+      "family": "Engineering Optimization",
+      "difficulty_level": 3,
+      "difficulty_name": "Level 3 - Advanced",
+      "difficulty_score_range": "11-15",
+      "skills_dir": "data/tasks/manufacturing-fjsp-optimization/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "fjsp-baseline-repair-with-downtime-and-policy",
+          "path": "data/tasks/manufacturing-fjsp-optimization/environment/skills/fjsp-baseline-repair-with-downtime-and-policy",
+          "skill_md": "data/tasks/manufacturing-fjsp-optimization/environment/skills/fjsp-baseline-repair-with-downtime-and-policy/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": [
+        {
+          "name": "reference.md",
+          "path": "data/tasks/manufacturing-fjsp-optimization/environment/skills/reference.md",
+          "type": "file"
+        }
+      ]
+    },
+    "mars-clouds-clustering": {
+      "task_name": "mars-clouds-clustering",
+      "domain": "Earth, Climate & Geophysics",
+      "family": "Climate & Environmental Modeling",
+      "difficulty_level": 3,
+      "difficulty_name": "Level 3 - Advanced",
+      "difficulty_score_range": "11-15",
+      "skills_dir": "data/tasks/mars-clouds-clustering/environment/skills",
+      "skill_count": 3,
+      "skills": [
+        {
+          "name": "custom-distance-metrics",
+          "path": "data/tasks/mars-clouds-clustering/environment/skills/custom-distance-metrics",
+          "skill_md": "data/tasks/mars-clouds-clustering/environment/skills/custom-distance-metrics/SKILL.md"
+        },
+        {
+          "name": "parallel-processing",
+          "path": "data/tasks/mars-clouds-clustering/environment/skills/parallel-processing",
+          "skill_md": "data/tasks/mars-clouds-clustering/environment/skills/parallel-processing/SKILL.md"
+        },
+        {
+          "name": "pareto-optimization",
+          "path": "data/tasks/mars-clouds-clustering/environment/skills/pareto-optimization",
+          "skill_md": "data/tasks/mars-clouds-clustering/environment/skills/pareto-optimization/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "matchms-count-spectra": {
+      "task_name": "matchms-count-spectra",
+      "domain": "Bioinformatics & Life Sciences",
+      "family": "Mass Spectrometry & Metabolomics",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/matchms-count-spectra/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "matchms",
+          "path": "data/tasks/matchms-count-spectra/environment/skills/matchms",
+          "skill_md": "data/tasks/matchms-count-spectra/environment/skills/matchms/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "matchms-similarity": {
+      "task_name": "matchms-similarity",
+      "domain": "Bioinformatics & Life Sciences",
+      "family": "Statistical Genetics & Proteomics",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/matchms-similarity/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "matchms",
+          "path": "data/tasks/matchms-similarity/environment/skills/matchms",
+          "skill_md": "data/tasks/matchms-similarity/environment/skills/matchms/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "medchem-lilly-demerit": {
+      "task_name": "medchem-lilly-demerit",
+      "domain": "Bioinformatics & Life Sciences",
+      "family": "Mass Spectrometry & Metabolomics",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/medchem-lilly-demerit/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "medchem",
+          "path": "data/tasks/medchem-lilly-demerit/environment/skills/medchem",
+          "skill_md": "data/tasks/medchem-lilly-demerit/environment/skills/medchem/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "medchem-ro5-pass": {
+      "task_name": "medchem-ro5-pass",
+      "domain": "Bioinformatics & Life Sciences",
+      "family": "Mass Spectrometry & Metabolomics",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/medchem-ro5-pass/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "medchem",
+          "path": "data/tasks/medchem-ro5-pass/environment/skills/medchem",
+          "skill_md": "data/tasks/medchem-ro5-pass/environment/skills/medchem/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "molecular-analysis": {
+      "task_name": "molecular-analysis",
+      "domain": "Chemistry & Molecular Sciences",
+      "family": "Molecular Structure Analysis",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/molecular-analysis/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "organic-chemistry",
+          "path": "data/tasks/molecular-analysis/environment/skills/organic-chemistry",
+          "skill_md": "data/tasks/molecular-analysis/environment/skills/organic-chemistry/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "molecular-dynamics-rmsd": {
+      "task_name": "molecular-dynamics-rmsd",
+      "domain": "Chemistry & Molecular Sciences",
+      "family": "Molecular Structure Analysis",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/molecular-dynamics-rmsd/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "molecular-dynamics",
+          "path": "data/tasks/molecular-dynamics-rmsd/environment/skills/molecular-dynamics",
+          "skill_md": "data/tasks/molecular-dynamics-rmsd/environment/skills/molecular-dynamics/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "multilingual-video-dubbing": {
+      "task_name": "multilingual-video-dubbing",
+      "domain": "Document, Media & Web Intelligence",
+      "family": "3D, Video & Motion Analysis",
+      "difficulty_level": 3,
+      "difficulty_name": "Level 3 - Advanced",
+      "difficulty_score_range": "11-15",
+      "skills_dir": "data/tasks/multilingual-video-dubbing/environment/skills",
+      "skill_count": 6,
+      "skills": [
+        {
+          "name": "ffmpeg-audio-processing",
+          "path": "data/tasks/multilingual-video-dubbing/environment/skills/ffmpeg-audio-processing",
+          "skill_md": "data/tasks/multilingual-video-dubbing/environment/skills/ffmpeg-audio-processing/SKILL.md"
+        },
+        {
+          "name": "ffmpeg-format-conversion",
+          "path": "data/tasks/multilingual-video-dubbing/environment/skills/ffmpeg-format-conversion",
+          "skill_md": "data/tasks/multilingual-video-dubbing/environment/skills/ffmpeg-format-conversion/SKILL.md"
+        },
+        {
+          "name": "ffmpeg-media-info",
+          "path": "data/tasks/multilingual-video-dubbing/environment/skills/ffmpeg-media-info",
+          "skill_md": "data/tasks/multilingual-video-dubbing/environment/skills/ffmpeg-media-info/SKILL.md"
+        },
+        {
+          "name": "ffmpeg-video-editing",
+          "path": "data/tasks/multilingual-video-dubbing/environment/skills/ffmpeg-video-editing",
+          "skill_md": "data/tasks/multilingual-video-dubbing/environment/skills/ffmpeg-video-editing/SKILL.md"
+        },
+        {
+          "name": "ffmpeg-video-filters",
+          "path": "data/tasks/multilingual-video-dubbing/environment/skills/ffmpeg-video-filters",
+          "skill_md": "data/tasks/multilingual-video-dubbing/environment/skills/ffmpeg-video-filters/SKILL.md"
+        },
+        {
+          "name": "text-to-speech",
+          "path": "data/tasks/multilingual-video-dubbing/environment/skills/text-to-speech",
+          "skill_md": "data/tasks/multilingual-video-dubbing/environment/skills/text-to-speech/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "organic-chemistry-smarts": {
+      "task_name": "organic-chemistry-smarts",
+      "domain": "Chemistry & Molecular Sciences",
+      "family": "Scientific Computing (JAX/Thermodynamics)",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/organic-chemistry-smarts/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "organic-chemistry",
+          "path": "data/tasks/organic-chemistry-smarts/environment/skills/organic-chemistry",
+          "skill_md": "data/tasks/organic-chemistry-smarts/environment/skills/organic-chemistry/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "parallel-tfidf-search": {
+      "task_name": "parallel-tfidf-search",
+      "domain": "Document, Media & Web Intelligence",
+      "family": "Search, Taxonomy & Clinical Data",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/parallel-tfidf-search/environment/skills",
+      "skill_count": 3,
+      "skills": [
+        {
+          "name": "memory-optimization",
+          "path": "data/tasks/parallel-tfidf-search/environment/skills/memory-optimization",
+          "skill_md": "data/tasks/parallel-tfidf-search/environment/skills/memory-optimization/SKILL.md"
+        },
+        {
+          "name": "python-parallelization",
+          "path": "data/tasks/parallel-tfidf-search/environment/skills/python-parallelization",
+          "skill_md": "data/tasks/parallel-tfidf-search/environment/skills/python-parallelization/SKILL.md"
+        },
+        {
+          "name": "workload-balancing",
+          "path": "data/tasks/parallel-tfidf-search/environment/skills/workload-balancing",
+          "skill_md": "data/tasks/parallel-tfidf-search/environment/skills/workload-balancing/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "pddl-tpp-planning": {
+      "task_name": "pddl-tpp-planning",
+      "domain": "Finance, Economics & Business",
+      "family": "Economic Trend & Fraud Analysis",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/pddl-tpp-planning/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "pddl-skills",
+          "path": "data/tasks/pddl-tpp-planning/environment/skills/pddl-skills",
+          "skill_md": "data/tasks/pddl-tpp-planning/environment/skills/pddl-skills/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "population-genetics-hwe": {
+      "task_name": "population-genetics-hwe",
+      "domain": "Bioinformatics & Life Sciences",
+      "family": "Statistical Genetics & Proteomics",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/population-genetics-hwe/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "population-genetics",
+          "path": "data/tasks/population-genetics-hwe/environment/skills/population-genetics",
+          "skill_md": "data/tasks/population-genetics-hwe/environment/skills/population-genetics/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "powerlifting-coef-calc": {
+      "task_name": "powerlifting-coef-calc",
+      "domain": "Finance, Economics & Business",
+      "family": "Spreadsheet Financial Modeling",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/powerlifting-coef-calc/environment/skills",
+      "skill_count": 3,
+      "skills": [
+        {
+          "name": "powerlifting",
+          "path": "data/tasks/powerlifting-coef-calc/environment/skills/powerlifting",
+          "skill_md": "data/tasks/powerlifting-coef-calc/environment/skills/powerlifting/SKILL.md"
+        },
+        {
+          "name": "senior-data-scientist",
+          "path": "data/tasks/powerlifting-coef-calc/environment/skills/senior-data-scientist",
+          "skill_md": "data/tasks/powerlifting-coef-calc/environment/skills/senior-data-scientist/SKILL.md"
+        },
+        {
+          "name": "xlsx",
+          "path": "data/tasks/powerlifting-coef-calc/environment/skills/xlsx",
+          "skill_md": "data/tasks/powerlifting-coef-calc/environment/skills/xlsx/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "protein-expression-analysis": {
+      "task_name": "protein-expression-analysis",
+      "domain": "Bioinformatics & Life Sciences",
+      "family": "Statistical Genetics & Proteomics",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/protein-expression-analysis/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "xlsx",
+          "path": "data/tasks/protein-expression-analysis/environment/skills/xlsx",
+          "skill_md": "data/tasks/protein-expression-analysis/environment/skills/xlsx/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "pymoo-constrained-opt": {
+      "task_name": "pymoo-constrained-opt",
+      "domain": "Engineering, Energy & Control",
+      "family": "Engineering Optimization",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/pymoo-constrained-opt/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "pymoo",
+          "path": "data/tasks/pymoo-constrained-opt/environment/skills/pymoo",
+          "skill_md": "data/tasks/pymoo-constrained-opt/environment/skills/pymoo/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "pymoo-optimization": {
+      "task_name": "pymoo-optimization",
+      "domain": "Engineering, Energy & Control",
+      "family": "Engineering Optimization",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/pymoo-optimization/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "pymoo-optimization",
+          "path": "data/tasks/pymoo-optimization/environment/skills/pymoo-optimization",
+          "skill_md": "data/tasks/pymoo-optimization/environment/skills/pymoo-optimization/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": [
+        {
+          "name": "references",
+          "path": "data/tasks/pymoo-optimization/environment/skills/references",
+          "type": "directory"
+        },
+        {
+          "name": "scripts",
+          "path": "data/tasks/pymoo-optimization/environment/skills/scripts",
+          "type": "directory"
+        }
+      ]
+    },
+    "quantum-bloch-vector": {
+      "task_name": "quantum-bloch-vector",
+      "domain": "Engineering, Energy & Control",
+      "family": "Quantum Computing",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/quantum-bloch-vector/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "qutip",
+          "path": "data/tasks/quantum-bloch-vector/environment/skills/qutip",
+          "skill_md": "data/tasks/quantum-bloch-vector/environment/skills/qutip/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "quantum-numerical-simulation": {
+      "task_name": "quantum-numerical-simulation",
+      "domain": "Engineering, Energy & Control",
+      "family": "Quantum Computing",
+      "difficulty_level": 3,
+      "difficulty_name": "Level 3 - Advanced",
+      "difficulty_score_range": "11-15",
+      "skills_dir": "data/tasks/quantum-numerical-simulation/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "qutip",
+          "path": "data/tasks/quantum-numerical-simulation/environment/skills/qutip",
+          "skill_md": "data/tasks/quantum-numerical-simulation/environment/skills/qutip/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "qutip-quantum-state": {
+      "task_name": "qutip-quantum-state",
+      "domain": "Engineering, Energy & Control",
+      "family": "Quantum Computing",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/qutip-quantum-state/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "qutip-quantum-state",
+          "path": "data/tasks/qutip-quantum-state/environment/skills/qutip-quantum-state",
+          "skill_md": "data/tasks/qutip-quantum-state/environment/skills/qutip-quantum-state/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": [
+        {
+          "name": "references",
+          "path": "data/tasks/qutip-quantum-state/environment/skills/references",
+          "type": "directory"
+        }
+      ]
+    },
+    "r2r-mpc-control": {
+      "task_name": "r2r-mpc-control",
+      "domain": "Engineering, Energy & Control",
+      "family": "Control Systems (PID/MPC)",
+      "difficulty_level": 3,
+      "difficulty_name": "Level 3 - Advanced",
+      "difficulty_score_range": "11-15",
+      "skills_dir": "data/tasks/r2r-mpc-control/environment/skills",
+      "skill_count": 4,
+      "skills": [
+        {
+          "name": "finite-horizon-lqr",
+          "path": "data/tasks/r2r-mpc-control/environment/skills/finite-horizon-lqr",
+          "skill_md": "data/tasks/r2r-mpc-control/environment/skills/finite-horizon-lqr/SKILL.md"
+        },
+        {
+          "name": "integral-action-design",
+          "path": "data/tasks/r2r-mpc-control/environment/skills/integral-action-design",
+          "skill_md": "data/tasks/r2r-mpc-control/environment/skills/integral-action-design/SKILL.md"
+        },
+        {
+          "name": "mpc-horizon-tuning",
+          "path": "data/tasks/r2r-mpc-control/environment/skills/mpc-horizon-tuning",
+          "skill_md": "data/tasks/r2r-mpc-control/environment/skills/mpc-horizon-tuning/SKILL.md"
+        },
+        {
+          "name": "state-space-linearization",
+          "path": "data/tasks/r2r-mpc-control/environment/skills/state-space-linearization",
+          "skill_md": "data/tasks/r2r-mpc-control/environment/skills/state-space-linearization/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "reaction-type": {
+      "task_name": "reaction-type",
+      "domain": "Chemistry & Molecular Sciences",
+      "family": "Chemical Informatics",
+      "difficulty_level": 3,
+      "difficulty_name": "Level 3 - Advanced",
+      "difficulty_score_range": "11-15",
+      "skills_dir": "data/tasks/reaction-type/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "organic-chemistry",
+          "path": "data/tasks/reaction-type/environment/skills/organic-chemistry",
+          "skill_md": "data/tasks/reaction-type/environment/skills/organic-chemistry/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "reserves-at-risk-calc": {
+      "task_name": "reserves-at-risk-calc",
+      "domain": "Engineering, Energy & Control",
+      "family": "Power Systems Optimization",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/reserves-at-risk-calc/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "xlsx",
+          "path": "data/tasks/reserves-at-risk-calc/environment/skills/xlsx",
+          "skill_md": "data/tasks/reserves-at-risk-calc/environment/skills/xlsx/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "sales-pivot-analysis": {
+      "task_name": "sales-pivot-analysis",
+      "domain": "Finance, Economics & Business",
+      "family": "Spreadsheet Financial Modeling",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/sales-pivot-analysis/environment/skills",
+      "skill_count": 2,
+      "skills": [
+        {
+          "name": "pdf",
+          "path": "data/tasks/sales-pivot-analysis/environment/skills/pdf",
+          "skill_md": "data/tasks/sales-pivot-analysis/environment/skills/pdf/SKILL.md"
+        },
+        {
+          "name": "xlsx",
+          "path": "data/tasks/sales-pivot-analysis/environment/skills/xlsx",
+          "skill_md": "data/tasks/sales-pivot-analysis/environment/skills/xlsx/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "scikit-bio-alignment": {
+      "task_name": "scikit-bio-alignment",
+      "domain": "Bioinformatics & Life Sciences",
+      "family": "Bio Sequence Analysis",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/scikit-bio-alignment/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "scikit-bio",
+          "path": "data/tasks/scikit-bio-alignment/environment/skills/scikit-bio",
+          "skill_md": "data/tasks/scikit-bio-alignment/environment/skills/scikit-bio/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "scikit-bio-sequence": {
+      "task_name": "scikit-bio-sequence",
+      "domain": "Bioinformatics & Life Sciences",
+      "family": "Bio Sequence Analysis",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/scikit-bio-sequence/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "scikit-bio",
+          "path": "data/tasks/scikit-bio-sequence/environment/skills/scikit-bio",
+          "skill_md": "data/tasks/scikit-bio-sequence/environment/skills/scikit-bio/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "scikit-survival-cox": {
+      "task_name": "scikit-survival-cox",
+      "domain": "Bioinformatics & Life Sciences",
+      "family": "VCF & Genomic Variant Processing",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/scikit-survival-cox/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "scikit-survival",
+          "path": "data/tasks/scikit-survival-cox/environment/skills/scikit-survival",
+          "skill_md": "data/tasks/scikit-survival-cox/environment/skills/scikit-survival/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "sec-financial-report": {
+      "task_name": "sec-financial-report",
+      "domain": "Finance, Economics & Business",
+      "family": "Spreadsheet Financial Modeling",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/sec-financial-report/environment/skills",
+      "skill_count": 2,
+      "skills": [
+        {
+          "name": "13f-analyzer",
+          "path": "data/tasks/sec-financial-report/environment/skills/13f-analyzer",
+          "skill_md": "data/tasks/sec-financial-report/environment/skills/13f-analyzer/SKILL.md"
+        },
+        {
+          "name": "fuzzy-name-search",
+          "path": "data/tasks/sec-financial-report/environment/skills/fuzzy-name-search",
+          "skill_md": "data/tasks/sec-financial-report/environment/skills/fuzzy-name-search/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "seismic-phase-picking": {
+      "task_name": "seismic-phase-picking",
+      "domain": "Earth, Climate & Geophysics",
+      "family": "Seismology & Geophysics",
+      "difficulty_level": 3,
+      "difficulty_name": "Level 3 - Advanced",
+      "difficulty_score_range": "11-15",
+      "skills_dir": "data/tasks/seismic-phase-picking/environment/skills",
+      "skill_count": 4,
+      "skills": [
+        {
+          "name": "obspy-data-api",
+          "path": "data/tasks/seismic-phase-picking/environment/skills/obspy-data-api",
+          "skill_md": "data/tasks/seismic-phase-picking/environment/skills/obspy-data-api/SKILL.md"
+        },
+        {
+          "name": "obspy-datacenter-client",
+          "path": "data/tasks/seismic-phase-picking/environment/skills/obspy-datacenter-client",
+          "skill_md": "data/tasks/seismic-phase-picking/environment/skills/obspy-datacenter-client/SKILL.md"
+        },
+        {
+          "name": "seisbench-model-api",
+          "path": "data/tasks/seismic-phase-picking/environment/skills/seisbench-model-api",
+          "skill_md": "data/tasks/seismic-phase-picking/environment/skills/seisbench-model-api/SKILL.md"
+        },
+        {
+          "name": "seismic-picker-selection",
+          "path": "data/tasks/seismic-phase-picking/environment/skills/seismic-picker-selection",
+          "skill_md": "data/tasks/seismic-phase-picking/environment/skills/seismic-picker-selection/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": [
+        {
+          "name": "licenses",
+          "path": "data/tasks/seismic-phase-picking/environment/skills/licenses",
+          "type": "directory"
+        }
+      ]
+    },
+    "shock-analysis-demand": {
+      "task_name": "shock-analysis-demand",
+      "domain": "Earth, Climate & Geophysics",
+      "family": "Macro-Economic Shock Analysis",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/shock-analysis-demand/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "xlsx",
+          "path": "data/tasks/shock-analysis-demand/environment/skills/xlsx",
+          "skill_md": "data/tasks/shock-analysis-demand/environment/skills/xlsx/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "shock-analysis-supply": {
+      "task_name": "shock-analysis-supply",
+      "domain": "Earth, Climate & Geophysics",
+      "family": "Macro-Economic Shock Analysis",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/shock-analysis-supply/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "xlsx",
+          "path": "data/tasks/shock-analysis-supply/environment/skills/xlsx",
+          "skill_md": "data/tasks/shock-analysis-supply/environment/skills/xlsx/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "simpo-code-reproduction": {
+      "task_name": "simpo-code-reproduction",
+      "domain": "Software Engineering & Security",
+      "family": "Code Audit & Formal Verification",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/simpo-code-reproduction/environment/skills",
+      "skill_count": 2,
+      "skills": [
+        {
+          "name": "nlp-research-repo-package-installment",
+          "path": "data/tasks/simpo-code-reproduction/environment/skills/nlp-research-repo-package-installment",
+          "skill_md": "data/tasks/simpo-code-reproduction/environment/skills/nlp-research-repo-package-installment/SKILL.md"
+        },
+        {
+          "name": "pdf",
+          "path": "data/tasks/simpo-code-reproduction/environment/skills/pdf",
+          "skill_md": "data/tasks/simpo-code-reproduction/environment/skills/pdf/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "software-dependency-audit": {
+      "task_name": "software-dependency-audit",
+      "domain": "Software Engineering & Security",
+      "family": "Code Audit & Formal Verification",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/software-dependency-audit/environment/skills",
+      "skill_count": 3,
+      "skills": [
+        {
+          "name": "cvss-score-extraction",
+          "path": "data/tasks/software-dependency-audit/environment/skills/cvss-score-extraction",
+          "skill_md": "data/tasks/software-dependency-audit/environment/skills/cvss-score-extraction/SKILL.md"
+        },
+        {
+          "name": "trivy-offline-vulnerability-scanning",
+          "path": "data/tasks/software-dependency-audit/environment/skills/trivy-offline-vulnerability-scanning",
+          "skill_md": "data/tasks/software-dependency-audit/environment/skills/trivy-offline-vulnerability-scanning/SKILL.md"
+        },
+        {
+          "name": "vulnerability-csv-reporting",
+          "path": "data/tasks/software-dependency-audit/environment/skills/vulnerability-csv-reporting",
+          "skill_md": "data/tasks/software-dependency-audit/environment/skills/vulnerability-csv-reporting/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "suricata-custom-exfil": {
+      "task_name": "suricata-custom-exfil",
+      "domain": "Software Engineering & Security",
+      "family": "Network Security & Intrusion Detection",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/suricata-custom-exfil/environment/skills",
+      "skill_count": 3,
+      "skills": [
+        {
+          "name": "pcap-triage-tshark",
+          "path": "data/tasks/suricata-custom-exfil/environment/skills/pcap-triage-tshark",
+          "skill_md": "data/tasks/suricata-custom-exfil/environment/skills/pcap-triage-tshark/SKILL.md"
+        },
+        {
+          "name": "suricata-offline-evejson",
+          "path": "data/tasks/suricata-custom-exfil/environment/skills/suricata-offline-evejson",
+          "skill_md": "data/tasks/suricata-custom-exfil/environment/skills/suricata-offline-evejson/SKILL.md"
+        },
+        {
+          "name": "suricata-rules-basics",
+          "path": "data/tasks/suricata-custom-exfil/environment/skills/suricata-rules-basics",
+          "skill_md": "data/tasks/suricata-custom-exfil/environment/skills/suricata-rules-basics/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "syzkaller-ppdev-syzlang": {
+      "task_name": "syzkaller-ppdev-syzlang",
+      "domain": "Software Engineering & Security",
+      "family": "Code Audit & Formal Verification",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/syzkaller-ppdev-syzlang/environment/skills",
+      "skill_count": 3,
+      "skills": [
+        {
+          "name": "syz-extract-constants",
+          "path": "data/tasks/syzkaller-ppdev-syzlang/environment/skills/syz-extract-constants",
+          "skill_md": "data/tasks/syzkaller-ppdev-syzlang/environment/skills/syz-extract-constants/SKILL.md"
+        },
+        {
+          "name": "syzkaller-build-loop",
+          "path": "data/tasks/syzkaller-ppdev-syzlang/environment/skills/syzkaller-build-loop",
+          "skill_md": "data/tasks/syzkaller-ppdev-syzlang/environment/skills/syzkaller-build-loop/SKILL.md"
+        },
+        {
+          "name": "syzlang-ioctl-basics",
+          "path": "data/tasks/syzkaller-ppdev-syzlang/environment/skills/syzlang-ioctl-basics",
+          "skill_md": "data/tasks/syzkaller-ppdev-syzlang/environment/skills/syzlang-ioctl-basics/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "taxonomy-tree-merge": {
+      "task_name": "taxonomy-tree-merge",
+      "domain": "Document, Media & Web Intelligence",
+      "family": "Search, Taxonomy & Clinical Data",
+      "difficulty_level": 3,
+      "difficulty_name": "Level 3 - Advanced",
+      "difficulty_score_range": "11-15",
+      "skills_dir": "data/tasks/taxonomy-tree-merge/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "hierarchical-taxonomy-clustering",
+          "path": "data/tasks/taxonomy-tree-merge/environment/skills/hierarchical-taxonomy-clustering",
+          "skill_md": "data/tasks/taxonomy-tree-merge/environment/skills/hierarchical-taxonomy-clustering/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "threejs-structure-parser": {
+      "task_name": "threejs-structure-parser",
+      "domain": "Document, Media & Web Intelligence",
+      "family": "3D, Video & Motion Analysis",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/threejs-structure-parser/environment/skills",
+      "skill_count": 2,
+      "skills": [
+        {
+          "name": "obj-exporter",
+          "path": "data/tasks/threejs-structure-parser/environment/skills/obj-exporter",
+          "skill_md": "data/tasks/threejs-structure-parser/environment/skills/obj-exporter/SKILL.md"
+        },
+        {
+          "name": "threejs",
+          "path": "data/tasks/threejs-structure-parser/environment/skills/threejs",
+          "skill_md": "data/tasks/threejs-structure-parser/environment/skills/threejs/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "threejs-to-obj": {
+      "task_name": "threejs-to-obj",
+      "domain": "Document, Media & Web Intelligence",
+      "family": "3D, Video & Motion Analysis",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/threejs-to-obj/environment/skills",
+      "skill_count": 2,
+      "skills": [
+        {
+          "name": "obj-exporter",
+          "path": "data/tasks/threejs-to-obj/environment/skills/obj-exporter",
+          "skill_md": "data/tasks/threejs-to-obj/environment/skills/obj-exporter/SKILL.md"
+        },
+        {
+          "name": "threejs",
+          "path": "data/tasks/threejs-to-obj/environment/skills/threejs",
+          "skill_md": "data/tasks/threejs-to-obj/environment/skills/threejs/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "variant-annotation": {
+      "task_name": "variant-annotation",
+      "domain": "Bioinformatics & Life Sciences",
+      "family": "VCF & Genomic Variant Processing",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/variant-annotation/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "variant-analysis",
+          "path": "data/tasks/variant-annotation/environment/skills/variant-analysis",
+          "skill_md": "data/tasks/variant-annotation/environment/skills/variant-analysis/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "vcf-pass-count": {
+      "task_name": "vcf-pass-count",
+      "domain": "Bioinformatics & Life Sciences",
+      "family": "VCF & Genomic Variant Processing",
+      "difficulty_level": 1,
+      "difficulty_name": "Level 1 - Entry",
+      "difficulty_score_range": "5-7",
+      "skills_dir": "data/tasks/vcf-pass-count/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "variant-analysis",
+          "path": "data/tasks/vcf-pass-count/environment/skills/variant-analysis",
+          "skill_md": "data/tasks/vcf-pass-count/environment/skills/variant-analysis/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    },
+    "weighted-gdp-calc": {
+      "task_name": "weighted-gdp-calc",
+      "domain": "Finance, Economics & Business",
+      "family": "Spreadsheet Financial Modeling",
+      "difficulty_level": 2,
+      "difficulty_name": "Level 2 - Intermediate",
+      "difficulty_score_range": "8-10",
+      "skills_dir": "data/tasks/weighted-gdp-calc/environment/skills",
+      "skill_count": 1,
+      "skills": [
+        {
+          "name": "xlsx",
+          "path": "data/tasks/weighted-gdp-calc/environment/skills/xlsx",
+          "skill_md": "data/tasks/weighted-gdp-calc/environment/skills/xlsx/SKILL.md"
+        }
+      ],
+      "auxiliary_entries": []
+    }
+  },
+  "skills": {
+    "13f-analyzer": {
+      "task_count": 1,
+      "tasks": [
+        "sec-financial-report"
+      ],
+      "domains": [
+        "Finance, Economics & Business"
+      ],
+      "families": [
+        "Spreadsheet Financial Modeling"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "ac-branch-pi-model": {
+      "task_count": 1,
+      "tasks": [
+        "energy-ac-optimal-power-flow"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Power Systems Optimization"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "azure-bgp": {
+      "task_count": 1,
+      "tasks": [
+        "azure-bgp-oscillation-route-leak"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "Network Security & Intrusion Detection"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "box-least-squares": {
+      "task_count": 1,
+      "tasks": [
+        "exoplanet-detection-period"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "casadi-ipopt-nlp": {
+      "task_count": 1,
+      "tasks": [
+        "energy-ac-optimal-power-flow"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Power Systems Optimization"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "computational-biophysics": {
+      "task_count": 1,
+      "tasks": [
+        "computational-biophysics-dihedral"
+      ],
+      "domains": [
+        "Chemistry & Molecular Sciences"
+      ],
+      "families": [
+        "Molecular Structure Analysis"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "conditioning": {
+      "task_count": 1,
+      "tasks": [
+        "gravitational-wave-detection"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Seismology & Geophysics"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "contribution-analysis": {
+      "task_count": 1,
+      "tasks": [
+        "lake-warming-attribution"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "csv-processing": {
+      "task_count": 1,
+      "tasks": [
+        "adaptive-cruise-control"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Control Systems (PID/MPC)"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "custom-distance-metrics": {
+      "task_count": 1,
+      "tasks": [
+        "mars-clouds-clustering"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "cvss-score-extraction": {
+      "task_count": 1,
+      "tasks": [
+        "software-dependency-audit"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "Code Audit & Formal Verification"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "dc-power-flow": {
+      "task_count": 2,
+      "tasks": [
+        "energy-market-pricing",
+        "grid-dispatch-operator"
+      ],
+      "domains": [
+        "Engineering, Energy & Control",
+        "Finance, Economics & Business"
+      ],
+      "families": [
+        "Economic Trend & Fraud Analysis",
+        "Power Systems Optimization"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "dyn-object-masks": {
+      "task_count": 1,
+      "tasks": [
+        "dynamic-object-aware-egomotion"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "3D, Video & Motion Analysis"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "economic-dispatch": {
+      "task_count": 2,
+      "tasks": [
+        "energy-market-pricing",
+        "grid-dispatch-operator"
+      ],
+      "domains": [
+        "Engineering, Energy & Control",
+        "Finance, Economics & Business"
+      ],
+      "families": [
+        "Economic Trend & Fraud Analysis",
+        "Power Systems Optimization"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "egomotion-estimation": {
+      "task_count": 1,
+      "tasks": [
+        "dynamic-object-aware-egomotion"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "3D, Video & Motion Analysis"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "erlang-concurrency": {
+      "task_count": 1,
+      "tasks": [
+        "fix-erlang-ssh-cve"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "CVE & Vulnerability Fixing"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "erlang-distribution": {
+      "task_count": 1,
+      "tasks": [
+        "fix-erlang-ssh-cve"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "CVE & Vulnerability Fixing"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "erlang-otp-behaviors": {
+      "task_count": 1,
+      "tasks": [
+        "fix-erlang-ssh-cve"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "CVE & Vulnerability Fixing"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "excitation-signal-design": {
+      "task_count": 1,
+      "tasks": [
+        "hvac-control"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Control Systems (PID/MPC)"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "exoplanet-workflows": {
+      "task_count": 1,
+      "tasks": [
+        "exoplanet-detection-period"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "ffmpeg-audio-processing": {
+      "task_count": 1,
+      "tasks": [
+        "multilingual-video-dubbing"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "3D, Video & Motion Analysis"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "ffmpeg-format-conversion": {
+      "task_count": 1,
+      "tasks": [
+        "multilingual-video-dubbing"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "3D, Video & Motion Analysis"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "ffmpeg-media-info": {
+      "task_count": 1,
+      "tasks": [
+        "multilingual-video-dubbing"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "3D, Video & Motion Analysis"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "ffmpeg-video-editing": {
+      "task_count": 1,
+      "tasks": [
+        "multilingual-video-dubbing"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "3D, Video & Motion Analysis"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "ffmpeg-video-filters": {
+      "task_count": 1,
+      "tasks": [
+        "multilingual-video-dubbing"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "3D, Video & Motion Analysis"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "find-bugs": {
+      "task_count": 1,
+      "tasks": [
+        "fix-erlang-ssh-cve"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "CVE & Vulnerability Fixing"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "finite-horizon-lqr": {
+      "task_count": 1,
+      "tasks": [
+        "r2r-mpc-control"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Control Systems (PID/MPC)"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "first-order-model-fitting": {
+      "task_count": 1,
+      "tasks": [
+        "hvac-control"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Control Systems (PID/MPC)"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "fjsp-baseline-repair-with-downtime-and-policy": {
+      "task_count": 1,
+      "tasks": [
+        "manufacturing-fjsp-optimization"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Engineering Optimization"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "flood-detection": {
+      "task_count": 1,
+      "tasks": [
+        "flood-risk-analysis"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "fluidsim": {
+      "task_count": 1,
+      "tasks": [
+        "fluidsim-nusselt-number"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Fluid Dynamics & Heat Transfer"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "fluidsim-pipe-flow": {
+      "task_count": 1,
+      "tasks": [
+        "fluidsim-pipe-flow"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Fluid Dynamics & Heat Transfer"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "fuzzy-match": {
+      "task_count": 1,
+      "tasks": [
+        "invoice-fraud-detection"
+      ],
+      "domains": [
+        "Finance, Economics & Business"
+      ],
+      "families": [
+        "Economic Trend & Fraud Analysis"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "fuzzy-name-search": {
+      "task_count": 1,
+      "tasks": [
+        "sec-financial-report"
+      ],
+      "domains": [
+        "Finance, Economics & Business"
+      ],
+      "families": [
+        "Spreadsheet Financial Modeling"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "gamma-phase-associator": {
+      "task_count": 1,
+      "tasks": [
+        "earthquake-phase-association"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Seismology & Geophysics"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "geospatial-analysis": {
+      "task_count": 1,
+      "tasks": [
+        "earthquake-plate-calculation"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Seismology & Geophysics"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "glm-basics": {
+      "task_count": 1,
+      "tasks": [
+        "glm-lake-mendota"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "glm-calibration": {
+      "task_count": 1,
+      "tasks": [
+        "glm-lake-mendota"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "glm-output": {
+      "task_count": 1,
+      "tasks": [
+        "glm-lake-mendota"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "hierarchical-taxonomy-clustering": {
+      "task_count": 1,
+      "tasks": [
+        "taxonomy-tree-merge"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "Search, Taxonomy & Clinical Data"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "image-ocr": {
+      "task_count": 1,
+      "tasks": [
+        "jpg-ocr-stat"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "Document & Text Extraction"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "imc-tuning-rules": {
+      "task_count": 1,
+      "tasks": [
+        "hvac-control"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Control Systems (PID/MPC)"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "inorganic-physics-thermo": {
+      "task_count": 1,
+      "tasks": [
+        "inorganic-physics-thermo"
+      ],
+      "domains": [
+        "Chemistry & Molecular Sciences"
+      ],
+      "families": [
+        "Scientific Computing (JAX/Thermodynamics)"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "integral-action-design": {
+      "task_count": 1,
+      "tasks": [
+        "r2r-mpc-control"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Control Systems (PID/MPC)"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "jackson-security": {
+      "task_count": 1,
+      "tasks": [
+        "fix-druid-loophole-cve"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "CVE & Vulnerability Fixing"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "jax-skills": {
+      "task_count": 1,
+      "tasks": [
+        "jax-computing-basics"
+      ],
+      "domains": [
+        "Chemistry & Molecular Sciences"
+      ],
+      "families": [
+        "Scientific Computing (JAX/Thermodynamics)"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "lab-unit-harmonization": {
+      "task_count": 1,
+      "tasks": [
+        "lab-unit-harmonization"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "Search, Taxonomy & Clinical Data"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "lean4-memories": {
+      "task_count": 1,
+      "tasks": [
+        "lean4-proof"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "Code Audit & Formal Verification"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "lean4-theorem-proving": {
+      "task_count": 1,
+      "tasks": [
+        "lean4-proof"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "Code Audit & Formal Verification"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "light-curve-preprocessing": {
+      "task_count": 1,
+      "tasks": [
+        "exoplanet-detection-period"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "locational-marginal-prices": {
+      "task_count": 1,
+      "tasks": [
+        "energy-market-pricing"
+      ],
+      "domains": [
+        "Finance, Economics & Business"
+      ],
+      "families": [
+        "Economic Trend & Fraud Analysis"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "lomb-scargle-periodogram": {
+      "task_count": 1,
+      "tasks": [
+        "exoplanet-detection-period"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "marker": {
+      "task_count": 1,
+      "tasks": [
+        "latex-formula-extraction"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "Document & Text Extraction"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "matched-filtering": {
+      "task_count": 1,
+      "tasks": [
+        "gravitational-wave-detection"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Seismology & Geophysics"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "matchms": {
+      "task_count": 2,
+      "tasks": [
+        "matchms-count-spectra",
+        "matchms-similarity"
+      ],
+      "domains": [
+        "Bioinformatics & Life Sciences"
+      ],
+      "families": [
+        "Mass Spectrometry & Metabolomics",
+        "Statistical Genetics & Proteomics"
+      ],
+      "difficulty_levels": [
+        1,
+        2
+      ]
+    },
+    "medchem": {
+      "task_count": 2,
+      "tasks": [
+        "medchem-lilly-demerit",
+        "medchem-ro5-pass"
+      ],
+      "domains": [
+        "Bioinformatics & Life Sciences"
+      ],
+      "families": [
+        "Mass Spectrometry & Metabolomics"
+      ],
+      "difficulty_levels": [
+        1,
+        2
+      ]
+    },
+    "memory-optimization": {
+      "task_count": 1,
+      "tasks": [
+        "parallel-tfidf-search"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "Search, Taxonomy & Clinical Data"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "mesh-analysis": {
+      "task_count": 1,
+      "tasks": [
+        "3d-scan-calc"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "3D, Video & Motion Analysis"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "meteorology-driver-classification": {
+      "task_count": 1,
+      "tasks": [
+        "lake-warming-attribution"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "molecular-dynamics": {
+      "task_count": 1,
+      "tasks": [
+        "molecular-dynamics-rmsd"
+      ],
+      "domains": [
+        "Chemistry & Molecular Sciences"
+      ],
+      "families": [
+        "Molecular Structure Analysis"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "mpc-horizon-tuning": {
+      "task_count": 1,
+      "tasks": [
+        "r2r-mpc-control"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Control Systems (PID/MPC)"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "nlp-research-repo-package-installment": {
+      "task_count": 1,
+      "tasks": [
+        "simpo-code-reproduction"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "Code Audit & Formal Verification"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "nws-flood-thresholds": {
+      "task_count": 1,
+      "tasks": [
+        "flood-risk-analysis"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "obj-exporter": {
+      "task_count": 2,
+      "tasks": [
+        "threejs-structure-parser",
+        "threejs-to-obj"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "3D, Video & Motion Analysis"
+      ],
+      "difficulty_levels": [
+        1,
+        2
+      ]
+    },
+    "obspy-data-api": {
+      "task_count": 2,
+      "tasks": [
+        "earthquake-phase-association",
+        "seismic-phase-picking"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Seismology & Geophysics"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "obspy-datacenter-client": {
+      "task_count": 1,
+      "tasks": [
+        "seismic-phase-picking"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Seismology & Geophysics"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "openai-vision": {
+      "task_count": 1,
+      "tasks": [
+        "jpg-ocr-stat"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "Document & Text Extraction"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "organic-chemistry": {
+      "task_count": 4,
+      "tasks": [
+        "isomer-counting",
+        "molecular-analysis",
+        "organic-chemistry-smarts",
+        "reaction-type"
+      ],
+      "domains": [
+        "Chemistry & Molecular Sciences"
+      ],
+      "families": [
+        "Chemical Informatics",
+        "Molecular Structure Analysis",
+        "Scientific Computing (JAX/Thermodynamics)"
+      ],
+      "difficulty_levels": [
+        2,
+        3
+      ]
+    },
+    "output-validation": {
+      "task_count": 1,
+      "tasks": [
+        "dynamic-object-aware-egomotion"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "3D, Video & Motion Analysis"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "parallel-processing": {
+      "task_count": 1,
+      "tasks": [
+        "mars-clouds-clustering"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "pareto-optimization": {
+      "task_count": 1,
+      "tasks": [
+        "mars-clouds-clustering"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "pca-decomposition": {
+      "task_count": 1,
+      "tasks": [
+        "lake-warming-attribution"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "pcap-analysis": {
+      "task_count": 1,
+      "tasks": [
+        "dapt-intrusion-detection"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "Network Security & Intrusion Detection"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "pcap-triage-tshark": {
+      "task_count": 1,
+      "tasks": [
+        "suricata-custom-exfil"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "Network Security & Intrusion Detection"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "pddl-skills": {
+      "task_count": 1,
+      "tasks": [
+        "pddl-tpp-planning"
+      ],
+      "domains": [
+        "Finance, Economics & Business"
+      ],
+      "families": [
+        "Economic Trend & Fraud Analysis"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "pdf": {
+      "task_count": 8,
+      "tasks": [
+        "court-form-filling",
+        "financial-modeling-qa",
+        "find-topk-similiar-chemicals",
+        "invoice-fraud-detection",
+        "jpg-ocr-stat",
+        "latex-formula-extraction",
+        "sales-pivot-analysis",
+        "simpo-code-reproduction"
+      ],
+      "domains": [
+        "Chemistry & Molecular Sciences",
+        "Document, Media & Web Intelligence",
+        "Finance, Economics & Business",
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "Chemical Informatics",
+        "Code Audit & Formal Verification",
+        "Document & Text Extraction",
+        "Economic Trend & Fraud Analysis",
+        "Spreadsheet Financial Modeling"
+      ],
+      "difficulty_levels": [
+        1,
+        2,
+        3
+      ]
+    },
+    "pid-controller": {
+      "task_count": 1,
+      "tasks": [
+        "adaptive-cruise-control"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Control Systems (PID/MPC)"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "population-genetics": {
+      "task_count": 1,
+      "tasks": [
+        "population-genetics-hwe"
+      ],
+      "domains": [
+        "Bioinformatics & Life Sciences"
+      ],
+      "families": [
+        "Statistical Genetics & Proteomics"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "power-flow-data": {
+      "task_count": 3,
+      "tasks": [
+        "energy-ac-optimal-power-flow",
+        "energy-market-pricing",
+        "grid-dispatch-operator"
+      ],
+      "domains": [
+        "Engineering, Energy & Control",
+        "Finance, Economics & Business"
+      ],
+      "families": [
+        "Economic Trend & Fraud Analysis",
+        "Power Systems Optimization"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "powerlifting": {
+      "task_count": 1,
+      "tasks": [
+        "powerlifting-coef-calc"
+      ],
+      "domains": [
+        "Finance, Economics & Business"
+      ],
+      "families": [
+        "Spreadsheet Financial Modeling"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "pubchem-database": {
+      "task_count": 1,
+      "tasks": [
+        "find-topk-similiar-chemicals"
+      ],
+      "domains": [
+        "Chemistry & Molecular Sciences"
+      ],
+      "families": [
+        "Chemical Informatics"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "pymoo": {
+      "task_count": 1,
+      "tasks": [
+        "pymoo-constrained-opt"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Engineering Optimization"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "pymoo-optimization": {
+      "task_count": 1,
+      "tasks": [
+        "pymoo-optimization"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Engineering Optimization"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "python-parallelization": {
+      "task_count": 1,
+      "tasks": [
+        "parallel-tfidf-search"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "Search, Taxonomy & Clinical Data"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "qutip": {
+      "task_count": 2,
+      "tasks": [
+        "quantum-bloch-vector",
+        "quantum-numerical-simulation"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Quantum Computing"
+      ],
+      "difficulty_levels": [
+        1,
+        3
+      ]
+    },
+    "qutip-quantum-state": {
+      "task_count": 1,
+      "tasks": [
+        "qutip-quantum-state"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Quantum Computing"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "rdkit": {
+      "task_count": 1,
+      "tasks": [
+        "find-topk-similiar-chemicals"
+      ],
+      "domains": [
+        "Chemistry & Molecular Sciences"
+      ],
+      "families": [
+        "Chemical Informatics"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "safety-interlocks": {
+      "task_count": 1,
+      "tasks": [
+        "hvac-control"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Control Systems (PID/MPC)"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "sampling-and-indexing": {
+      "task_count": 1,
+      "tasks": [
+        "dynamic-object-aware-egomotion"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "3D, Video & Motion Analysis"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "scikit-bio": {
+      "task_count": 2,
+      "tasks": [
+        "scikit-bio-alignment",
+        "scikit-bio-sequence"
+      ],
+      "domains": [
+        "Bioinformatics & Life Sciences"
+      ],
+      "families": [
+        "Bio Sequence Analysis"
+      ],
+      "difficulty_levels": [
+        1,
+        2
+      ]
+    },
+    "scikit-survival": {
+      "task_count": 1,
+      "tasks": [
+        "scikit-survival-cox"
+      ],
+      "domains": [
+        "Bioinformatics & Life Sciences"
+      ],
+      "families": [
+        "VCF & Genomic Variant Processing"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "scipy-curve-fit": {
+      "task_count": 1,
+      "tasks": [
+        "hvac-control"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Control Systems (PID/MPC)"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "seisbench-model-api": {
+      "task_count": 2,
+      "tasks": [
+        "earthquake-phase-association",
+        "seismic-phase-picking"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Seismology & Geophysics"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "seismic-picker-selection": {
+      "task_count": 2,
+      "tasks": [
+        "earthquake-phase-association",
+        "seismic-phase-picking"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Seismology & Geophysics"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "senior-data-scientist": {
+      "task_count": 1,
+      "tasks": [
+        "powerlifting-coef-calc"
+      ],
+      "domains": [
+        "Finance, Economics & Business"
+      ],
+      "families": [
+        "Spreadsheet Financial Modeling"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "senior-java": {
+      "task_count": 1,
+      "tasks": [
+        "fix-druid-loophole-cve"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "CVE & Vulnerability Fixing"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "senior-security": {
+      "task_count": 1,
+      "tasks": [
+        "fix-erlang-ssh-cve"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "CVE & Vulnerability Fixing"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "sequence-analysis": {
+      "task_count": 1,
+      "tasks": [
+        "dna-frame2-translation"
+      ],
+      "domains": [
+        "Bioinformatics & Life Sciences"
+      ],
+      "families": [
+        "Bio Sequence Analysis"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "simulation-metrics": {
+      "task_count": 1,
+      "tasks": [
+        "adaptive-cruise-control"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Control Systems (PID/MPC)"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "ssh-penetration-testing": {
+      "task_count": 1,
+      "tasks": [
+        "fix-erlang-ssh-cve"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "CVE & Vulnerability Fixing"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "state-space-linearization": {
+      "task_count": 1,
+      "tasks": [
+        "r2r-mpc-control"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Control Systems (PID/MPC)"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "suricata-offline-evejson": {
+      "task_count": 1,
+      "tasks": [
+        "suricata-custom-exfil"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "Network Security & Intrusion Detection"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "suricata-rules-basics": {
+      "task_count": 1,
+      "tasks": [
+        "suricata-custom-exfil"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "Network Security & Intrusion Detection"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "syz-extract-constants": {
+      "task_count": 1,
+      "tasks": [
+        "syzkaller-ppdev-syzlang"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "Code Audit & Formal Verification"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "syzkaller-build-loop": {
+      "task_count": 1,
+      "tasks": [
+        "syzkaller-ppdev-syzlang"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "Code Audit & Formal Verification"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "syzlang-ioctl-basics": {
+      "task_count": 1,
+      "tasks": [
+        "syzkaller-ppdev-syzlang"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "Code Audit & Formal Verification"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "text-to-speech": {
+      "task_count": 1,
+      "tasks": [
+        "multilingual-video-dubbing"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "3D, Video & Motion Analysis"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "threat-detection": {
+      "task_count": 1,
+      "tasks": [
+        "dapt-intrusion-detection"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "Network Security & Intrusion Detection"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "threejs": {
+      "task_count": 2,
+      "tasks": [
+        "threejs-structure-parser",
+        "threejs-to-obj"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "3D, Video & Motion Analysis"
+      ],
+      "difficulty_levels": [
+        1,
+        2
+      ]
+    },
+    "timeseries-detrending": {
+      "task_count": 1,
+      "tasks": [
+        "econ-detrending-correlation"
+      ],
+      "domains": [
+        "Finance, Economics & Business"
+      ],
+      "families": [
+        "Economic Trend & Fraud Analysis"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "transit-least-squares": {
+      "task_count": 1,
+      "tasks": [
+        "exoplanet-detection-period"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "trend-analysis": {
+      "task_count": 1,
+      "tasks": [
+        "lake-warming-attribution"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "trivy-offline-vulnerability-scanning": {
+      "task_count": 1,
+      "tasks": [
+        "software-dependency-audit"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "Code Audit & Formal Verification"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "usgs-data-download": {
+      "task_count": 1,
+      "tasks": [
+        "flood-risk-analysis"
+      ],
+      "domains": [
+        "Earth, Climate & Geophysics"
+      ],
+      "families": [
+        "Climate & Environmental Modeling"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "variant-analysis": {
+      "task_count": 2,
+      "tasks": [
+        "variant-annotation",
+        "vcf-pass-count"
+      ],
+      "domains": [
+        "Bioinformatics & Life Sciences"
+      ],
+      "families": [
+        "VCF & Genomic Variant Processing"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "vehicle-dynamics": {
+      "task_count": 1,
+      "tasks": [
+        "adaptive-cruise-control"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Control Systems (PID/MPC)"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    },
+    "video-frame-extraction": {
+      "task_count": 1,
+      "tasks": [
+        "jpg-ocr-stat"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "Document & Text Extraction"
+      ],
+      "difficulty_levels": [
+        1
+      ]
+    },
+    "vulnerability-csv-reporting": {
+      "task_count": 1,
+      "tasks": [
+        "software-dependency-audit"
+      ],
+      "domains": [
+        "Software Engineering & Security"
+      ],
+      "families": [
+        "Code Audit & Formal Verification"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "workload-balancing": {
+      "task_count": 1,
+      "tasks": [
+        "parallel-tfidf-search"
+      ],
+      "domains": [
+        "Document, Media & Web Intelligence"
+      ],
+      "families": [
+        "Search, Taxonomy & Clinical Data"
+      ],
+      "difficulty_levels": [
+        2
+      ]
+    },
+    "xlsx": {
+      "task_count": 10,
+      "tasks": [
+        "financial-modeling-qa",
+        "invoice-fraud-detection",
+        "jpg-ocr-stat",
+        "powerlifting-coef-calc",
+        "protein-expression-analysis",
+        "reserves-at-risk-calc",
+        "sales-pivot-analysis",
+        "shock-analysis-demand",
+        "shock-analysis-supply",
+        "weighted-gdp-calc"
+      ],
+      "domains": [
+        "Bioinformatics & Life Sciences",
+        "Document, Media & Web Intelligence",
+        "Earth, Climate & Geophysics",
+        "Engineering, Energy & Control",
+        "Finance, Economics & Business"
+      ],
+      "families": [
+        "Document & Text Extraction",
+        "Economic Trend & Fraud Analysis",
+        "Macro-Economic Shock Analysis",
+        "Power Systems Optimization",
+        "Spreadsheet Financial Modeling",
+        "Statistical Genetics & Proteomics"
+      ],
+      "difficulty_levels": [
+        1,
+        2
+      ]
+    },
+    "yaml-config": {
+      "task_count": 1,
+      "tasks": [
+        "adaptive-cruise-control"
+      ],
+      "domains": [
+        "Engineering, Energy & Control"
+      ],
+      "families": [
+        "Control Systems (PID/MPC)"
+      ],
+      "difficulty_levels": [
+        3
+      ]
+    }
+  },
+  "name_shorthand_mapping": {
+    "domains": {
+      "Bioinformatics & Life Sciences": "Life Sciences",
+      "Chemistry & Molecular Sciences": "Chemistry",
+      "Earth, Climate & Geophysics": "Earth & Climate",
+      "Engineering, Energy & Control": "Engineering",
+      "Finance, Economics & Business": "Finance & Economics",
+      "Document, Media & Web Intelligence": "Media & Web",
+      "Software Engineering & Security": "Software & Security"
+    },
+    "families": {
+      "3D, Video & Motion Analysis": "3D & Video",
+      "Bio Sequence Analysis": "Bio Sequence",
+      "CVE & Vulnerability Fixing": "Vulnerability Fixing",
+      "Chemical Informatics": "Chemical Informatics",
+      "Climate & Environmental Modeling": "Climate Modeling",
+      "Code Audit & Formal Verification": "Code Verification",
+      "Control Systems (PID/MPC)": "Control Systems",
+      "Document & Text Extraction": "Text Extraction",
+      "Economic Trend & Fraud Analysis": "Economic Analysis",
+      "Engineering Optimization": "Engineering Optimization",
+      "Fluid Dynamics & Heat Transfer": "Fluid Dynamics",
+      "Macro-Economic Shock Analysis": "Economic Shock",
+      "Mass Spectrometry & Metabolomics": "Mass Spectrometry",
+      "Molecular Structure Analysis": "Molecular Structure",
+      "Network Security & Intrusion Detection": "Network Security",
+      "Power Systems Optimization": "Power Systems",
+      "Quantum Computing": "Quantum Computing",
+      "Scientific Computing (JAX/Thermodynamics)": "Scientific Computing",
+      "Search, Taxonomy & Clinical Data": "Search & Taxonomy",
+      "Seismology & Geophysics": "Seismology",
+      "Spreadsheet Financial Modeling": "Financial Modeling",
+      "Statistical Genetics & Proteomics": "Genetics & Proteomics",
+      "VCF & Genomic Variant Processing": "Genomic Variants"
+    },
+    "tasks": {
+      "dna-frame2-translation": {
+        "domain_short": "Life Sciences",
+        "family_short": "Bio Sequence"
+      },
+      "scikit-bio-sequence": {
+        "domain_short": "Life Sciences",
+        "family_short": "Bio Sequence"
+      },
+      "scikit-bio-alignment": {
+        "domain_short": "Life Sciences",
+        "family_short": "Bio Sequence"
+      },
+      "scikit-survival-cox": {
+        "domain_short": "Life Sciences",
+        "family_short": "Genomic Variants"
+      },
+      "population-genetics-hwe": {
+        "domain_short": "Life Sciences",
+        "family_short": "Genetics & Proteomics"
+      },
+      "matchms-count-spectra": {
+        "domain_short": "Life Sciences",
+        "family_short": "Mass Spectrometry"
+      },
+      "matchms-similarity": {
+        "domain_short": "Life Sciences",
+        "family_short": "Genetics & Proteomics"
+      },
+      "protein-expression-analysis": {
+        "domain_short": "Life Sciences",
+        "family_short": "Genetics & Proteomics"
+      },
+      "variant-annotation": {
+        "domain_short": "Life Sciences",
+        "family_short": "Genomic Variants"
+      },
+      "vcf-pass-count": {
+        "domain_short": "Life Sciences",
+        "family_short": "Genomic Variants"
+      },
+      "medchem-ro5-pass": {
+        "domain_short": "Life Sciences",
+        "family_short": "Mass Spectrometry"
+      },
+      "medchem-lilly-demerit": {
+        "domain_short": "Life Sciences",
+        "family_short": "Mass Spectrometry"
+      },
+      "molecular-analysis": {
+        "domain_short": "Chemistry",
+        "family_short": "Molecular Structure"
+      },
+      "molecular-dynamics-rmsd": {
+        "domain_short": "Chemistry",
+        "family_short": "Molecular Structure"
+      },
+      "computational-biophysics-dihedral": {
+        "domain_short": "Chemistry",
+        "family_short": "Molecular Structure"
+      },
+      "find-topk-similiar-chemicals": {
+        "domain_short": "Chemistry",
+        "family_short": "Chemical Informatics"
+      },
+      "reaction-type": {
+        "domain_short": "Chemistry",
+        "family_short": "Chemical Informatics"
+      },
+      "isomer-counting": {
+        "domain_short": "Chemistry",
+        "family_short": "Chemical Informatics"
+      },
+      "inorganic-physics-thermo": {
+        "domain_short": "Chemistry",
+        "family_short": "Scientific Computing"
+      },
+      "organic-chemistry-smarts": {
+        "domain_short": "Chemistry",
+        "family_short": "Scientific Computing"
+      },
+      "jax-computing-basics": {
+        "domain_short": "Chemistry",
+        "family_short": "Scientific Computing"
+      },
+      "earthquake-phase-association": {
+        "domain_short": "Earth & Climate",
+        "family_short": "Seismology"
+      },
+      "earthquake-plate-calculation": {
+        "domain_short": "Earth & Climate",
+        "family_short": "Seismology"
+      },
+      "seismic-phase-picking": {
+        "domain_short": "Earth & Climate",
+        "family_short": "Seismology"
+      },
+      "gravitational-wave-detection": {
+        "domain_short": "Earth & Climate",
+        "family_short": "Seismology"
+      },
+      "fluidsim-pipe-flow": {
+        "domain_short": "Earth & Climate",
+        "family_short": "Fluid Dynamics"
+      },
+      "fluidsim-nusselt-number": {
+        "domain_short": "Earth & Climate",
+        "family_short": "Fluid Dynamics"
+      },
+      "shock-analysis-demand": {
+        "domain_short": "Earth & Climate",
+        "family_short": "Economic Shock"
+      },
+      "shock-analysis-supply": {
+        "domain_short": "Earth & Climate",
+        "family_short": "Economic Shock"
+      },
+      "flood-risk-analysis": {
+        "domain_short": "Earth & Climate",
+        "family_short": "Climate Modeling"
+      },
+      "exoplanet-detection-period": {
+        "domain_short": "Earth & Climate",
+        "family_short": "Climate Modeling"
+      },
+      "mars-clouds-clustering": {
+        "domain_short": "Earth & Climate",
+        "family_short": "Climate Modeling"
+      },
+      "lake-warming-attribution": {
+        "domain_short": "Earth & Climate",
+        "family_short": "Climate Modeling"
+      },
+      "glm-lake-mendota": {
+        "domain_short": "Earth & Climate",
+        "family_short": "Climate Modeling"
+      },
+      "energy-ac-optimal-power-flow": {
+        "domain_short": "Engineering",
+        "family_short": "Power Systems"
+      },
+      "grid-dispatch-operator": {
+        "domain_short": "Engineering",
+        "family_short": "Power Systems"
+      },
+      "reserves-at-risk-calc": {
+        "domain_short": "Engineering",
+        "family_short": "Power Systems"
+      },
+      "adaptive-cruise-control": {
+        "domain_short": "Engineering",
+        "family_short": "Control Systems"
+      },
+      "hvac-control": {
+        "domain_short": "Engineering",
+        "family_short": "Control Systems"
+      },
+      "r2r-mpc-control": {
+        "domain_short": "Engineering",
+        "family_short": "Control Systems"
+      },
+      "pymoo-optimization": {
+        "domain_short": "Engineering",
+        "family_short": "Engineering Optimization"
+      },
+      "pymoo-constrained-opt": {
+        "domain_short": "Engineering",
+        "family_short": "Engineering Optimization"
+      },
+      "manufacturing-fjsp-optimization": {
+        "domain_short": "Engineering",
+        "family_short": "Engineering Optimization"
+      },
+      "quantum-bloch-vector": {
+        "domain_short": "Engineering",
+        "family_short": "Quantum Computing"
+      },
+      "quantum-numerical-simulation": {
+        "domain_short": "Engineering",
+        "family_short": "Quantum Computing"
+      },
+      "qutip-quantum-state": {
+        "domain_short": "Engineering",
+        "family_short": "Quantum Computing"
+      },
+      "financial-modeling-qa": {
+        "domain_short": "Finance & Economics",
+        "family_short": "Financial Modeling"
+      },
+      "sec-financial-report": {
+        "domain_short": "Finance & Economics",
+        "family_short": "Financial Modeling"
+      },
+      "sales-pivot-analysis": {
+        "domain_short": "Finance & Economics",
+        "family_short": "Financial Modeling"
+      },
+      "weighted-gdp-calc": {
+        "domain_short": "Finance & Economics",
+        "family_short": "Financial Modeling"
+      },
+      "invoice-fraud-detection": {
+        "domain_short": "Finance & Economics",
+        "family_short": "Economic Analysis"
+      },
+      "econ-detrending-correlation": {
+        "domain_short": "Finance & Economics",
+        "family_short": "Economic Analysis"
+      },
+      "energy-market-pricing": {
+        "domain_short": "Finance & Economics",
+        "family_short": "Economic Analysis"
+      },
+      "powerlifting-coef-calc": {
+        "domain_short": "Finance & Economics",
+        "family_short": "Financial Modeling"
+      },
+      "pddl-tpp-planning": {
+        "domain_short": "Finance & Economics",
+        "family_short": "Economic Analysis"
+      },
+      "court-form-filling": {
+        "domain_short": "Media & Web",
+        "family_short": "Text Extraction"
+      },
+      "jpg-ocr-stat": {
+        "domain_short": "Media & Web",
+        "family_short": "Text Extraction"
+      },
+      "latex-formula-extraction": {
+        "domain_short": "Media & Web",
+        "family_short": "Text Extraction"
+      },
+      "parallel-tfidf-search": {
+        "domain_short": "Media & Web",
+        "family_short": "Search & Taxonomy"
+      },
+      "taxonomy-tree-merge": {
+        "domain_short": "Media & Web",
+        "family_short": "Search & Taxonomy"
+      },
+      "lab-unit-harmonization": {
+        "domain_short": "Media & Web",
+        "family_short": "Search & Taxonomy"
+      },
+      "3d-scan-calc": {
+        "domain_short": "Media & Web",
+        "family_short": "3D & Video"
+      },
+      "threejs-structure-parser": {
+        "domain_short": "Media & Web",
+        "family_short": "3D & Video"
+      },
+      "threejs-to-obj": {
+        "domain_short": "Media & Web",
+        "family_short": "3D & Video"
+      },
+      "dynamic-object-aware-egomotion": {
+        "domain_short": "Media & Web",
+        "family_short": "3D & Video"
+      },
+      "multilingual-video-dubbing": {
+        "domain_short": "Media & Web",
+        "family_short": "3D & Video"
+      },
+      "fix-druid-loophole-cve": {
+        "domain_short": "Software & Security",
+        "family_short": "Vulnerability Fixing"
+      },
+      "fix-erlang-ssh-cve": {
+        "domain_short": "Software & Security",
+        "family_short": "Vulnerability Fixing"
+      },
+      "dapt-intrusion-detection": {
+        "domain_short": "Software & Security",
+        "family_short": "Network Security"
+      },
+      "azure-bgp-oscillation-route-leak": {
+        "domain_short": "Software & Security",
+        "family_short": "Network Security"
+      },
+      "suricata-custom-exfil": {
+        "domain_short": "Software & Security",
+        "family_short": "Network Security"
+      },
+      "syzkaller-ppdev-syzlang": {
+        "domain_short": "Software & Security",
+        "family_short": "Code Verification"
+      },
+      "software-dependency-audit": {
+        "domain_short": "Software & Security",
+        "family_short": "Code Verification"
+      },
+      "simpo-code-reproduction": {
+        "domain_short": "Software & Security",
+        "family_short": "Code Verification"
+      },
+      "lean4-proof": {
+        "domain_short": "Software & Security",
+        "family_short": "Code Verification"
+      }
+    }
+  }
+}

@@ -1,0 +1,2 @@
+Most similar pair: Spectrum_A and Spectrum_B
+Similarity: 0.999

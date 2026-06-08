@@ -1,0 +1,495 @@
+---
+name: suricata-custom-exfil
+description: "Write Suricata signatures to detect custom HTTP telemetry exfiltration patterns in network traffic."
+---
+
+# Suricata Custom Exfiltration Detection
+
+## When to Use
+
+- Write Suricata IDS rules for custom exfil patterns
+- Analyze PCAP files for suspicious traffic
+- Avoid false positives in detection
+
+- Treat runtime/task interaction rules as hard correctness requirements equal to the rule-writing task.
+- Before the first tool call, identify and lock in the exact required tool/action wrapper or schema, allowed tool names, any one-action-per-turn or wait-for-observation rules, required file-write evidence, and any exact final completion token/string.
+- Create a brief internal protocol checklist before acting: exact wrapper/schema, exact allowed tool name(s), sequencing/wait rules, direct-artifact validation requirements, required write/readback evidence, the exact final completion token if any, and the exact stop condition.
+- Use only that mandated format for the entire run. Do **not** improvise alternate tool syntaxes, XML-style tags, pseudo-tools, free-form command blocks, or mixed schemas.
+- Validation must exercise the requested artifact itself. If the task is to update `/root/local.rules`, do **not** copy the rule elsewhere and treat that as success; validate with an explicit `-S /root/local.rules` or report that the runtime is not loading the target file.
+- Do not claim `/root/local.rules` was updated unless an explicit write succeeded and a read-back shows the expected literal rule text.
+- Keep `/root/local.rules` compliant throughout iteration. Do not write placeholders, summaries, scaffold text, or debug variants that drop hard requirements such as `sid:1000001`; if experiments are needed, use a scratch file or restore the compliant rule immediately before any completion claim.
+- Once `/root/local.rules` is changed after any successful parse or PCAP validation, treat all earlier validation as stale and rerun the relevant checks on the newly saved file before finishing.
+- If the runtime requires an exact completion token/string, reserve the final turn for that exact token/string only.
+- Immediately before the final turn, re-read the task/runtime instructions and verify the exact required completion token/string character-for-character.
+- Once the required final completion token is emitted, stop immediately; do not append summaries, extra reads, cleanup commands, or post-completion tool calls unless explicitly required.
+- Before the final response, perform a protocol audit: confirm every tool call used the mandated schema, required wait/observation rules were followed, required file write/readback evidence exists, validations completed or were explicitly reported as blocked, the saved artifact is the same one last validated, and the last response is exactly the required completion token when one was specified.
+- If substantive rule work is complete but the required action/output format has not been satisfied, the task is not complete.## Protocol and Runtime Hard Gates
+
+- Treat runtime/task interaction rules as hard correctness requirements equal to the rule-writing task.
+- Before the first tool call, identify and lock in the exact required tool/action wrapper or schema, allowed tool names, any one-action-per-turn or wait-for-observation rules, required file-write evidence, and any exact final completion token/string.
+- Use only that mandated format for the entire run. Do **not** improvise alternate tool syntaxes, XML-style tags, pseudo-tools, free-form command blocks, or mixed schemas.
+- Validation must exercise the requested artifact itself. If the task is to update `/root/local.rules`, do **not** copy the rule elsewhere and treat that as success; validate with an explicit `-S /root/local.rules` or report that the runtime is not loading the target file.
+- If the runtime requires an exact completion token/string, reserve the final turn for that exact token/string only.
+- Once the required final completion token is emitted, stop immediately; do not append summaries, extra reads, cleanup commands, or post-completion tool calls unless explicitly required.
+- Before the final turn, verify that every tool call followed the mandated schema and that the last response is exactly the required completion token when one was specified.
+
+
+
+- Treat environment/interface requirements as task-critical: required tool-call syntax, wrapper schema, allowed tool names, and exact completion tokens are part of correctness, not presentation.
+- Follow any task/runtime instructions exactly when they specify tool invocation format, response schema, or final completion requirements.
+- Before the first tool call, identify any task- or runtime-mandated interaction rules (for example required wrapper/JSON schema, one-action-per-turn constraints, wait-for-observation requirements, or action-only completion signals) and follow that exact contract for the entire run.
+- Do not improvise alternate tool-call markup or switch to a different tool-call format mid-task.
+- Do not claim `/root/local.rules` was updated unless you performed an explicit write action.
+- Mark `/root/local.rules` as updated only after an explicit write succeeded and a read-back shows the expected rule text.
+- Keep `/root/local.rules` compliant throughout iteration. Do not replace the deliverable with debug rules that change hard requirements such as `sid:1000001`; if experiments are needed, use a scratch file or restore the compliant rule immediately.
+- If the task requires an exact final completion string or output format, emit it verbatim as the last output and nothing else.
+- Before the final response, perform a protocol check: confirm the required tool-call format was used throughout, confirm the required file write actually occurred, confirm required validations completed or were explicitly reported as blocked, and confirm whether the final turn must be only a specific completion token.
+- If substantive rule work is complete but the required action/output format has not been satisfied, the task is not complete.## Execution Protocol
+
+## Execution Protocol
+
+- Follow any task/runtime instructions exactly when they specify tool invocation format, response schema, or final completion requirements.
+- Before the first tool call, identify the required tool/action schema and keep it fixed for the entire run.
+- Use only the tool names and interaction pattern explicitly permitted by the runtime/task instructions; do not improvise alternate markup or switch schemas mid-run.
+- If the runtime requires one action per turn and a wait for observation, follow that sequencing exactly.
+- Before the first action, lock the exact allowed tool name(s), wrapper/schema, per-turn sequencing rule, and required final completion token/string; keep that contract fixed for the whole run.
+- Hard stop before every tool/action call: ensure the next message uses the exact runtime-mandated wrapper/schema and allowed tool name(s). Do **not** use XML-like tags, ad hoc tool blocks, alternate capitalization, pseudo-tools, or mixed formats even once.
+- After any inspection or validation command, wait for and inspect the resulting observation before making claims about alerts, zero-alert outcomes, file contents, or task completion.
+- Before extended troubleshooting of runtime/setup failures, inspect the workspace or skill/task directory for provided helper scripts, wrapper commands, or task-specific docs, and prefer those supported paths over repeated ad hoc retries.
+- Do not claim `/root/local.rules` was updated unless you performed an explicit write action.
+- Use executable shell commands or explicit tool actions only. Do **not** send natural-language placeholders such as `inspect the traffic` or `run Suricata on the negative sample` as if they were commands.
+- Every inspection, validation, and file-update step must be observable via a concrete command or tool action whose output can be read back in the transcript.
+- Treat any write that does not visibly contain literal Suricata rule text as a failed write, even if the shell command succeeded.
+- Never write prose, summaries, or meta-descriptions into `/root/local.rules`; only executable Suricata signature text is valid.
+- After every parser or validator error, read the exact reported issue and make the next edit specifically address that issue before rerunning validation.
+
+- Write literal Suricata rule text into `/root/local.rules`; do **not** write placeholders, summaries, TODO text, or meta-descriptions.
+- Hard write gate: the payload written to `/root/local.rules` must itself contain the actual `alert ... ( ... sid:1000001; )` rule text. Strings like `added the rule`, `updated alert`, or any prose summary are invalid writes and must be corrected before any further validation.
+- Never write scaffolding such as `[HTTP method check]`, `[exact path check]`, partial clause lists, template markers, or other placeholder structure into `/root/local.rules`, even temporarily. Keep the deliverable file either unchanged or populated with a concrete Suricata rule.
+- Base every edit on text you actually read from `/root/local.rules`; do not target guessed placeholders, approximate old strings, or assumed prior contents.
+- Never use abstract placeholders such as "existing rule", "placeholder block", or prose descriptions as the edit anchor or replacement content. Copy the exact observed text you just read from `/root/local.rules`, then edit against that exact text or rewrite the full file safely.
+- If the edit anchor is uncertain or a prior write may have changed the file, reread `/root/local.rules` immediately before editing and rebuild the command from that current on-disk text.
+- Prefer a full-file rewrite when it is safer than brittle search/replace; if using an in-place edit, anchor it to exact observed text from the current transcript.
+- If `/root/local.rules` is changed **after** any successful parse or PCAP validation, treat all earlier validation as stale and rerun the relevant checks on the newly saved file before finishing.
+- Treat any cleanup, simplification, formatting-only, or warning-suppression change to `/root/local.rules` as a real rule edit. Once the saved text changes, all earlier parse/runtime evidence is stale until you read back the new file and rerun the required validations.
+- If PCAP/runtime validation is required and a replay run fails for harness reasons, do not stop at `suricata -T`. Before declaring validation blocked, exhaust in-scope fixes in this order: ensure output/log directories exist, rerun while explicitly loading `/root/local.rules`, retry with task-permitted flags such as `--runmode single`, then inspect fresh alert artifacts directly.
+- If a write or validation fails, read back the current `/root/local.rules` contents before attempting another targeted edit. Do not patch against assumed text.
+- After any failed edit, parse error, or no-alert result, read back the exact saved rule line before changing it again. Do not use guessed prior text, placeholder old strings, or broad replacements against an unverified file state.
+- After every write or edit to `/root/local.rules`, immediately read back the affected rule line before any further parser/runtime testing.
+- If a temporary/test rule or isolated experiment works but `/root/local.rules` does not, stop and compare the exact on-disk saved rule against the working version immediately for escaping drift, doubled backslashes, quote changes, truncated PCREs, or shell-introduced corruption.
+- If repeated parser/sticky-buffer errors persist, stop full-rule tinkering and switch immediately to the minimal rebuild workflow in [Incremental rebuild for parser/load failures](references/incremental-rebuild.md).
+
+- If the task requires an exact final completion string or output format, emit it verbatim as the entire final message and nothing else.
+
+## Exfil Pattern (ALL conditions must be true)
+
+1. HTTP POST request
+2. Request path exactly: `/telemetry/v2/report` (match the whole HTTP URI/path exactly, not as a substring)
+3. Header: `X-TLM-Mode: exfil`
+4. Body contains `blob=` with Base64 value ≥ 80 chars
+5. Body contains `sig=` with exactly 64 hex characters
+
+
+Do not ship a partial rule. A rule that omits the exact path check, the required header, or either body predicate is incorrect even if it matches a sample PCAP.
+
+Before finalizing a rule, map each condition to a detection primitive that enforces the stated scope and boundaries, not just a substring seen in sample traffic.
+
+Observed alerts on sample PCAPs do not excuse a missing structural constraint in the rule. If the task says a field is exact, encode that exactness in the signature itself and treat PCAP hits as confirmation only.
+
+**Interpret exactness literally:**
+Translate every "exact" requirement into rule syntax with anchors or delimiters; sample PCAP hits are not enough if the saved rule still matches superstrings or partial parameter values.
+
+- Path must be exactly `/telemetry/v2/report`, not a longer URI containing that substring.
+- `blob=` must capture one parameter value whose Base64 text is at least 80 chars; bound it with `&`, whitespace, end of body, or equivalent parameter separators.
+- `sig=` must be one parameter value of exactly 64 hex chars; reject longer hex strings by bounding the value with `&`, whitespace, end of body, or equivalent separators.
+
+
+## Input Files
+
+- `/root/pcaps/`: PCAP files for testing
+- `/root/suricata.yaml`: Suricata config
+- `/root/local.rules`: Rules file to update
+
+- Preserve existing `/root/local.rules` content unless the task explicitly says to replace it.
+- Every write to `/root/local.rules` must contain literal Suricata syntax, not a prose description of an intended edit. Wrong: `added Suricata alert rule for telemetry exfil`. Right: a full `alert ... ( ... sid:1000001; )` rule line.
+- Do not use placeholder-style edit text, intention-level replacements, or opaque write descriptions for rule changes. The transcripted write command itself should contain the concrete Suricata rule text being saved.
+- Prefer writing the full intended rule line or a full-file rewrite over abstract replacements like "insert the exfil rule here"; then immediately read back the saved line to confirm no truncation or shell-escaping drift occurred.
+- Unless the task explicitly says otherwise, modify only `/root/local.rules`.
+
+**Scope constraint:** Do **not** edit `/root/suricata.yaml` as a workaround for testing or validation.
+- Treat `/root/suricata.yaml` as out of scope by default even during debugging. Do not add ports, includes, parser tweaks, or runtime workarounds there unless the task explicitly authorizes config edits.
+- Do not create alternate Suricata config files as a workaround unless the task explicitly authorizes config editing. In particular, do not respond to memcap/session-pool/defrag errors by ad hoc config rewrites; keep scope on `/root/local.rules`, try permitted runtime flags such as `--runmode single`, and report runtime validation as blocked if the harness still fails.
+- Do not broaden scope during debugging by changing config to add HTTP ports, include rule files differently, or alter parsing behavior. If validation depends on such a change and the task did not authorize it, leave `/root/suricata.yaml` untouched and report the blocker.
+
+- Do not edit `/root/suricata.yaml` to make traffic parse, ports match, or rules load unless the task explicitly authorizes config changes; if validation is blocked by environment/config issues outside `/root/local.rules`, report the blocker instead.
+- If Suricata runtime fails because of environment/resource issues outside the rule file (for example memcap/session-pool/defrag allocation errors), do **not** tune `/root/suricata.yaml` or create alternate configs unless the task explicitly authorizes config edits.
+- Retry allowed command-line/runtime paths such as `--runmode single` when appropriate; if validation still cannot be completed within scope, report runtime validation as blocked rather than guessing at config workarounds.
+
+- Inspect the HTTP request directly before writing the rule; do not infer headers, path, or body fields from summaries or truncated output.
+- If a packet summary does not visibly show `POST`, `/telemetry/v2/report`, `X-TLM-Mode`, `blob=`, and `sig=`, run a more targeted command and verify those fields from actual output.
+- Prefer commands that expose application data, e.g. `tcpdump -A -s 0 -r <pcap>` with an appropriate filter, or `tshark -r <pcap> -Y http -V`.
+- Base the rule on observed traffic only. Do not state that a pcap contains specific headers, paths, or body parameters unless the command output actually shows it.
+- Summary-only evidence is insufficient. Packet summaries, TCP handshakes, lengths, `Flags [P.]`, stream summaries, or lines showing only `POST`/URI do **not** justify claims about `X-TLM-Mode`, `blob=`, `sig=`, or which field differs between positive and negative captures.
+- Do not claim a pcap contains specific header/body values or differences unless the visible extraction output explicitly shows those exact lines or parameters.
+
+- Evidence gate: before drafting the rule, obtain command output that explicitly shows `POST`, the exact URI/path, the `X-TLM-Mode` header line/value, and the relevant body parameters.
+- If your current packet view shows only TCP summaries, lengths, flags, stream IDs, truncated payloads, failed extraction output, or helper commands that omit the needed header/body fields, treat that as **no evidence** for HTTP-field claims; switch to a fuller extraction before reasoning about the rule.
+- Do not author the final rule from TCP handshakes, packet summaries, failed extraction attempts, hex-only transport dumps, or truncated stream output. If those are all you have, continue extraction and defer rule drafting.
+- If an attempted extractor fails, reports an invalid field, or returns only truncated output, treat that as no evidence. Switch to another concrete extraction method and do not draft or tighten the final header/body logic from the failed attempt.
+- For this task, do not justify `blob` minimum length, Base64 character class, or `sig` exact 64-hex boundaries unless the visible extraction output actually shows the body parameters themselves. Truncated follow-stream or summary output is not enough; rerun extraction until the body is visible end-to-end before locking in those predicates.
+- Only encode body constraints that are directly visible in extracted request output or explicitly required by the task. Do not invent delimiter behavior, lengths, or distinguishing differences from assumptions.
+- When you say a field was observed, the transcript must visibly show that exact HTTP field/value in command output.
+
+- Hard stop: if visible inspection output does not show the HTTP method, exact path, required header line/value, and body parameters, do **not** draft, revise, or justify the final rule yet.
+- Do not draft or revise the final rule from truncated packet summaries that show only TCP metadata, lengths, or partial payloads.
+- Do not claim you found a distinguishing header, exact URI, parameter delimiter, case pattern, or body-field detail unless that field/value is directly visible in the transcript output you just inspected.
+- Empty grep output, missing utilities, or failed extraction commands do **not** count as evidence. Switch to another available inspection method or state that traffic-grounded rule validation is incomplete.
+- Do not describe intended evidence-gathering in prose; run the actual extraction command and inspect its output before making any claim about header values, URI exactness, body-field differences, or positive/negative traffic distinctions.
+
+- Treat packet summaries, handshake-only lines, truncated output, failed extraction, or `head`/summary views as insufficient for header/body claims.
+- If an inspection command is truncated, incomplete, ambiguous, or omits needed HTTP fields, do not revise the rule yet; rerun with a narrower filter or alternate command until the full method, URI, relevant headers, and body parameters are directly visible.
+- When a positive sample does not match, do not change the rule from a truncated TCP-follow or partial packet dump. First obtain visible output that shows the relevant HTTP request fields end-to-end, then base revisions on that evidence.
+- Acceptable fallback pattern: isolate the relevant packet/stream, then use a verbose view such as `tcpdump -A -s 0 -r <pcap>` or `tshark -r <pcap> -Y 'http.request' -V`.
+- Do not infer header casing, delimiter behavior, encoding details, parameter lengths, or positive/negative traffic characteristics from partial output; only claim what the visible evidence shows.
+- When debugging a non-firing rule, ground each change in specific observed traffic details from the capture, not inferred normalizations or assumptions.
+- When comparing positive vs. negative PCAPs, state only differences explicitly visible in the extracted request output.
+- Validation-evidence gate: do not claim alerts observed, no alerts, exact alert counts, or positive/negative pass results unless the transcript shows decisive current-run output or inspected alert-artifact content.
+- For runtime alert claims, read [Alert verification and evidence thresholds](references/alert-verification.md) before concluding a positive hit, a negative no-alert result, or exact alert counts.
+- Prefer simple, separate validation steps over one long compound pipeline when preparing final evidence. If output truncates, is noisy, or a `jq`/grep pipeline is cut off, rerun a narrower command and inspect the artifact directly before claiming the result.
+- Do not treat startup/shutdown banners, clean exits, packet counters, or empty grep/jq output against unverified files as proof of alert or no-alert behavior.
+- Treat truncated console output, startup/shutdown banners, command echoes, noisy `suricata -r` output, missing logs, or stale artifacts from earlier runs as non-decisive. If needed evidence is not visible, rerun with a clearer method.
+- Prefer separate, explicit positive and negative checks, then inspect a fresh alert artifact or a clear SID-filtered count/query for `sid:1000001` tied to that run.
+- If validation writes logs, use a fresh output directory or clear prior artifacts before rerunning so results are attributable to the current run.
+- Final-artifact visibility gate: before claiming the rule encodes exact length or boundary requirements, read back the complete saved rule line itself. If the file view is truncated, partial, wrapped ambiguously, or omits the tail of the signature, do not assert unshown properties; rerun a command that shows the full rule text first.
+
+
+0. Before debugging rule logic against live traffic, verify the validation command actually loads `/root/local.rules` (for example, use `suricata -T -S /root/local.rules -c /root/suricata.yaml` or another task-specified explicit rule-file flag). If a different runtime path/config does not include `/root/local.rules`, do **not** fix that by editing config; keep the deliverable scoped to `/root/local.rules` and report the limitation.
+
+0a. Before the first Suricata runtime/pcap test, do a quick validation preflight:
+   - ensure any referenced output/log directory already exists;
+   - ensure the command explicitly uses `/root/local.rules` and the supplied config;
+   - verify the exact command shape/output protocol required by the runtime is still the one you are using;
+   - create the intended output/log directory before running Suricata if the command will write there;
+   - prefer a fresh directory per run or clear stale artifacts so alert evidence is attributable to the current test;
+   - if prior runs already showed missing-directory or resource/threading failures, switch immediately to a task-permitted lower-overhead run such as `--runmode single` instead of repeating the same failing command shape.
+   Treat missing directories, wrong paths, or runtime-resource errors as harness problems first, not proof that the rule is wrong.
+0b. Before rewriting content logic after a no-alert result, check non-content gating assumptions from the observed traffic: protocol/app-layer parsing, rule direction (`->` vs `<>`), and whether `HOME_NET` / `EXTERNAL_NET` variables actually include the source and destination IPs seen in the PCAP.
+ If the rule header uses network variables or directional constraints, compare the PCAP endpoints to those variables before changing method/path/header/body predicates. A loadable rule that never becomes eligible for the observed traffic is a harness/eligibility problem first, not proof that the content logic is wrong.
+0c. Before extended troubleshooting, inspect the workspace/skill directory for task-provided helper scripts or docs that affect validation workflow. If repeated Suricata runtime/setup errors appear, pause and look for provided wrappers or offline-run helpers before continuing ad hoc retries.
+0d. If you discover a task-provided helper such as an offline-run wrapper, switch to that supported validation path before spending more attempts on the failing manual command shape.
+
+1. Inspect `/root/local.rules` before editing.
+2. Inspect available files in `/root/pcaps/` to understand what traffic is provided for validation.
+3. Draft the final rule, but validate structure incrementally: start from a smallest valid rule for the intended HTTP buffer strategy, then add method/path, header, and body predicates one layer at a time.
+4. Write the completed rule to `/root/local.rules` with an explicit file modification command; preserve existing content unless the task explicitly authorizes replacement, and do not overwrite the file with partial or placeholder content.
+   - The write must be observable in the transcript (for example via `cat >`, `tee`, `printf >`, `sed -i`, or another explicit file-modification command). Describing the intended rule text is not enough.
+   - Keep the draft in working memory or a scratch command until the rule is complete; never replace `/root/local.rules` with truncated text, placeholders, or a half-built rule.
+5. Re-open `/root/local.rules` and confirm the new rule text is present while prior content remains intact.
+   - Treat this as a hard gate: if there is no observable write command and no read-back showing the saved rule, the task is not complete.
+
+   - Hard fail on malformed write: if the read-back does not visibly show a real Suricata signature line beginning with `alert` and containing `sid:1000001;`, do not continue to parser/runtime testing. Fix the file contents first.
+   - Read back enough of the file to show the concrete saved rule line itself, not just a prose summary.
+   - If a scratch/test rule fires but the saved `/root/local.rules` rule does not, stop semantic debugging and compare the exact on-disk rule text against the working version immediately.
+   - Inspect for edit-time corruption such as doubled backslashes, broken PCRE delimiters, shell-escaping drift, missing semicolons, or altered quoting introduced during file write.
+
+6. Run `suricata -T -S /root/local.rules -c /root/suricata.yaml` to catch syntax and sticky-buffer errors.
+   - Treat parser/load validation and traffic-match validation as separate checkpoints. Engine initialization errors, resource/threading failures, or truncated diagnostics do not prove the current rule parsed or loaded.
+   - If you hit repeated parser/sticky-buffer failures, stop editing the full production rule by guesswork. First prove the exact supported syntax with a tiny isolated rule or restart from a minimal known-good sequence, then rebuild the final rule incrementally from that known-good pattern.
+   - After every failed `suricata -T` or failed rule edit, immediately read back the current `/root/local.rules` contents before making another rewrite.
+
+   - Treat parser/load validation and traffic-match validation as separate checkpoints. If `suricata -T` reports sticky-buffer, keyword, modifier, or other parser errors, fix that structure first before interpreting any alert/no-alert result from PCAP testing.
+   - If parser errors persist, stop broad rewrites: reduce to a minimal valid HTTP rule that still uses the correct buffers, confirm it loads, then add exactly one missing constraint at a time (method/path -> header -> one body predicate -> the final body predicate), rerunning `suricata -T` after each change.
+   - Before deeper testing, make the test harness reliable: create any needed output/log directories first, use the supplied config unless the task says otherwise, and confirm runtime options/paths are valid so a no-alert result reflects the rule rather than setup mistakes.
+7. If PCAPs are provided, verify behavior on them with the provided config/inputs first: the rule should alert on intended positive traffic and stay quiet on negative traffic.
+   - Do not skip PCAP inspection/testing when those artifacts are provided; if artifact-based validation cannot be completed, report it explicitly as blocked or incomplete.
+   - Use direct, separate checks for positive and negative outcomes. Avoid compound commands whose branches are not clearly visible in the captured output.
+   - Capture decisive output for both outcomes. If console output is noisy, truncated, or ambiguous, inspect Suricata alert artifacts directly (for example, `fast.log`, `eve.json`, or extracted alert IDs) before concluding whether the rule fired.
+   - Treat PCAP hits as behavioral evidence only. Also verify from the saved final rule text that each of the 5 required conditions is explicitly encoded in the intended HTTP buffer with exact boundaries.
+   - Do not change the rule after a failed test until you have re-inspected the underlying HTTP request with enough detail to justify the revision.
+8. Make final success claims only from verification output that is explicitly visible and current in the transcript. If a decisive command's output is truncated, cut off, stale relative to later edits, or does not visibly show the result, rerun a narrower/clearer check immediately before finishing or report validation as incomplete.
+   - Treat contradictory evidence as a hard stop. If a positive run visibly shows `0` alerts, or if output is truncated before the alert result is shown, do **not** summarize the rule as verified; continue debugging or report incomplete validation.
+   - If you edit `/root/local.rules` after any apparent positive/negative verification, invalidate that earlier proof immediately. Read back the new saved rule, rerun `suricata -T`, and rerun the required positive/negative checks on the edited final text before claiming success.
+9. If offline PCAP processing fails for environmental or threading reasons, retry Suricata with `--runmode single` before concluding runtime validation is blocked.
+
+10. If Suricata runtime commands fail because output directories do not exist, create the required log/output directory before retrying rather than repeating the same command.
+11. After one clear missing-directory/setup failure, fix the harness before retrying.
+12. After one clear memory/threading/resource failure, switch to a simpler task-permitted runtime path (for example `--runmode single`) on the next attempt rather than repeating the same command shape.
+13. Note explicitly that this is a runtime workaround, not a rule logic change.
+
+10. If the combined rule parses but does not alert, isolate the failing condition with temporary test signatures for method/URI, header, and body predicates, confirm each against the pcap, then recombine the final single rule in `/root/local.rules`.
+   - Prefer one minimal temporary rule per component: method+URI, header, `blob=`, and `sig=`. Use those results to identify which condition or buffer composition is failing before changing the production rule.
+   - If isolated component rules work but the combined rule does not, suspect buffer ordering/scope or an over-strict combined pattern rather than deleting one of the 5 required conditions.
+11. After any debugging with temporary rules, remove them and rerun validation on the final saved `sid:1000001` rule before claiming success.
+12. After the final edit, read back the complete rule line from `/root/local.rules` with a command that shows the full text, and if you made any post-validation rule edit, rerun validation on the saved final rule before claiming success.
+13. Distinguish outcomes precisely: "rule written", "rule parses/loads", and "alert observed on PCAP" are different states and must not be collapsed into one claim.
+14. Perform a final requirement audit before declaring completion: verify the saved rule still preserves existing rules, uses `sid:1000001`, encodes all 5 conditions directly (including exact path boundaries), and that the response/tool protocol matches any task-specific format requirements.## Evidence Gathering
+
+- Inspect the HTTP request directly before writing the rule; do not infer headers, path, or body fields from summaries or truncated output.
+- If a packet summary does not visibly show `POST`, `/telemetry/v2/report`, `X-TLM-Mode`, `blob=`, and `sig=`, run a more targeted command and verify those fields from actual output.
+- Prefer commands that expose application data, e.g. `tcpdump -A -s 0 -r <pcap>` with an appropriate filter, or `tshark -r <pcap> -Y http -V`.
+- Base the rule on observed traffic only. Do not state that a pcap contains specific headers, paths, or body parameters unless the command output actually shows it.
+- Summary-only evidence is insufficient. Packet summaries, TCP handshakes, lengths, `Flags [P.]`, stream summaries, or lines showing only `POST`/URI do **not** justify claims about `X-TLM-Mode`, `blob=`, `sig=`, or which field differs between positive and negative captures.
+- Do not claim a pcap contains specific header/body values or differences unless the visible extraction output explicitly shows those exact lines or parameters.
+
+- Evidence gate: before drafting the rule, obtain command output that explicitly shows `POST`, the exact URI/path, the `X-TLM-Mode` header line/value, and the relevant body parameters.
+
+- Hard stop: if visible inspection output does not show the HTTP method, exact path, required header line/value, and body parameters, do **not** draft, revise, or justify the final rule yet.
+- Do not draft or revise the final rule from truncated packet summaries that show only TCP metadata, lengths, or partial payloads.
+- Do not claim you found a distinguishing header, exact URI, parameter delimiter, case pattern, or body-field detail unless that field/value is directly visible in the transcript output you just inspected.
+
+- Treat packet summaries, handshake-only lines, truncated output, failed extraction, or `head`/summary views as insufficient for header/body claims.
+- If an inspection command is truncated, incomplete, ambiguous, or omits needed HTTP fields, do not revise the rule yet; rerun with a narrower filter or alternate command until the full method, URI, relevant headers, and body parameters are directly visible.
+- When a positive sample does not match, do not change the rule from a truncated TCP-follow or partial packet dump. First obtain visible output that shows the relevant HTTP request fields end-to-end, then base revisions on that evidence.
+- Acceptable fallback pattern: isolate the relevant packet/stream, then use a verbose view such as `tcpdump -A -s 0 -r <pcap>` or `tshark -r <pcap> -Y 'http.request' -V`.
+- Do not infer header casing, delimiter behavior, encoding details, parameter lengths, or positive/negative traffic characteristics from partial output; only claim what the visible evidence shows.
+- When debugging a non-firing rule, ground each change in specific observed traffic details from the capture, not inferred normalizations or assumptions.
+- When comparing positive vs. negative PCAPs, state only differences explicitly visible in the extracted request output.
+- Validation-evidence gate: do not claim alerts observed, no alerts, exact alert counts, or positive/negative pass results unless the transcript shows decisive current-run output or inspected alert-artifact content.
+- Treat truncated console output, startup/shutdown banners, command echoes, noisy `suricata -r` output, missing logs, or stale artifacts from earlier runs as non-decisive. If needed evidence is not visible, rerun with a clearer method.
+- Prefer separate, explicit positive and negative checks, then inspect a fresh alert artifact or a clear SID-filtered count/query for `sid:1000001` tied to that run.
+- If validation writes logs, use a fresh output directory or clear prior artifacts before rerunning so results are attributable to the current run.
+
+
+0. Before debugging rule logic against live traffic, verify the validation command actually loads `/root/local.rules` (for example, use `suricata -T -S /root/local.rules -c /root/suricata.yaml` or another task-specified explicit rule-file flag). If a different runtime path/config does not include `/root/local.rules`, do **not** fix that by editing config; keep the deliverable scoped to `/root/local.rules` and report the limitation.
+
+0a. Before the first Suricata runtime/pcap test, do a quick validation preflight:
+   - ensure any referenced output/log directory already exists;
+   - ensure the command explicitly uses `/root/local.rules` and the supplied config;
+   - if prior runs show environment/runtime limits, retry with task-permitted options such as `--runmode single` before changing rule logic.
+   Treat missing directories, wrong paths, or runtime-resource errors as harness problems first, not proof that the rule is wrong.
+0b. Before rewriting content logic after a no-alert result, check non-content gating assumptions from the observed traffic: protocol/app-layer parsing, rule direction (`->` vs `<>`), and whether `HOME_NET` / `EXTERNAL_NET` variables actually include the source and destination IPs seen in the PCAP.
+0c. Before extended troubleshooting, inspect the workspace/skill directory for task-provided helper scripts or docs that affect validation workflow. If repeated Suricata runtime/setup errors appear, pause and look for provided wrappers or offline-run helpers before continuing ad hoc retries.
+
+1. Inspect `/root/local.rules` before editing.
+2. Inspect available files in `/root/pcaps/` to understand what traffic is provided for validation.
+3. Draft the final rule, but validate structure incrementally: start from a smallest valid rule for the intended HTTP buffer strategy, then add method/path, header, and body predicates one layer at a time.
+4. Write the completed rule to `/root/local.rules` with an explicit file modification command; preserve existing content unless the task explicitly authorizes replacement, and do not overwrite the file with partial or placeholder content.
+   - The write must be observable in the transcript (for example via `cat >`, `tee`, `printf >`, `sed -i`, or another explicit file-modification command). Describing the intended rule text is not enough.
+   - Keep the draft in working memory or a scratch command until the rule is complete; never replace `/root/local.rules` with truncated text, placeholders, or a half-built rule.
+5. Re-open `/root/local.rules` and confirm the new rule text is present while prior content remains intact.
+   - Treat this as a hard gate: if there is no observable write command and no read-back showing the saved rule, the task is not complete.
+
+   - Hard fail on malformed write: if the read-back does not visibly show a real Suricata signature line beginning with `alert` and containing `sid:1000001;`, do not continue to parser/runtime testing. Fix the file contents first.
+   - Read back enough of the file to show the concrete saved rule line itself, not just a prose summary.
+   - If a scratch/test rule fires but the saved `/root/local.rules` rule does not, stop semantic debugging and compare the exact on-disk rule text against the working version immediately.
+   - Inspect for edit-time corruption such as doubled backslashes, broken PCRE delimiters, shell-escaping drift, missing semicolons, or altered quoting introduced during file write.
+
+6. Run `suricata -T -S /root/local.rules -c /root/suricata.yaml` to catch syntax and sticky-buffer errors.
+   - Treat parser/load validation and traffic-match validation as separate checkpoints. Engine initialization errors, resource/threading failures, or truncated diagnostics do not prove the current rule parsed or loaded.
+   - If you hit repeated parser/sticky-buffer failures, stop editing the full production rule by guesswork. First prove the exact supported syntax with a tiny isolated rule or restart from a minimal known-good sequence, then rebuild the final rule incrementally from that known-good pattern.
+   - After every failed `suricata -T` or failed rule edit, immediately read back the current `/root/local.rules` contents before making another rewrite.
+
+   - Treat parser/load validation and traffic-match validation as separate checkpoints. If `suricata -T` reports sticky-buffer, keyword, modifier, or other parser errors, fix that structure first before interpreting any alert/no-alert result from PCAP testing.
+   - If parser errors persist, stop broad rewrites: reduce to a minimal valid HTTP rule that still uses the correct buffers, confirm it loads, then add exactly one missing constraint at a time (method/path -> header -> one body predicate -> the final body predicate), rerunning `suricata -T` after each change.
+   - Before deeper testing, make the test harness reliable: create any needed output/log directories first, use the supplied config unless the task says otherwise, and confirm runtime options/paths are valid so a no-alert result reflects the rule rather than setup mistakes.
+7. If PCAPs are provided, verify behavior on them with the provided config/inputs first: the rule should alert on intended positive traffic and stay quiet on negative traffic.
+   - Do not skip PCAP inspection/testing when those artifacts are provided; if artifact-based validation cannot be completed, report it explicitly as blocked or incomplete.
+   - Use direct, separate checks for positive and negative outcomes. Avoid compound commands whose branches are not clearly visible in the captured output.
+   - Capture decisive output for both outcomes. If console output is noisy, truncated, or ambiguous, inspect Suricata alert artifacts directly (for example, `fast.log`, `eve.json`, or extracted alert IDs) before concluding whether the rule fired.
+   - Treat PCAP hits as behavioral evidence only. Also verify from the saved final rule text that each of the 5 required conditions is explicitly encoded in the intended HTTP buffer with exact boundaries.
+   - Do not change the rule after a failed test until you have re-inspected the underlying HTTP request with enough detail to justify the revision.
+8. Make final success claims only from verification output that is explicitly visible and current in the transcript. If a decisive command's output is truncated, cut off, stale relative to later edits, or does not visibly show the result, rerun a narrower/clearer check immediately before finishing or report validation as incomplete.
+   - Treat contradictory evidence as a hard stop. If a positive run visibly shows `0` alerts, or if output is truncated before the alert result is shown, do **not** summarize the rule as verified; continue debugging or report incomplete validation.
+9. If offline PCAP processing fails for environmental or threading reasons, retry Suricata with `--runmode single` before concluding runtime validation is blocked.
+
+10. If Suricata runtime commands fail because output directories do not exist, create the required log/output directory before retrying rather than repeating the same command.
+11. If two runtime attempts fail for environment/resource reasons, adapt the harness instead of repeating the same failing command shape and note that this is a runtime workaround rather than a rule change.
+12. Do not spend multiple retries on the same clearly infrastructural failure; fix the harness, then continue semantic validation.
+
+10. If the combined rule parses but does not alert, isolate the failing condition with temporary test signatures for method/URI, header, and body predicates, confirm each against the pcap, then recombine the final single rule in `/root/local.rules`.
+11. After any debugging with temporary rules, remove them and rerun validation on the final saved `sid:1000001` rule before claiming success.
+12. After the final edit, read back the complete rule line from `/root/local.rules` with a command that shows the full text, and if you made any post-validation rule edit, rerun validation on the saved final rule before claiming success.
+13. Distinguish outcomes precisely: "rule written", "rule parses/loads", and "alert observed on PCAP" are different states and must not be collapsed into one claim.
+14. Perform a final requirement audit before declaring completion: verify the saved rule still preserves existing rules, uses `sid:1000001`, encodes all 5 conditions directly (including exact path boundaries), and that the response/tool protocol matches any task-specific format requirements.## Required Workflow
+
+1. Inspect `/root/local.rules` before editing.
+2. Inspect available files in `/root/pcaps/` to understand what traffic is provided for validation.
+3. Draft the full rule first, then write it to `/root/local.rules` with an explicit file modification command; do not overwrite the file with partial or placeholder content.
+4. Re-open `/root/local.rules` and confirm the rule text is present.
+5. Run `suricata -T -S /root/local.rules -c /root/suricata.yaml` to catch syntax and sticky-buffer errors.
+6. If PCAPs are provided, verify behavior on them: the rule should alert on intended positive traffic and stay quiet on negative traffic.
+7. Do not claim success until the write and at least one decisive verification step have actually occurred; if runtime validation is blocked, state that explicitly.
+
+Before the final turn, run this protocol checklist:
+- Confirm every tool/action call used the runtime-required wrapper/schema and only the permitted tool names from the very first call onward.
+- Confirm every tool/action payload contained a real executable command or explicit file-write action, not a descriptive sentence about what to do.
+- Confirm `/root/local.rules` was explicitly written and read back.
+- Confirm the transcript contains observable evidence of the write command succeeding and a read-back that shows the concrete saved rule text itself, not just a summary of intended behavior.
+- Confirm the final visible artifact includes the actual `alert` line with `sid:1000001;` before emitting any completion token.
+- Confirm validation results came from commands that loaded `/root/local.rules` itself, not a copied duplicate.
+- Confirm any claim about what the rule enforces is backed by either a full read-back of the saved rule line or explicit targeted validation evidence; if the rule text or output is truncated, narrow the claim or inspect more of the file first.
+- Confirm whether a helper script or task-provided wrapper was the preferred validation path for this environment and whether you used it when runtime/setup errors appeared.
+- If PCAP alert evidence is part of the claim, apply the thresholds in [Alert verification and evidence thresholds](references/alert-verification.md) before stating that an alert was observed or that the negative case stayed quiet.
+- Confirm any success claim matches the strongest evidence actually observed: `rule written`, `rule parses/loads`, and `positive/negative PCAP behavior observed` are separate states.
+- Confirm the final saved rule text itself still encodes every claimed condition before making any success claim: `POST`, exact `/telemetry/v2/report` path boundary, exact `X-TLM-Mode: exfil` header/value, bounded `blob=` Base64 length >= 80, bounded `sig=` exactly 64 hex chars, and `sid:1000001`.
+- Confirm no out-of-scope file such as `/root/suricata.yaml` was edited unless the task explicitly authorized it.
+- Confirm whether the final response must be exactly a required completion token; if so, reserve the last turn for that token only, with no summary or trailing prose.
+- Final hard check: if the runtime mandated a specific action wrapper/schema, confirm no earlier turn used any alternate tool syntax before finishing.
+- If no successful positive-alert run and required negative check were observed for the final saved rule, do **not** say the task was fully verified; report file update, parse/load status, and runtime status separately.## Output
+
+Before the final turn, run this protocol checklist:
+- Confirm every tool/action call used the runtime-required wrapper and exact tool name.
+- Confirm `/root/local.rules` was explicitly written and read back.
+- Confirm validation results came from commands that loaded `/root/local.rules` itself, not a copied duplicate.
+- Confirm whether the final response must be exactly a required completion token; if so, emit only that token.
+
+
+Update `/root/local.rules` with a single Suricata rule using `sid:1000001`.
+
+Target outcome:
+- Alert only when all 5 conditions match
+- Keep changes limited to the rule file
+- The rule logic itself must explicitly encode all 5 listed conditions; do not infer missing constraints from sample traffic or partial tests
+- If runtime validation is incomplete, say so explicitly rather than claiming the alert was observed
+
+Hard requirements:
+- Make an explicit file write to `/root/local.rules`; do not just describe the intended change.
+- Preserve the required SID exactly: `1000001`.
+- After writing, read `/root/local.rules` back and confirm the expected rule text is present while preserving existing rules.
+- Before declaring success, run `suricata -T -c /root/suricata.yaml -S /root/local.rules`.
+- If PCAP testing is part of the task, also verify behavior on sample PCAPs: confirm the rule alerts on a positive capture and stays quiet on a negative/non-matching capture.
+
+Do not stop at parse success. Final completion requires evidence that the rule both loads and alerts on matching traffic when feasible.
+
+If PCAP behavior was required and you did **not** observe a positive `sid:1000001` alert plus a negative no-alert outcome, do **not** claim the rule was validated; report the exact blocker or inconclusive result instead.
+
+If Suricata runtime testing fails because of harness/setup issues, first try a task-permitted fix that does not change `/root/suricata.yaml`, such as creating the needed output directory or retrying with `--runmode single`.
+
+If no successful positive-alert run is observed after those attempts, do **not** declare success from `suricata -T`, regex reasoning, or packet inspection alone; report runtime validation as blocked or incomplete.
+
+
+If the positive PCAP produces no SID 1000001 alert, or the event output is empty/inconclusive, do not declare success; continue debugging the rule semantics, especially buffer scope and exact-match boundaries.
+
+If direct runtime testing is blocked, say that explicitly and keep the task incomplete rather than claiming success from reasoning alone. Report only the validation evidence you actually observed.
+
+Do not claim success if all verification attempts failed. Ground every completion claim in observable actions: explicit write to `/root/local.rules`, readback confirmation, and validation output.
+
+For PCAP validation, cite only outcomes directly visible in current command output or inspected alert logs. Do not infer "alerts on positive / quiet on negative" from an earlier failed run, from truncated output, or from expected rule semantics.
+
+
+Report only validation outcomes directly shown by command output or inspected alert logs. If evidence is missing, truncated, ambiguous, contradictory, or based on non-default workaround flags, state that clearly instead of claiming default-config success.
+
+If the runtime or task specifies an exact completion string/final-answer format, output it verbatim at the end and do not append extra prose.
+
+
+## Suricata Rule Format
+
+```suricata
+alert tcp any any -> any any (msg:"Custom Exfil"; ...; sid:1000001;)
+```
+
+Use HTTP sticky buffers carefully: declare a given sticky buffer once, then place all related `content`/`pcre` checks under it until switching buffers. Do **not** repeat `http.request_body;` before each body condition; Suricata can reject this as a duplicate sticky-buffer instance.
+- Wrong: `http.request_body; pcre:"/...blob.../"; http.request_body; pcre:"/...sig.../";`
+- Right: `http.request_body; pcre:"/...blob.../"; pcre:"/...sig.../";`
+- If Suricata reports `duplicate instance for http_client_body` or a prior sticky-buffer context error, rebuild from the last known-good rule and keep both body predicates under the single existing `http.request_body` context.
+- Use engine feedback immediately: if `suricata -T` reports `duplicate instance for http_client_body` or a related sticky-buffer error, stop adding runtime tests and rewrite the rule so both `blob=` and `sig=` checks stay under the single existing `http.request_body` context.
+- For this task, treat body-buffer usage as a hard structure rule: enter `http.request_body` exactly once, then place both `blob=` and `sig=` predicates underneath that single body-buffer context with no second body-buffer declaration later in the rule.
+
+If parser errors mention the previous sticky buffer still being set, no matches for the previous buffer, or output like `duplicate instance for http_client_body`, stop and rebuild from a minimal valid rule instead of adding filler keywords or another body-buffer declaration.
+- Common parser trap: do not use bare `http_uri`, `http.header`, or body keywords as free-standing substitutes for a valid buffer-plus-match sequence. Attach URI/header/body constraints with valid Suricata syntax, then rerun `suricata -T` before adding more conditions.
+- Preserve the last known-good parsing rule as your baseline. When adding the next condition breaks parsing, revert to that exact baseline, add only one new constraint, and rerun `suricata -T`.
+
+Use exact field/value matching for required HTTP elements. Do **not** replace a required header/value pair with a broad substring check.
+
+For HTTP header matching with `http.header` + `content`, treat header names as case-insensitive by default: add `nocase` (or use an equivalent case-robust form) even if the sample shows one capitalization. Base the header match on the representation actually observed in packet inspection or parsed output; if the capture shows normalized lowercase header names such as `x-tlm-mode: exfil`, make the rule tolerant of that form rather than assuming original capitalization.
+- For this task, prefer a simple `content` check in `http.header` for `X-TLM-Mode: exfil` with `nocase` over a header regex unless packet evidence proves regex is necessary. Simpler header matches are usually more robust and easier to recombine with body-buffer checks.
+
+When a rule must enforce both an HTTP header condition and request-body conditions, treat buffer selection as a design constraint, not a cosmetic modifier choice. Read [HTTP header/body structure for Suricata rules](references/http-buffer-structure.md) before writing or revising such a rule.
+If `suricata -T` reports repeated sticky-buffer or HTTP-keyword errors more than once, also read [Incremental rebuild for parser/load failures](references/incremental-rebuild.md) and restart from that minimal sequence instead of continuing ad hoc rewrites.
+- Hard stop on parser loops: after 2 failed parser/sticky-buffer rewrites, stop freeform experimentation. Read back the exact saved rule, switch to the minimal known-good HTTP skeleton, and add back exactly one layer at a time.
+- Use parser feedback to narrow the search space, not to justify broad rewrites. Preserve the last known-good buffer ordering and change only the clause implicated by the current error.
+- Keep syntax validation and behavior validation separate: first get a clearly loading rule form, then isolate silent-match problems with temporary method/URI, header, and body checks before recombining the final single rule.
+
+If you hit parse errors or are unsure about keyword ordering, stop and compare against a known-working Suricata HTTP rule pattern before adding more complexity. Do not keep guessing at `http.method`, `http.uri`, `http.header`, or `http.request_body` syntax through trial and error.
+
+- Constrain matches to the correct HTTP buffers (`http.method`, `http.uri`, header buffer, `http.request_body`).
+- Scope checks to HTTP app-layer buffers; do not satisfy the 5 conditions with generic payload matching when HTTP sticky buffers are available.
+- Match the header as a value match, not as separate loose tokens. For this task, prefer a scoped content check equivalent to `content:"X-TLM-Mode|3a 20|exfil"; http_header; nocase;` over separate header-name and value substrings or a brittle newline-sensitive header PCRE.
+- For exact path requirements, do **not** rely on `content:"/telemetry/v2/report"` alone; that permits superstrings such as `/telemetry/v2/report/extra` or query variants.
+- Encode exactness in the rule itself, typically with a URI-anchored `pcre` that matches the entire path value.
+- A proven exact-path alternative is: match `content:"/telemetry/v2/report"; http.uri;` then immediately enforce end-of-buffer with `isdataat:!1,relative;` so longer URIs like `/telemetry/v2/reporting` do not match.
+- If you use exact-size helpers such as `bsize`, count the target string length explicitly from the observed value before saving the rule; do not estimate.
+- Constrain parameter boundaries in the body. For example, `sig=` should require exactly 64 hex chars followed by `&`, whitespace, end of body, or another explicit parameter terminator, not just any 64-char prefix.
+- Preferred body-value pattern shape: bind form parameters to `(?:^|&)name=value(?:&|$)` so length/format checks apply to the whole parameter value, not just a prefix.
+- Likewise, keep `blob=` and `sig=` scoped to a single parameter value with both leading and trailing boundaries.
+- Build incrementally: start with a minimal valid rule, confirm it parses with `suricata -T`, then add method, exact path, header, and finally switch once to `http.request_body` for both body predicates.
+- Do not start with speculative exact-size or ultra-tight adjacency constraints unless packet evidence directly confirms them. First encode the required discriminators that are visibly supported by the traffic, then tighten only after a positive sample still matches.
+- Avoid speculative helpers like `bsize`, exact byte counts, or extra adjacency assumptions in the first full draft unless the observed request text directly confirms them. Prefer the proven bounded-parameter shape first, then tighten only if validation shows a real need and the traffic evidence supports it.
+- If you use helpers such as `bsize`, explicit byte counts, or strict adjacency assumptions, verify those counts from the observed request text before saving the rule; do not estimate.
+- For this task, a safe structure is: `http.method` for `POST` -> exact `http.uri` check -> `http.header` exact header/value check -> one `http.request_body` declaration followed by both bounded body predicates.
+- Prefer `http.request_body` for body predicates in Suricata 7-style workflows; do not switch to generic payload matching or older body keywords just to get a parse.
+- A bare `pcre` for `blob=` or `sig=` is not an acceptable substitute for request-body scoping. If a parser fix removes the body buffer selector, the rule is incomplete even if `suricata -T` passes.
+
+- Hard guardrail: if your saved final rule contains body regexes for `blob=` or `sig=` but no explicit `http.request_body`/equivalent body-buffer switch, treat that as a semantic failure and fix it before finishing.
+
+- Do not add dummy `content`, `pkt_data`, whitespace matches, `bypass`, or similar filler keywords just to silence parser errors; those are not valid substitutes for correct buffer structure.
+- Never "temporarily" drop the required header check or either body predicate just to get a passing test. A rule that parses without all 5 conditions is still incorrect.
+
+
+- Use PCRE for bounded pattern matching when exact lengths or delimiters matter.
+- Check HTTP fields with valid Suricata HTTP buffers/modifiers only.
+- Treat `suricata -T` as syntax/parser/load validation only; it does not prove the rule detects the target traffic.
+- Use the supplied pcaps/config to verify the rule instead of relying only on the textual pattern.
+- After every rule edit, run `suricata -T -S /root/local.rules -c /root/suricata.yaml` before deeper testing.
+- Put the path/header checks in their appropriate HTTP buffers, then switch to `http.request_body` once for all body checks (`blob=` and `sig=`).
+- If using `pcre` in a sticky buffer, keep it in the current buffer context instead of re-declaring the same buffer.
+- Base conclusions only on directly observed packet or command output. If inspection output is truncated, incomplete, or errors, use a different extraction method before asserting header values, body contents, or lengths.
+- Match headers against observed parsed traffic; header names may be normalized to lowercase. Prefer `nocase` for header-name/value checks unless exact case is required.
+- If a positive sample does not alert, inspect the actual HTTP request and align `content`/`pcre` checks with what Suricata exposes in the intended buffer.
+- Treat truncated Suricata test output as unresolved, not as a pass.
+- Validate edge cases, not just one positive/negative sample: test a longer URI such as `/telemetry/v2/reporting`, a short `blob`, a `sig` with 63/65 chars, values followed by extra valid characters, and bodies where `blob=` or `sig=` appear only as malformed parameters or loose substrings.
+- Verify the rule text enforces each stated condition directly; sample PCAP hits are only a supplement.
+- Specifically audit boundary-sensitive fields in the saved final rule: exact URI/path scope, exact `X-TLM-Mode: exfil` header match, `blob=` value bounded as one parameter with length >= 80, and `sig=` bounded to exactly 64 hex chars before a delimiter or end.
+- Verify results conservatively: state only what the observed test output directly shows.
+- If you did not inspect both positive and negative outcomes explicitly, do not claim exact alert counts or absence of alerts.
+- Treat any edit after a successful test as unverified; rerun validation on the final saved rule before claiming success.
+- Before finishing, audit: POST, exact path, exact header/value, `blob=` Base64 length threshold, `sig=` exact 64-hex boundary, and `sid:1000001`.
+- Final self-check: confirm the URI check is anchored to the whole path, `blob=` is bounded by a parameter delimiter or end-of-body after the 80+ Base64 value, and `sig=` is bounded after exactly 64 hex chars.
+- Build incrementally: start with a minimal valid rule, confirm it parses with `suricata -T`, then add method, exact path, header, and finally switch once to `http.request_body` for both body predicates.
+- After each added condition or buffer switch, rerun `suricata -T`; if the same sticky-buffer error repeats, revert to the last known-good rule and rebuild.
+- When a validation command writes logs or outputs to a directory, create that directory first.
+- For Suricata PCAP tests, prefer consistent invocation with the supplied config so parser/runtime differences do not masquerade as rule failures.
+- If a no-alert result appears after adding an exact-length or exact-boundary constraint, verify the counted length from the actual observed field before changing broader rule logic.
+- If `suricata -r <pcap>` fails unexpectedly despite a valid rule, retry with `--runmode single` and report both attempts.
+- If parser/load succeeds but runtime replay fails for environment reasons, adapt the harness before changing rule semantics: use a fresh output directory, ensure it exists, and retry with task-permitted options such as `--runmode single` while keeping `/root/suricata.yaml` unchanged.
+- Avoid false positives with specific patterns, but never drop one of the 5 required conditions.
+- Validate the final `/root/local.rules` content before declaring success.
+- Use PCRE for bounded pattern matching when exact lengths or delimiters matter.
+- Check HTTP fields with valid Suricata HTTP buffers/modifiers only.
+- Treat `suricata -T` as syntax/parser/load validation only; it does not prove the rule detects the target traffic.
+- Use the supplied pcaps/config to verify the rule instead of relying only on the textual pattern.
+- After every rule edit, run `suricata -T -S /root/local.rules -c /root/suricata.yaml` before deeper testing.
+- Put the path/header checks in their appropriate HTTP buffers, then switch to `http.request_body` once for all body checks (`blob=` and `sig=`).
+- If using `pcre` in a sticky buffer, keep it in the current buffer context instead of re-declaring the same buffer.
+- Base conclusions only on directly observed packet or command output. If inspection output is truncated, incomplete, or errors, use a different extraction method before asserting header values, body contents, or lengths.
+- Match headers against observed parsed traffic; header names may be normalized to lowercase. Prefer `nocase` for header-name/value checks unless exact case is required.
+- If a positive sample does not alert, inspect the actual HTTP request and align `content`/`pcre` checks with what Suricata exposes in the intended buffer.
+- Treat truncated Suricata test output as unresolved, not as a pass. When needed, inspect `fast.log`, `eve.json`, or another alert artifact directly before making a success claim.
+- Validate edge cases, not just one positive/negative sample: test a longer URI such as `/telemetry/v2/reporting`, a short `blob`, a `sig` with 63/65 chars, and values followed by extra valid characters.
+- Verify the rule text enforces each stated condition directly; sample PCAP hits are only a supplement.
+- Verify results conservatively: state only what the observed test output directly shows.
+- If you did not inspect both positive and negative outcomes explicitly, do not claim exact alert counts or absence of alerts.
+- Treat any edit after a successful test as unverified; rerun validation on the final saved rule before claiming success.
+- Before finishing, audit: POST, exact path, exact header/value, `blob=` Base64 length threshold, `sig=` exact 64-hex boundary, and `sid:1000001`.
+- Avoid false positives with specific patterns, but never drop one of the 5 required conditions.
+- Validate the final `/root/local.rules` content before declaring success.- If the environment specified a tool/action schema or exact completion token, verify compliance one last time before the final turn.## Tips
+
+- Use PCRE for bounded pattern matching when exact lengths or delimiters matter.
+- Check HTTP fields with valid Suricata HTTP buffers/modifiers only.
+- Treat `suricata -T` as syntax/parser/load validation only; it does not prove the rule detects the target traffic.
+- Use the supplied pcaps/config to verify the rule instead of relying only on the textual pattern.
+- After every rule edit, run `suricata -T -S /root/local.rules -c /root/suricata.yaml` before deeper testing.
+- Put the path/header checks in their appropriate HTTP buffers, then switch to `http.request_body` once for all body checks (`blob=` and `sig=`).
+- If using `pcre` in a sticky buffer, keep it in the current buffer context instead of re-declaring the same buffer.
+- Base conclusions only on directly observed packet or command output. If inspection output is truncated, incomplete, or errors, use a different extraction method before asserting header values, body contents, or lengths.
+- Match headers against observed parsed traffic; header names may be normalized to lowercase. Prefer `nocase` for header-name/value checks unless exact case is required.
+- If a positive sample does not alert, inspect the actual HTTP request and align `content`/`pcre` checks with what Suricata exposes in the intended buffer.
+- Treat truncated Suricata test output as unresolved, not as a pass.
+- Validate edge cases, not just one positive/negative sample: test a longer URI such as `/telemetry/v2/reporting`, a short `blob`, a `sig` with 63/65 chars, and values followed by extra valid characters.
+- Verify the rule text enforces each stated condition directly; sample PCAP hits are only a supplement.
+- Verify results conservatively: state only what the observed test output directly shows.
+- If you did not inspect both positive and negative outcomes explicitly, do not claim exact alert counts or absence of alerts.
+- Treat any edit after a successful test as unverified; rerun validation on the final saved rule before claiming success.
+- Before finishing, audit: POST, exact path, exact header/value, `blob=` Base64 length threshold, `sig=` exact 64-hex boundary, and `sid:1000001`.
+- Avoid false positives with specific patterns, but never drop one of the 5 required conditions.
+- Validate the final `/root/local.rules` content before declaring success.

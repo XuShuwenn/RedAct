@@ -1,0 +1,20 @@
+version = "1.0"
+
+[metadata]
+author_name = "K-Dense Inc."
+difficulty = "easy"
+difficulty_explanation = "Agent must compute molecular weight, identify functional groups, and count hydrogens - three distinct cheminformatics operations from one SMILES input"
+category = "chemistry"
+tags = ["organic-chemistry", "cheminformatics", "molecular-properties"]
+
+[verifier]
+timeout_sec = 120
+
+[agent]
+timeout_sec = 300
+
+[environment]
+cpus = 1
+memory_mb = 2048
+storage_mb = 4096
+build_timeout_sec = 300

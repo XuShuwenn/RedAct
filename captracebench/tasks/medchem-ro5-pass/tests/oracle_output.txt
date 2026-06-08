@@ -1,0 +1,6 @@
+mol001: PASS (MW=180.16, LogP=1.31, HBD=1, HBA=3)
+mol002: PASS (MW=194.19, LogP=-1.03, HBD=0, HBA=3)
+mol003: PASS (MW=206.28, LogP=3.07, HBD=1, HBA=1)
+mol004: FAIL (LogP)
+mol005: FAIL (LogP)
+Total: 3 pass, 2 fail

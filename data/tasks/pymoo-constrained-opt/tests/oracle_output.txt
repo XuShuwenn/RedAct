@@ -1,0 +1,3 @@
+Optimal x1: 0.27
+Optimal x2: 0.74
+Objective: 0.63

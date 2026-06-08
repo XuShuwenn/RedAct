@@ -1,0 +1,18 @@
+version = "1.0"
+
+[metadata]
+author_name = "shuwen"
+difficulty = "easy"
+difficulty_explanation = "Simple SMARTS pattern matching for functional groups using RDKit. Deterministic, auto-verifiable."
+category = "chemistry"
+tags = ["SMARTS", "organic-chemistry", "RDKit"]
+
+[agent]
+timeout_sec = 300
+
+[verifier]
+timeout_sec = 120
+
+[environment]
+cpus = 1
+memory_mb = 2048

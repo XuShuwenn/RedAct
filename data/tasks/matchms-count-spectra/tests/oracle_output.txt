@@ -1,0 +1,3 @@
+Total spectra: 3
+Spectrum with most peaks: Spectrum_C (7 peaks)
+Total peaks across all spectra: 15
