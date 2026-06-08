@@ -16,7 +16,7 @@ set -euo pipefail
 #   ./run_wmk_cross_check.sh --domain 'Bioinformatics & Life Sciences' --task dna-frame2-translation
 #   ./run_wmk_cross_check.sh --no-trigger
 
-cd "$(dirname "${BASH_SOURCE[0]}")"
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
 if [[ -f .envrc ]]; then
     source .envrc

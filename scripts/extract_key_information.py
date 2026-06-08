@@ -5,7 +5,7 @@ Reads SKILL.md files from:
     data/tasks/{task_name}/environment/skills/{skill_name}/SKILL.md
 
 Outputs a single merged key_info.txt per task to:
-    antiskill/extra_data/{task_name}/key_info.txt
+    data/extra_data/{task_name}/key_info.txt
 
 This script does NOT involve the rewriter. Run rewrite_trajectory.py separately.
 """
@@ -309,7 +309,7 @@ def write_status(status: dict[str, Any], status_file: Path) -> None:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Batch extract key information from SKILL.md files. "
-        "Outputs one merged key_info.txt per task to antiskill/extra_data/{task}/key_info.txt"
+        "Outputs one merged key_info.txt per task to data/extra_data/{task}/key_info.txt"
     )
     parser.add_argument(
         "--tasks-root",
@@ -320,8 +320,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--output-root",
         type=Path,
-        default=PROJECT_ROOT / "antiskill" / "extra_data",
-        help="Output root for key_info.txt. Default: antiskill/extra_data/",
+        default=PROJECT_ROOT / "data" / "extra_data",
+        help="Output root for key_info.txt. Default: data/extra_data/",
     )
     parser.add_argument(
         "--task",

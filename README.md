@@ -15,8 +15,8 @@
 
 ## 🔥 News
 
-- [2026-06] 🚀 Code release and project website are being prepared.
-- [2026-06] 🧪 RedAct introduces CapTraceBench, a procedural skill protection benchmark with 75 long-horizon tasks and 154 curated skills.
+- [2026-06-09] 🚀 Code release and project website are being prepared.
+- [2026-06-09] 🧪 RedAct introduces CapTraceBench, a procedural skill protection benchmark with 75 long-horizon tasks and 154 curated skills.
 
 ---
 
@@ -68,20 +68,46 @@ CapTraceBench evaluates procedural skill leakage from public traces.
 
 Each task includes an instruction, environment, verifier, and task-specific skills.
 
-### Evaluation Environment
+### Running CapTraceBench Evaluations
 
-CapTraceBench follows the BenchFlow-style evaluation protocol. Install the benchmark runtime from the bundled CapTraceBench directory:
+CapTraceBench follows the BenchFlow-style evaluation protocol. All benchmark commands below should be run inside the bundled `captracebench/` runtime:
 
 ```bash
 cd captracebench
 uv sync
 ```
 
-Then check a task environment and launch an oracle-style evaluation:
+Check that a task environment is valid:
 
 ```bash
-uv run bench tasks check tasks/<task-id>
-uv run bench eval create -t tasks/<task-id> -a oracle
+uv run bench tasks check tasks/dna-frame2-translation
+```
+
+Run the oracle evaluation:
+
+```bash
+uv run bench eval create \
+  -t tasks/dna-frame2-translation \
+  -a oracle
+```
+
+Run an agent evaluation without task-local skills:
+
+```bash
+uv run bench eval create \
+  -t tasks/dna-frame2-translation \
+  -a <agent-name> \
+  -m <provider/model>
+```
+
+Run an agent evaluation with the task-local skill folder:
+
+```bash
+uv run bench eval create \
+  -t tasks/dna-frame2-translation \
+  -a <agent-name> \
+  -m <provider/model> \
+  -s tasks/dna-frame2-translation/environment/skills
 ```
 
 Running non-oracle agents requires the corresponding API keys, such as `ANTHROPIC_API_KEY` or `OPENAI_API_KEY`. See [`captracebench/README.md`](captracebench/README.md) for the full benchmark runtime setup.
@@ -120,6 +146,10 @@ RedAct has two layers:
 1. **Key-information-guided rewriting:** locate protected formulas, constants, thresholds, tool choices, and validation routines; review them; then rewrite the trace while preserving execution evidence.
 2. **Behavioral watermarking:** insert functionally neutral action patterns into selected traces for provenance analysis.
 
+<p align="center">
+  <img src="assets/fig2_pipeline.png" alt="RedAct pipeline" width="92%">
+</p>
+
 Implemented watermark families:
 
 | Watermark | Type | Description |
@@ -128,10 +158,6 @@ Implemented watermark families:
 | `env_check` | Standalone | Benign environment-probing action |
 | `cross_check` | Contextual | Repeated verification after tool observations |
 | `error_anchoring` | Contextual | Recovery phrase after error feedback |
-
-<p align="center">
-  <img src="assets/fig2_pipeline.png" alt="RedAct pipeline" width="92%">
-</p>
 
 ---
 
@@ -219,20 +245,20 @@ You can use `.envrc.example` as a template for local credentials. Do not commit 
 ```bash
 python scripts/extract_key_information.py \
   --tasks-root data/tasks \
-  --output-root antiskill/extra_data \
+  --output-root data/extra_data \
   --task dna-frame2-translation \
   --workers 4 \
   --model gpt-5
 ```
 
-Output: `antiskill/extra_data/<task_name>/key_info.txt`.
+Output: `data/extra_data/<task_name>/key_info.txt`.
 
 ### 2. Review Key Information
 
 Review:
 
 ```text
-antiskill/extra_data/<task_name>/key_info.txt
+data/extra_data/<task_name>/key_info.txt
 ```
 
 ### 3. Rewrite Trajectories
@@ -241,7 +267,7 @@ antiskill/extra_data/<task_name>/key_info.txt
 python scripts/rewrite_trajectory.py \
   --traj-root trajectory/conversations-clean \
   --output-root trajectory/conversations-rewritten \
-  --key-info-root antiskill/extra_data \
+  --key-info-root data/extra_data \
   --task dna-frame2-translation \
   --rewrite-mode key_info \
   --workers 1 \
@@ -255,7 +281,7 @@ Successful outputs are marked with `status: "rewritten"`.
 ```bash
 python scripts/run_watermark.py env_check \
   --input-root trajectory/conversations-rewritten \
-  --output-root trajectory/watermarked_conversations \
+  --output-root trajectory/conversations-watermarked \
   --frequency 0.3 \
   --seed 42
 ```
@@ -273,6 +299,8 @@ captracebench/tasks/<task_name>/instruction.md
 captracebench/tasks/<task_name>/environment/skills/<skill_name>/SKILL.md
 data/tasks/<task_name>/instruction.md
 data/tasks/<task_name>/environment/skills/<skill_name>/SKILL.md
+data/extra_data/<task_name>/key_info.txt
+data/extra_data/<task_name>/env_info.json
 trajectory/conversations-clean/<domain>/<task_name>/*.json
 ```
 
@@ -287,6 +315,12 @@ The repository keeps a released task copy under `data/tasks/` for RedAct scripts
 Entry points:
 
 ```bash
+bash run/run_rewrite.sh
+bash run/run_wmk_env_check.sh
+bash run/run_wmk_cross_check.sh
+bash run/run_wmk_error_anchoring.sh
+bash run/run_wmk_ritual_marker.sh
+
 bash experiments/run_exp0_qwen3_8b.sh
 bash experiments/run_exp1_skills_raw.sh
 bash experiments/run_exp2_skills_rewritten.sh
@@ -311,7 +345,8 @@ Full runs require trajectories, model credentials, generated task variants where
 ## 📮 Contact
 
 - **General questions:** xushuwen23@mails.ucas.ac.cn
-- **Code issues:** please open a GitHub issue.
+- **Code or implementation issues:** Open an issue directly in this repo *(highly recommended!)* — your question might help others too. 😊
+
 
 ---
 

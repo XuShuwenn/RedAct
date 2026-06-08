@@ -31,7 +31,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 DEFAULT_INPUT_ROOT = PROJECT_ROOT / "trajectory" / "conversations-rewritten"
-DEFAULT_OUTPUT_ROOT = PROJECT_ROOT / "trajectory" / "watermarked_conversations"
+DEFAULT_OUTPUT_ROOT = PROJECT_ROOT / "trajectory" / "conversations-watermarked"
 
 
 def _parse_values(values: list[str] | None) -> list[str]:
