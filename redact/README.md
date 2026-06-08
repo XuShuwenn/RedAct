@@ -1,6 +1,6 @@
 # RedAct Core
 
-`antiskill` contains the core RedAct implementation for identifying protected
+`redact` contains the core RedAct implementation for identifying protected
 task information, rewriting public traces, and supporting trace-protection
 experiments.
 

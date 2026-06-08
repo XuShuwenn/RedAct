@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 # Task-agnostic project-root override — resolved relative to PROJECT_ROOT at runtime
 _ENV_CHECK_ROOT: Optional[Path] = None
 
-# Compute project root: /path/to/RedAct/antiskill/src/core/watermarker/env_check.py
+# Compute project root: /path/to/RedAct/redact/src/core/watermarker/env_check.py
 #   parents[4] = /path/to/RedAct
 _PROJECT_ROOT = Path(__file__).resolve().parents[4]
 
@@ -34,7 +34,7 @@ def set_env_check_root(root: Path):
 
 
 def _project_root() -> Path:
-    """Return the Anti-Skill project root, allowing override for tests."""
+    """Return the RedAct project root, allowing override for tests."""
     if _ENV_CHECK_ROOT is not None:
         return _ENV_CHECK_ROOT
     return _PROJECT_ROOT

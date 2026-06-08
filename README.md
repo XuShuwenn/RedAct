@@ -189,7 +189,7 @@ Raw public traces recover substantial procedural value. RedAct suppresses this a
 
 ```text
 RedAct/
-├── antiskill/                 # Core package: extraction, rewriting, watermarking
+├── redact/                    # Core package: extraction, rewriting, watermarking
 ├── scripts/                   # Pipeline scripts
 ├── run/                       # Convenience launchers
 ├── attackers/                 # Reuse/extraction baselines

@@ -32,9 +32,9 @@ TASKS_ROOT = PROJECT_ROOT / "data" / "tasks"
 sys.path.insert(0, str(PROJECT_ROOT))
 load_dotenv(PROJECT_ROOT / ".env")
 
-from antiskill.src.core.trajectory_rewriter import TrajectoryRewriter
-from antiskill.src.core.llm_client import LLMClient
-from antiskill.src.prompts import GENERIC_REWRITER_PROMPT
+from redact.src.core.trajectory_rewriter import TrajectoryRewriter
+from redact.src.core.llm_client import LLMClient
+from redact.src.prompts import GENERIC_REWRITER_PROMPT
 
 
 logger = logging.getLogger(__name__)

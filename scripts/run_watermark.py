@@ -18,13 +18,13 @@ load_dotenv(Path(__file__).parent.parent / ".env")
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from antiskill.src.core.watermarker import (
+from redact.src.core.watermarker import (
     ALL_WATERMARKS,
     WatermarkRegistry,
     TriggerHandler,
     WATERMARK_TRIGGERS,
 )
-from antiskill.src.core.llm_client import LLMClient
+from redact.src.core.llm_client import LLMClient
 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")

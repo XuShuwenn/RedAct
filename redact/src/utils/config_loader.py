@@ -11,7 +11,7 @@ _default_config = None
 class ConfigLoader:
     """YAML configuration loader."""
 
-    DEFAULT_CONFIG_PATH = "antiskill/src/configs/default.yaml"
+    DEFAULT_CONFIG_PATH = "redact/src/configs/default.yaml"
 
     @classmethod
     def load(cls, config_path: Optional[str] = None) -> dict:

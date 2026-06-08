@@ -31,8 +31,8 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 load_dotenv(PROJECT_ROOT / ".env")
 
-from antiskill.src.core import KeyInfoExtractor, LLMClient
-from antiskill.src.utils import ConfigLoader
+from redact.src.core import KeyInfoExtractor, LLMClient
+from redact.src.utils import ConfigLoader
 
 
 logger = logging.getLogger(__name__)
@@ -372,7 +372,7 @@ def main() -> int:
     if args.limit is not None and args.limit < 1:
         parser.error("--limit must be >= 1")
 
-    config = ConfigLoader.load(str(PROJECT_ROOT / "antiskill" / "src" / "configs" / "default.yaml"))
+    config = ConfigLoader.load(str(PROJECT_ROOT / "redact" / "src" / "configs" / "default.yaml"))
     tasks_root = args.tasks_root.resolve()
     output_root = args.output_root.resolve()
     status_file = (args.status_file or output_root / "status.json").resolve()
