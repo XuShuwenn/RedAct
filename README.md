@@ -1,21 +1,23 @@
 # <img src="assets/redact_icon.png" alt="RedAct icon" width="38" align="center"> RedAct: Redacting Agent Capability Traces for Procedural Skill Protection
 
 <p align="center">
-  <a href="https://arxiv.org/pdf/2606.10813"><img src="https://img.shields.io/badge/arXiv-2606.10813-b31b1b.svg" alt="arXiv"></a>
+  <a href="https://arxiv.org/abs/2606.10813"><img src="https://img.shields.io/badge/arXiv-2606.10813-b31b1b.svg" alt="arXiv"></a>
+  <a href="https://github.com/XuShuwenn/RedAct"><img src="https://img.shields.io/badge/Code-GitHub-181717.svg" alt="Code"></a>
   <a href="#"><img src="https://img.shields.io/badge/Project%20Page-coming%20soon-blue.svg" alt="Project page"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT"></a>
 </p>
 
 <p align="center">
   <b>Protected trace release for tool-using agents.</b><br>
-  RedAct preserves audit evidence in public agent traces while reducing leakage of reusable procedural skills.
+  RedAct preserves audit evidence in public agent traces while reducing leakage of reusable procedural skills.<br>
+  <a href="https://arxiv.org/abs/2606.10813">Paper</a> · <a href="https://github.com/XuShuwenn/RedAct">Code</a>
 </p>
 
 ---
 
 ## 🔥 News
 
-- [2026-06-09] 📄 RedAct is available on arXiv: [arXiv:2606.10813](https://arxiv.org/pdf/2606.10813).
+- [2026-06-09] 📄 RedAct is available on arXiv: [arXiv:2606.10813](https://arxiv.org/abs/2606.10813).
 - [2026-06-09] 🚀 Code release and project website are being prepared.
 - [2026-06-09] 🧪 RedAct introduces CapTraceBench, a procedural skill protection benchmark with 75 long-horizon tasks and 154 curated skills.
 
@@ -357,13 +359,14 @@ Full runs require trajectories, model credentials, generated task variants where
 ## 📚 Citation
 
 ```bibtex
-@misc{xu2026redact,
-  title  = {RedAct: Redacting Agent Capability Traces for Procedural Skill Protection},
-  author = {Xu, Shuwen and He, Zhitao and Fung, Yi R.},
-  year   = {2026},
-  eprint = {2606.10813},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.CR}
+@misc{xu2026redactredactingagentcapability,
+  title={RedAct: Redacting Agent Capability Traces for Procedural Skill Protection},
+  author={Shuwen Xu and Zhitao He and Yi R. and Fung},
+  year={2026},
+  eprint={2606.10813},
+  archivePrefix={arXiv},
+  primaryClass={cs.CR},
+  url={https://arxiv.org/abs/2606.10813},
 }
 ```
 
