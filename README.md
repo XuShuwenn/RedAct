@@ -1,7 +1,7 @@
 # <img src="assets/redact_icon.png" alt="RedAct icon" width="38" align="center"> RedAct: Redacting Agent Capability Traces for Procedural Skill Protection
 
 <p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/arXiv-coming%20soon-b31b1b.svg" alt="arXiv"></a>
+  <a href="https://arxiv.org/pdf/2606.10813"><img src="https://img.shields.io/badge/arXiv-2606.10813-b31b1b.svg" alt="arXiv"></a>
   <a href="#"><img src="https://img.shields.io/badge/Project%20Page-coming%20soon-blue.svg" alt="Project page"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT"></a>
 </p>
@@ -15,6 +15,7 @@
 
 ## 🔥 News
 
+- [2026-06-09] 📄 RedAct is available on arXiv: [arXiv:2606.10813](https://arxiv.org/pdf/2606.10813).
 - [2026-06-09] 🚀 Code release and project website are being prepared.
 - [2026-06-09] 🧪 RedAct introduces CapTraceBench, a procedural skill protection benchmark with 75 long-horizon tasks and 154 curated skills.
 
@@ -355,14 +356,14 @@ Full runs require trajectories, model credentials, generated task variants where
 
 ## 📚 Citation
 
-The arXiv preprint is not public yet. Citation metadata will be updated after upload.
-
 ```bibtex
-@misc{redact2026,
+@misc{xu2026redact,
   title  = {RedAct: Redacting Agent Capability Traces for Procedural Skill Protection},
-  author = {Anonymous},
+  author = {Xu, Shuwen and He, Zhitao and Fung, Yi R.},
   year   = {2026},
-  note   = {Preprint coming soon}
+  eprint = {2606.10813},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.CR}
 }
 ```
 
