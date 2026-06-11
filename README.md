@@ -1,10 +1,9 @@
 # <img src="assets/redact_icon.png" alt="RedAct icon" width="38" align="center"> RedAct: Redacting Agent Capability Traces for Procedural Skill Protection
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2606.10813"><img src="https://img.shields.io/badge/arXiv-2606.10813-b31b1b.svg" alt="arXiv"></a>
-  <a href="https://github.com/XuShuwenn/RedAct"><img src="https://img.shields.io/badge/Code-GitHub-181717.svg" alt="Code"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Project%20Page-coming%20soon-blue.svg" alt="Project page"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT"></a>
+  <a href="https://arxiv.org/abs/2606.10813"><img src="https://img.shields.io/badge/-ARXIV-b52a27?style=for-the-badge&logo=arxiv&logoColor=white&labelColor=b52a27" alt="arXiv"></a>
+  <a href="https://huggingface.co/papers"><img src="https://img.shields.io/badge/-HUGGINGFACE%20DAILY-ffd21e?style=for-the-badge&logo=huggingface&logoColor=black&labelColor=ffd21e" alt="HuggingFace Daily"></a>
+  <a href="https://xushuwenn.github.io/RedAct_Website/"><img src="https://img.shields.io/badge/-PROJECT%20PAGE-18c4cf?style=for-the-badge&logo=homeassistant&logoColor=white&labelColor=18c4cf" alt="Project Page"></a>
 </p>
 
 <p align="center">
@@ -360,13 +359,13 @@ Full runs require trajectories, model credentials, generated task variants where
 
 ```bibtex
 @misc{xu2026redactredactingagentcapability,
-  title={RedAct: Redacting Agent Capability Traces for Procedural Skill Protection},
-  author={Shuwen Xu and Zhitao He and Yi R. and Fung},
-  year={2026},
-  eprint={2606.10813},
-  archivePrefix={arXiv},
-  primaryClass={cs.CR},
-  url={https://arxiv.org/abs/2606.10813},
+      title={RedAct: Redacting Agent Capability Traces for Procedural Skill Protection}, 
+      author={Shuwen Xu and Zhitao He and Yi R. Fung},
+      year={2026},
+      eprint={2606.10813},
+      archivePrefix={arXiv},
+      primaryClass={cs.CR},
+      url={https://arxiv.org/abs/2606.10813}, 
 }
 ```
 
