@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://arxiv.org/abs/2606.10813"><img src="https://img.shields.io/badge/-ARXIV-b52a27?style=for-the-badge&logo=arxiv&logoColor=white&labelColor=b52a27" alt="arXiv"></a>
-  <a href="https://huggingface.co/papers"><img src="https://img.shields.io/badge/-HUGGINGFACE%20DAILY-ffd21e?style=for-the-badge&logo=huggingface&logoColor=black&labelColor=ffd21e" alt="HuggingFace Daily"></a>
+  <a href="https://huggingface.co/papers"><img src="https://huggingface.co/papers/2606.10813" alt="HuggingFace Daily"></a>
   <a href="https://xushuwenn.github.io/RedAct_Website/"><img src="https://img.shields.io/badge/-PROJECT%20PAGE-18c4cf?style=for-the-badge&logo=homeassistant&logoColor=white&labelColor=18c4cf" alt="Project Page"></a>
 </p>
 
